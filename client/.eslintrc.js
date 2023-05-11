@@ -14,11 +14,11 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: ['react'],
+	plugins: ['react', 'react-native'],
 	rules: { 'no-unused-vars': 'warn' },
 	settings: {
 		react: {
 			version: 'detect',
 		},
 	},
-};
+}
