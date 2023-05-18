@@ -1,10 +1,8 @@
-
-require('dotenv').config();
-const { Sequelize } = require('sequelize');
-const fs = require('fs');
-const path = require('path');
-const {/*  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, */ DB_URL } = process.env;
-
+require('dotenv').config()
+const { Sequelize } = require('sequelize')
+const fs = require('fs')
+const path = require('path')
+const { /*  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, */ DB_URL } = process.env
 
 // VARIABLES DE ENTORNO PARA EL .ENV
 
@@ -62,14 +60,16 @@ fs.readdirSync(path.join(__dirname, '/models'))
 modelDefiners.forEach(model => model(sequelize))
 // Capitalizamos los nombres de los modelos ie: product => Product
 
-const entries = Object.entries(sequelize.models);
-const capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
-sequelize.models = Object.fromEntries(capsEntries);
+const entries = Object.entries(sequelize.models)
+const capsEntries = entries.map(entry => [
+	entry[0][0].toUpperCase() + entry[0].slice(1),
+	entry[1],
+])
+sequelize.models = Object.fromEntries(capsEntries)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User  } = sequelize.models;
-
+const { User } = sequelize.models
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
