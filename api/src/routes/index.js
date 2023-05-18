@@ -7,6 +7,6 @@ const router = Router()
 
 router.get('/login', userLogin)
 router.post('/register', verifiRegisterData, userRegister)
-//router.use('/', );
+// router.use('/', );
 
 module.exports = router
