@@ -7,11 +7,11 @@ const data = {
 const userRegister = async (req, res) => {
 	const { password, name, email, phone } = req.body
 	const hashedPassword = await hash(password, 12)
-	const emailExist = User.findOne({
-		where: { email },
+	const emailExist = await User.findOne({
+		where: { email: email },
 	}).then(user => user)
-	const phoneExist = User.findOne({
-		where: { phone },
+	const phoneExist = await User.findOne({
+		where: { phone: phone },
 	}).then(user => user)
 	if (emailExist) {
 		data.statusCode = 401
@@ -19,9 +19,11 @@ const userRegister = async (req, res) => {
 	}
 	if (phoneExist) {
 		data.statusCode = 401
-		data.errors.email = 'Este teléfono ya está registrado'
+		data.errors.phone = 'Este teléfono ya está registrado'
 	}
-	if (data.statusCode !== 200) return res.send(data)
+	if (data.statusCode !== 200) {
+		return res.send(data)
+	}
 	User.create({
 		name,
 		email,
@@ -29,7 +31,7 @@ const userRegister = async (req, res) => {
 		password: hashedPassword,
 	})
 		.then(nuevoUsuario => {
-			res.status(200).send()
+			res.status(200).send(data)
 		})
 		.catch(error => {
 			res.status(401).send(error)
