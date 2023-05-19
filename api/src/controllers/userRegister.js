@@ -5,7 +5,7 @@ const data = {
 	errors: {},
 }
 const userRegister = async (req, res) => {
-	const { password, name, email, phone } = req.body
+	const { repeatedPassword, password, name, email, phone } = req.body
 	const hashedPassword = await hash(password, 12)
 	const emailExist = await User.findOne({
 		where: { email: email },
@@ -20,6 +20,11 @@ const userRegister = async (req, res) => {
 	if (phoneExist) {
 		data.statusCode = 401
 		data.errors.phone = 'Este teléfono ya está registrado'
+	}
+
+	if (repeatedPassword !== password) {
+		data.statusCode = 401
+		data.errors.password = 'Las copntraseñas no coinciden'
 	}
 	if (data.statusCode !== 200) {
 		return res.send(data)
