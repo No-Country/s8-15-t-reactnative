@@ -1,31 +1,31 @@
 import { Image, ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./headerHistorial.styles";
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from "react";
 import Button from "../Button/Button";
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback } from 'react';
+import { useFonts } from 'expo-font';
 
 SplashScreen.preventAutoHideAsync();
 
 const HeaderHistorial = () => {
 
 	const [fontsLoaded] = useFonts({
-		'poppins-SemiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
-	});
-
-	const onLayoutRootView = useCallback(async () => {
+		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
+	  });
+	
+	  const onLayoutHeaderHistorial = useCallback(async () => {
 		if (fontsLoaded) {
-			await SplashScreen.hideAsync();
+		  await SplashScreen.hideAsync();
 		}
-	}, [fontsLoaded]);
-
-	if (!fontsLoaded) {
-		return null;
-	}
+	  }, [fontsLoaded]);
+	
+	  if (!fontsLoaded) {
+		return <Text>Cargando...</Text>;
+	  }
 
 	return <ImageBackground
-		onLayout={onLayoutRootView}
+		onLayout={onLayoutHeaderHistorial}
 		source={require('../../../assets/fondoHistorial.webp')}
 		className="h-[255]"
 	>
@@ -47,12 +47,12 @@ const HeaderHistorial = () => {
 			<View className="flex items-center">
 				<View className='flex flex-row justify-center items-center gap-3'>
 					<Text className='font-medium text-[20px] text-white	'
-						style={{ fontFamily: 'poppins-SemiBold' }}>Dinero disponible</Text>
+						style={{ fontFamily: 'poppins-semiBold' }}>Dinero disponible</Text>
 					<TouchableOpacity>
 						<Ionicons name="ios-eye-outline" size={24} color="#fff" />
 					</TouchableOpacity>
 				</View>
-				<Text className='text-5xl text-white pt-4 font' style={{ fontFamily: 'poppins-SemiBold' }}>US$1.547.54</Text>
+				<Text className='text-5xl text-white pt-4 font' style={{ fontFamily: 'poppins-semiBold' }}>US$1.547.54</Text>
 			</View>
 		</View>
 	</ImageBackground>;

@@ -1,28 +1,28 @@
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 import colors from '../../utils/colors';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from "react";
 import { styles } from './historialTabs.style';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import * as SplashScreen from 'expo-splash-screen';
+import { useCallback } from 'react';
+import { useFonts } from 'expo-font';
 
 SplashScreen.preventAutoHideAsync();
 
-
 const HistorialTabs = ({ tabs, activeTab, setActiveTab }) => {
 
+
 	const [fontsLoaded] = useFonts({
-		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
+		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
 	});
 
-	const onLayoutRootHistorialTabs = useCallback(async () => {
+	const onLayoutHistorialTabs = useCallback(async () => {
 		if (fontsLoaded) {
 			await SplashScreen.hideAsync();
 		}
 	}, [fontsLoaded]);
 
 	if (!fontsLoaded) {
-		return null;
+		return <Text>Cargando...</Text>;
 	}
 
 	const TabButtom = ({ name, activeTab, onHandleSearchTab }) => (
@@ -49,7 +49,9 @@ const HistorialTabs = ({ tabs, activeTab, setActiveTab }) => {
 		</TouchableOpacity>
 	)
 
-	return <View onLayout={onLayoutRootHistorialTabs} className='pt-4  px-4 relative top-[-15px] bg-white rounded-tl-2xl rounded-tr-2xl border-b-2 border-gray-100'>
+	return <View
+		onLayout={onLayoutHistorialTabs}
+		className='pt-4  px-4 relative top-[-15px] bg-white rounded-tl-2xl rounded-tr-2xl border-b-2 border-gray-100'>
 		<FlatList
 			data={tabs}
 			renderItem={({ item }) => {
