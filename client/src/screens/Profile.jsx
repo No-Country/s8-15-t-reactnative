@@ -1,10 +1,12 @@
-import { View, Text, StatusBar, TouchableOpacity, ImageBackground, Modal } from 'react-native'
+import { View, Text, StatusBar, TouchableOpacity, ImageBackground,   } from 'react-native'
 import colors from '../utils/colors'
 import {MaterialCommunityIcons , Octicons} from '@expo/vector-icons';
-
+import { useState } from 'react';
+import EditProfile from '../components/EditProfile';
 import fondo from '../Images/fondo.webp'
 
 const Profile = () => {
+    const [active, setActive] = useState(false)
  
     return (
         <>
@@ -29,7 +31,7 @@ const Profile = () => {
 
        
         <View className='h-full p-10 top-4 '>
-            <TouchableOpacity className='flex flex-row' >
+            <TouchableOpacity onPress={() => setActive(true)} className='flex flex-row' >
             <MaterialCommunityIcons  name='account-box-outline' size={25} />
             <Text className='ml-2'>Datos Personales</Text>
             </TouchableOpacity>
@@ -60,17 +62,12 @@ const Profile = () => {
             </TouchableOpacity>
 
         </View>
-        <EditProfile />
+        <EditProfile active={active} setActive={setActive} />
         </> 
     )
 }
 
 export default Profile
 
-const EditProfile  =() => {
-return (
-    <Modal  visible={true} className >
-        <Text>Modal</Text>
-    </Modal>
-)
-}
+
+  
