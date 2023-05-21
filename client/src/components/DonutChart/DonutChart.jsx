@@ -16,7 +16,7 @@ const DonutChart = () => {
 	return <View className='flex items-center'>
 		<VictoryPie
 			data={data}
-			colorScale={[colors.celeste, colors.naranja, colors.lila, colors.verde_claro]}
+			colorScale={[colors.celeste, colors.naranja_claro, colors.lila, colors.verde_claro]}
 			labels={({ datum }) => `${datum.x}`}
 			labelPlacement='perpendicular'
 			innerRadius={80}

@@ -1,6 +1,7 @@
 import { Text, View, ScrollView } from 'react-native'
 import { VictoryPie, VictoryChart, VictoryTheme } from "victory-native";
 import { DonutChart } from '../DonutChart';
+import { UltimosMoviemientosFilters } from '../UltimosMoviemientosFilters';
 
 const Estadisticas = () => {
 
@@ -11,6 +12,7 @@ const Estadisticas = () => {
 				Secciones
 			</Text>
 			<DonutChart/>
+			<UltimosMoviemientosFilters/>
 		</View>
 	);
 };

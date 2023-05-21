@@ -4,4 +4,5 @@ export * from './Estadisticas';
 export * from './HeaderHistorial';
 export * from './HistorialTabs';
 export { default as Nav } from './Nav';
+export * from './UltimosMoviemientosFilters';
 export * from './UltimosMovimientos';

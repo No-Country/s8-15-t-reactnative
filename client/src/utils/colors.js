@@ -5,6 +5,7 @@ const colors = {
   azul: '#5C91F7',
   azul_oscuro: '#005ABD',
   naranja: '#F18805',
+  naranja_claro: '#F0B064',
   gris_oscuro: '#49454F',
   rojo: '#D74479',
   verde_claro: '#70CD6E',
