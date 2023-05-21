@@ -1,4 +1,4 @@
-import { StatusBar, Text, View } from 'react-native'
+import { ScrollView, StatusBar, Text, View } from 'react-native'
 import { HeaderHistorial } from '../../../components/HeaderHistorial';
 import { HistorialTabs } from '../../../components/HistorialTabs';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ const Historial = () => {
 		}
 	}
 	return (
-		<View>
+		<ScrollView>
 			<StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 			<HeaderHistorial />
 			<HistorialTabs
@@ -33,7 +33,7 @@ const Historial = () => {
 				setActiveTab={setActiveTab}
 			/>
 			{displayContent()}
-		</View>
+		</ScrollView>
 	)
 };
 

@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../../utils/colors';
 
 const UltimosMoviemientosFilters = () => {
-	return <View className='flex flex-row justify-evenly'>
+	return <View className='flex flex-row justify-evenly mt-3'>
 		<TouchableOpacity className='flex items-center'>
 			<Utensils size={23} color={colors.lila} />
 			<Text className='font-medium text-base mt-2' style={{ color: colors.lila }}>

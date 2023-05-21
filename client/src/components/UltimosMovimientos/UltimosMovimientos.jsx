@@ -1,10 +1,8 @@
 import { Text, View } from 'react-native';
-import { House, Utensils, Wallet } from '../../../assets/svgMaterialIcons/icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
-import colors from '../../utils/colors';
+import { MovimientosItems } from '../MovimientosItems';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,55 +23,66 @@ const UltimosMovimientos = () => {
 		return <Text>Cargando...</Text>;
 	}
 
+	const dataUltimosMov= [
+		{ id: '1233m34mnkj3jk4j1',
+			categoria: 'Home',
+			desc: 'Cuadro',
+			monto: -10
+		},
+		{ id: '1233m34mnkj3jk4j2',
+			categoria: 'Home',
+			desc: 'Silla',
+			monto: -145
+		},
+		{ id: '1233m34mnkj3jk4j3',
+			categoria: 'Trabajo',
+			desc: 'Trabajo',
+			monto: 1345
+		},
+		{ id: '1233m34mnkj3jk4j4',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+		{ id: '1233m34mnkj3jk4j5',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+		{ id: '1233m34mnkj3jk4j6',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+		{ id: '1233m34mnkj3jk4j7',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+		{ id: '1233m34mnkj3jk4j8',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+		{ id: '1233m34mnkj3jk4j9',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+		{ id: '1233m34mnkj3jk4j10',
+			categoria: 'Supermercado',
+			desc: 'Supermercado',
+			monto: -123
+		},
+	]
+
 	return <View onLayout={onLayoutUltimosMovimientos} className='px-5 py-2'>
 		<Text className='text-center text-2xl mb-4' style={{ fontFamily: 'roboto-bold' }}>Últimos movimientos</Text>
-		<View className=''>
-			<View className='flex flex-row justify-between items-center border-b-2 border-gray-200 px-5 py-5'>
-				<View className='flex flex-row items-center'>
-					<House size='25' />
-					<Text style={{ fontFamily: 'roboto-regular' }} className='text-xl ml-3'>Cuadro</Text>
-				</View>
-				<Text style={{ fontFamily: 'roboto-medium', color: colors.rojo }} className='text-2xl'>
-					-10USD
-				</Text>
-			</View>
-		</View>
-
-		<View className=''>
-			<View className='flex flex-row justify-between items-center border-b-2 border-gray-200 px-5 py-5'>
-				<View className='flex flex-row items-center'>
-					<House size='25' />
-					<Text style={{ fontFamily: 'roboto-regular' }} className='text-xl ml-3'>Silla</Text>
-				</View>
-				<Text style={{ fontFamily: 'roboto-medium', color: colors.rojo }} className='text-2xl'>
-					-145USD
-				</Text>
-			</View>
-		</View>
-
-		<View className=''>
-			<View className='flex flex-row justify-between items-center border-b-2 border-gray-200 px-5 py-5'>
-				<View className='flex flex-row items-center'>
-					<Wallet size='25'/>
-					<Text style={{ fontFamily: 'roboto-regular' }} className='text-xl ml-3'>Trabajo</Text>
-				</View>
-				<Text style={{ fontFamily: 'roboto-medium', color: colors.verde }} className='text-2xl'>
-					+1345USD
-				</Text>
-			</View>
-		</View>
-
-		<View className=''>
-			<View className='flex flex-row justify-between items-center border-b-2 border-gray-200 px-5 py-5'>
-				<View className='flex flex-row items-center'>
-					<Utensils size='25'/>
-					<Text style={{ fontFamily: 'roboto-regular' }} className='text-xl ml-3'>Supermercado</Text>
-				</View>
-				<Text style={{ fontFamily: 'roboto-medium', color: colors.rojo }} className='text-2xl'>
-					-123USD
-				</Text>
-			</View>
-		</View>
+		{dataUltimosMov?.map((item)=> {
+			return (
+				<MovimientosItems key={item.id} category={item.categoria} description={item.desc} moneyAmount={item.monto}/>
+			)
+		})}
 	</View>;
 };
 
