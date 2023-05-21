@@ -2,7 +2,7 @@ import { Text, View } from 'react-native'
 import { HeaderHistorial } from '../../../components/HeaderHistorial';
 import { HistorialTabs } from '../../../components/HistorialTabs';
 import { useState } from 'react';
-import { UltimosMovimientos } from '../../../components';
+import { Estadisticas, UltimosMovimientos } from '../../../components';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
@@ -19,7 +19,7 @@ const Historial = () => {
 			case 'Historial':
 				return <UltimosMovimientos/>
 			case 'Estadísticas':
-				return <Text>estadisticas</Text> 
+				return <Estadisticas/>
 			case 'Gastos':
 				return <Text>gastos</Text> 
 			default:
