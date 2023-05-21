@@ -11,19 +11,18 @@ const DonutChart = () => {
 		{ x: '50%', y: 50 },
 	];
 
-	const chartSize = 200;
+	const chartSize = 180;
 
-	return <View className='flex j items-center'>
+	return <View className='flex items-center'>
 		<VictoryPie
 			data={data}
 			colorScale={[colors.celeste, colors.naranja, colors.lila, colors.verde_claro]}
 			labels={({ datum }) => `${datum.x}`}
 			labelPlacement='perpendicular'
-			labelPosition='centroid'
-			innerRadius={100}
+			innerRadius={80}
 			width={chartSize}
 			height={chartSize}
-			labelComponent={<VictoryLabel angle={2}/>}
+			labelComponent={<VictoryLabel verticalAnchor={({ text }) => text.length > 1 ? "start" : "middle"} angle={2}/>}
 		/>
 	</View>;
 };
