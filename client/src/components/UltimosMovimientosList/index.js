@@ -1,1 +1,0 @@
-export { default as UltimosMovimientosList } from './UltimosMovimientosList';

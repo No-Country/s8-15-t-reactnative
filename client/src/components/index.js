@@ -7,4 +7,3 @@ export * from './MovimientosItems';
 export { default as Nav } from './Nav';
 export * from './UltimosMoviemientosFilters';
 export * from './UltimosMovimientos';
-export * from './UltimosMovimientosList';
