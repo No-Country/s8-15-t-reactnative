@@ -3,8 +3,10 @@
 // import image from './assets/red-diamond.png'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SplashScreen from './Components/SplashScreen'
-import HomeScreen from './Components/HomeScreen'
+// import SplashScreen from './Components/SplashScreen'
+// import HomeScreen from './Components/HomeScreen'
+import Nav from './src/components/Nav';
+
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -12,12 +14,17 @@ export default function App() {
 		// <SafeAreaProvider>
 		// 	<SplashScreen/>
 		// </SafeAreaProvider>
+		// <NavigationContainer>
+		// 	<Stack.Navigator screenOptions={{ headerShown: false }}>
+		// 	  <Stack.Screen name="Splash" component={SplashScreen} />
+		// 	  <Stack.Screen name="Home" component={HomeScreen} />
+		// 	</Stack.Navigator>
+		// </NavigationContainer>
+
 		<NavigationContainer>
-			<Stack.Navigator screenOptions={{ headerShown: false }}>
-			  <Stack.Screen name="Splash" component={SplashScreen} />
-			  <Stack.Screen name="Home" component={HomeScreen} />
-			</Stack.Navigator>
+		<Nav />
 		</NavigationContainer>
+
 		// <View style={styles.container}>
 		// 	<Text style={styles.title}>Holesd</Text>
 		// 	<Image
