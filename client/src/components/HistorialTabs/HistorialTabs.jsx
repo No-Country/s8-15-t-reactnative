@@ -12,7 +12,7 @@ const HistorialTabs = ({ tabs, activeTab, setActiveTab }) => {
 
 
 	const [fontsLoaded] = useFonts({
-		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
+		'roboto-medium': require('../../../assets/robotoFonts/Roboto-Medium.ttf'),
 	});
 
 	const onLayoutHistorialTabs = useCallback(async () => {

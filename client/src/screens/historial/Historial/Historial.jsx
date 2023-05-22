@@ -2,7 +2,7 @@ import { ScrollView, StatusBar, Text, View } from 'react-native'
 import { HeaderHistorial } from '../../../components/HeaderHistorial';
 import { HistorialTabs } from '../../../components/HistorialTabs';
 import { useState } from 'react';
-import { Estadisticas, UltimosMovimientos } from '../../../components';
+import { Estadisticas, Gastos, UltimosMovimientos } from '../../../components';
 
 
 const Historial = () => {
@@ -18,7 +18,7 @@ const Historial = () => {
 			case 'Estadísticas':
 				return <Estadisticas/>
 			case 'Gastos':
-				return <Text>gastos</Text> 
+				return <Gastos/>
 			default:
 				break;
 		}
