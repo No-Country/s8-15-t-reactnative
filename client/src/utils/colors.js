@@ -10,7 +10,6 @@ const colors = {
   rojo: '#D74479',
   verde_claro: '#70CD6E',
   verde: '#39A056',
-
 };
 
 export default colors;

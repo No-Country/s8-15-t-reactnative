@@ -3,26 +3,34 @@ import { styles } from "./headerHistorial.styles";
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import Button from "../Button/Button";
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useFonts } from 'expo-font';
 
 SplashScreen.preventAutoHideAsync();
 
 const HeaderHistorial = () => {
+	const [ocultarNumero, setOcultarNumero] = useState(false)
 
 	const [fontsLoaded] = useFonts({
 		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
-	  });
-	
-	  const onLayoutHeaderHistorial = useCallback(async () => {
+	});
+
+	const onLayoutHeaderHistorial = useCallback(async () => {
 		if (fontsLoaded) {
-		  await SplashScreen.hideAsync();
+			await SplashScreen.hideAsync();
 		}
-	  }, [fontsLoaded]);
-	
-	  if (!fontsLoaded) {
+	}, [fontsLoaded]);
+
+	if (!fontsLoaded) {
 		return <Text>Cargando...</Text>;
-	  }
+	}
+
+	const dineroDisponible = 1547.74
+
+
+	const numeroNormalizado = dineroDisponible.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+	const numeroOculto = numeroNormalizado.replace(/[0-9]/g, '·');
+
 
 	return <ImageBackground
 		onLayout={onLayoutHeaderHistorial}
@@ -48,11 +56,11 @@ const HeaderHistorial = () => {
 				<View className='flex flex-row justify-center items-center gap-3'>
 					<Text className='font-medium text-[20px] text-white	'
 						style={{ fontFamily: 'poppins-semiBold' }}>Dinero disponible</Text>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => setOcultarNumero(!ocultarNumero)}>
 						<Ionicons name="ios-eye-outline" size={24} color="#fff" />
 					</TouchableOpacity>
 				</View>
-				<Text className='text-5xl text-white pt-4 font' style={{ fontFamily: 'poppins-semiBold' }}>US$1.547.54</Text>
+				<Text className='text-5xl text-white pt-4 font' style={{ fontFamily: 'poppins-semiBold' }}>US${ocultarNumero ? numeroOculto : numeroNormalizado}</Text>
 			</View>
 		</View>
 	</ImageBackground>;
