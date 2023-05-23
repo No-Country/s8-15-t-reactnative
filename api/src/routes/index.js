@@ -5,7 +5,7 @@ const verifiRegisterData = require('../middleware/verifyRegisterData')
 
 const router = Router()
 
-router.get('/login', userLogin)
+router.post('/login', userLogin, userLogin)
 router.post('/register', verifiRegisterData, userRegister)
 // router.use('/', );
 
