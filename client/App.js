@@ -1,13 +1,14 @@
-import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import React from 'react';
-import { Historial } from './src/screens';
+import { Provider } from 'react-redux';
+import Nav from './src/components/Nav';
 
 function App() {
-
   return (
-    <NavigationContainer>
-    </NavigationContainer>
+   
+      <NavigationContainer>
+         <Nav />
+      </NavigationContainer>
+    
   );
 }
 
