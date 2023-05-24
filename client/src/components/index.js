@@ -1,11 +1,13 @@
 export * from './Button';
+export * from './ButtonsCryptoScreen';
 export * from './DonutChart';
+export { default as EditProfile } from './EditProfile';
 export * from './Estadisticas';
 export * from './EstadisticasList';
 export * from './Gastos';
+export * from './HeaderCryptoList';
 export * from './HeaderHistorial';
 export * from './HistorialTabs';
 export * from './MovimientosItems';
-export { default as Nav } from './Nav';
 export * from './UltimosMoviemientosFilters';
 export * from './UltimosMovimientos';
