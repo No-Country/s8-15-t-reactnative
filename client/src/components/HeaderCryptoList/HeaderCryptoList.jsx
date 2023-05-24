@@ -51,9 +51,9 @@ const HeaderCryptoList = () => {
 			</View>
 		</ImageBackground>
 		<View className='flex flex-row justify-evenly w-[90%] mx-auto top-[-40px]' >
-			<ButtonsCryptoScreen/>
-			<ButtonsCryptoScreen/>
-			<ButtonsCryptoScreen/>
+			<ButtonsCryptoScreen texto='Transferir'/>
+			<ButtonsCryptoScreen texto='Cambiar' />
+			<ButtonsCryptoScreen texto='Métrica' />
 		</View>
 	</View>)
 };
