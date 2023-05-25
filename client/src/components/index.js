@@ -1,5 +1,7 @@
 export * from './Button';
 export * from './ButtonsCryptoScreen';
+export * from './CommonTitle';
+export * from './CryptoListItem';
 export * from './DonutChart';
 export { default as EditProfile } from './EditProfile';
 export * from './Estadisticas';
@@ -8,6 +10,10 @@ export * from './Gastos';
 export * from './HeaderCryptoList';
 export * from './HeaderHistorial';
 export * from './HistorialTabs';
+export * from './ListaCrypto';
 export * from './MovimientosItems';
+export * from './SplashMessage';
+export * from './Stepper/Index';
+export { default as Stepper } from './Stepper/Stepper';
 export * from './UltimosMoviemientosFilters';
 export * from './UltimosMovimientos';

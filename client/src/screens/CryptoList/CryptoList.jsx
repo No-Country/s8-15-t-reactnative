@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, Text } from 'react-native';
-import { HeaderCryptoList } from '../../components';
+import { HeaderCryptoList, ListaCrypto } from '../../components';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
@@ -23,8 +23,9 @@ const CryptoList = () => {
 		return <Text>Cargando...</Text>;
 	}
 
-	return <ScrollView onLayout={onLayoutCryptoListas}>
+	return <ScrollView onLayout={onLayoutCryptoListas} className='bg-white'>
 		<HeaderCryptoList/>
+		<ListaCrypto/>
 	</ScrollView>;
 };
 

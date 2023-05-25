@@ -24,7 +24,7 @@ const Historial = () => {
 		}
 	}
 	return (
-		<ScrollView>
+		<ScrollView className='bg-white'>
 			<StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 			<HeaderHistorial />
 			<HistorialTabs

@@ -1,9 +1,8 @@
 import React from "react";
 import { Image, View, useColorScheme } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
-import ScannQr from "../screens/ScannQr";
 import { MaterialCommunityIcons, FontAwesome5, Octicons, Ionicons  } from '@expo/vector-icons'; 
+import { CryptoList, Historial, Home, ScannQr } from "../screens";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +32,7 @@ const TabBar = () => {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={CryptoList}
         options={{
             tabBarIcon: ({focused, color, size }) => (
                 focused ?
@@ -45,7 +44,7 @@ const TabBar = () => {
       />
      <Tab.Screen
         name="tranferir"
-        component={Home}
+        component={Historial}
         options={{
             tabBarIcon: ({focused, color, size }) => (
                 <FontAwesome5 name='hand-holding-usd' size={22} />
