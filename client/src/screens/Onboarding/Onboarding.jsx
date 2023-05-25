@@ -6,10 +6,15 @@ import { useCallback } from 'react'
 import { SplashMessage } from '../../components/SplashMessage'
 import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import * as SplashScreen from 'expo-splash-screen';
+
+SplashScreen.preventAutoHideAsync();
+
 
 const Onboarding = () => {
 	const [fontsLoaded] = useFonts({
 		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
+		'poppins-regular': require('../../../assets/poppinsFonts/Poppins-Regular.ttf'),
 	})
 	const navigation = useNavigation()
 	const [activeStep, setActiveStep] = useState(0)

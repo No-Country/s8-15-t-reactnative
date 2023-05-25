@@ -1,8 +1,8 @@
 import { ScrollView, StatusBar, Text, View } from 'react-native'
-import { HeaderHistorial } from '../../../components/HeaderHistorial';
-import { HistorialTabs } from '../../../components/HistorialTabs';
+import { HeaderHistorial } from '../../components/HeaderHistorial';
+import { HistorialTabs } from '../../components/HistorialTabs';
 import { useState } from 'react';
-import { Estadisticas, Gastos, UltimosMovimientos } from '../../../components';
+import { Estadisticas, Gastos, UltimosMovimientos } from '../../components';
 
 
 const Historial = () => {

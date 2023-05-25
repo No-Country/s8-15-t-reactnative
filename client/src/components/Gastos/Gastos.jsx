@@ -2,6 +2,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import colors from '../../utils/colors';
 import { useState } from 'react';
 import { MovimientosItems } from '../MovimientosItems';
+import { CommonTitle } from '../CommonTitle';
 
 const Gastos = () => {
 	const [activePeriod, setActivePeriod] = useState('semana')
@@ -64,7 +65,7 @@ const Gastos = () => {
 	]
 
 	return <View className='flex'>
-		<View className='flex flex-row  justify-center' >
+		<View className='flex flex-row  justify-center mb-3' >
 			<TouchableOpacity onPress={() => setActivePeriod('semana')} className='border-solid border rounded-l-full w-[30%] h-[40px] flex justify-center items-center' style={{ borderColor: colors.azul_oscuro, backgroundColor: activePeriod === 'semana' ? '#DEE5F8' : '#fff' }}>
 				<Text className='text-lg' style={{ fontFamily: 'roboto-medium', color: colors.azul_oscuro }}>Semana</Text>
 			</TouchableOpacity>
@@ -75,7 +76,7 @@ const Gastos = () => {
 				<Text className='text-lg' style={{ fontFamily: 'roboto-medium', color: colors.azul_oscuro }}>Año</Text>
 			</TouchableOpacity>
 		</View>
-		<Text className='text-center text-2xl my-4' style={{ fontFamily: 'roboto-bold' }}>Últimos movimientos</Text>
+		<CommonTitle text='Últimos movimientos'/>
 		<View className='px-5 py-2'>
 			{dataUltimosMov?.map((item) => {
 				return (
