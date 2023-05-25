@@ -32,7 +32,7 @@ const TabBar = () => {
     >
       <Tab.Screen
         name="Home"
-        component={CryptoList}
+        component={Home}
         options={{
             tabBarIcon: ({focused, color, size }) => (
                 focused ?
@@ -44,7 +44,7 @@ const TabBar = () => {
       />
      <Tab.Screen
         name="tranferir"
-        component={Historial}
+        component={Home}
         options={{
             tabBarIcon: ({focused, color, size }) => (
                 <FontAwesome5 name='hand-holding-usd' size={22} />
