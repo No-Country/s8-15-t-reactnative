@@ -1,22 +1,20 @@
-import React from 'react'
-import { View, StyleSheet } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Home from '../screens/Home'
 import Profile from '../screens/Profile'
+import ScannQr from '../screens/ScannQr'
+import TabBar from './TabBar'
 
 const Stack = createStackNavigator()
-const Tab = createBottomTabNavigator()
 
 const Nav = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name='Bar' component={TabBar} />
+			<Stack.Screen name='Qr' component={ScannQr} />
 			<Stack.Screen name='Profile' component={Profile} />
 			<Stack.Screen name='Home' component={Home} />
 		</Stack.Navigator>
 	)
 }
-
-const styles = StyleSheet.create({})
 
 export default Nav
