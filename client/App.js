@@ -4,7 +4,11 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Components/SplashScreen'
-import HomeScreen from './Components/HomeScreen'
+// import HomeScreen from './Components/HomeScreen'
+// import PinCode from './Components/PinCode';
+// import { StepProgresUser } from './Components/StepProgresUser';
+// import { ProgressStepsUser } from './Components/ProgressStepsUser';
+import { StepUser } from './Components/StepUser';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -15,7 +19,7 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 			  <Stack.Screen name="Splash" component={SplashScreen} />
-			  <Stack.Screen name="Home" component={HomeScreen} />
+			  <Stack.Screen name="Home" component={StepUser} />
 			</Stack.Navigator>
 		</NavigationContainer>
 		// <View style={styles.container}>
