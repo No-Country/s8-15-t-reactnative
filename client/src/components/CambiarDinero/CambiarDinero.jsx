@@ -1,10 +1,11 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, View } from 'react-native'
 import colors from '../../utils/colors'
-import { MaterialIcons, Ionicons } from '@expo/vector-icons'
+import fondo from '../../Images/fondo.webp'
+import { MaterialIcons } from '@expo/vector-icons'
 const CambiarDinero = () => {
 	return (
 		<View className='flex items-center '>
-			<View className='flex bg-blue-500 rounded-b-[40px] pt-6 h-56 w-full items-center'>
+			<View className='flex bg-blue-400 rounded-b-[40px] pt-6 h-56 w-full items-center'>
 				<View className='flex flex-row w-full justify-around items-center mb-3 px-4'>
 					<MaterialIcons name='notifications-none' size={27} color='white' />
 					<Text className='text-slate-50 font-black text-lg'>
