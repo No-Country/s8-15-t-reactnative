@@ -8,15 +8,15 @@ const userLogin = async (req, res) => {
 		errors: '',
 	}
 	const { email, password } = req.body
-	const emailExist = await User.findOne({ where: { email: email } }).then(
+	const user = await User.findOne({ where: { email: email } }).then(
 		user => user
 	)
-	if (!emailExist) {
+	if (!user) {
 		data.statusCode = 401
 		data.errors = 'email incorrecto'
 	}
 	if (data.statusCode !== 200) return res.send(data)
-	const validPassword = await compare(password, emailExist.password)
+	const validPassword = await compare(password, user.password)
 
 	if (!validPassword) {
 		data.statusCode = 401
@@ -24,17 +24,17 @@ const userLogin = async (req, res) => {
 		return res.send(data)
 	}
 
-	let token = jwt.sign(
+	const token = jwt.sign(
 		{
-			emailExist,
+			user,
 		},
 		'secret-key',
 		{ expiresIn: '48h' }
 	)
 
 	res.json({
-		ok: true,
 		token,
+		user
 	})
 	// if (passwordExist !== hashedPassword) {
 	// 	data.statusCode = 401
