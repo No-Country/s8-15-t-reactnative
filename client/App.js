@@ -4,11 +4,17 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SplashScreen from './Components/SplashScreen'
+// import PinCodeUser from './src/screens/PinCodeUser/PinCodeUser';
+// import ProgressBar from './Components/ProgressBar';
+// import Form from './Components/Form';
+// import Progress from './Components/Progress';
+// import ProgressStepUser from './src/screens/ProgressStepUser/ProgressStepUser';
+import PinCodeUser from './src/screens/PinCodeUser/PinCodeUser';
 // import HomeScreen from './Components/HomeScreen'
 // import PinCode from './Components/PinCode';
 // import { StepProgresUser } from './Components/StepProgresUser';
 // import { ProgressStepsUser } from './Components/ProgressStepsUser';
-import { StepUser } from './Components/StepUser';
+// import { StepUser } from './Components/StepUser';
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -19,7 +25,7 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 			  <Stack.Screen name="Splash" component={SplashScreen} />
-			  <Stack.Screen name="Home" component={StepUser} />
+			  <Stack.Screen name="Home" component={PinCodeUser} />
 			</Stack.Navigator>
 		</NavigationContainer>
 		// <View style={styles.container}>
