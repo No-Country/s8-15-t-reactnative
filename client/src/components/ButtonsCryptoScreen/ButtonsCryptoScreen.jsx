@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import { CurrencyExchange, Metric, SendToMobile } from '../../../assets/svgMaterialIcons/icons';
 import colors from '../../utils/colors';
 
-const ButtonsCryptoScreen = ({ texto }) => {
+const ButtonsCryptoScreen = ({ texto, onPress }) => {
 	const IconCriptList = () => {
 		switch (texto) {
 			case 'Transferir':
@@ -17,7 +17,7 @@ const ButtonsCryptoScreen = ({ texto }) => {
 		}
 	}
 
-	return <TouchableOpacity className='flex justify-around items-center border border-gray-400 border-solid p-1 rounded-xl h-[80px] w-[80px] bg-white' >
+	return <TouchableOpacity onPress={() => onPress} className='flex justify-around items-center border border-gray-400 border-solid p-1 rounded-xl h-[80px] w-[80px] bg-white' >
 		<View>
 			{IconCriptList()}
 		</View>
