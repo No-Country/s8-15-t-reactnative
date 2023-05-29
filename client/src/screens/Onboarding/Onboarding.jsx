@@ -2,14 +2,16 @@ import { Text, View } from 'react-native'
 import colors from '../../utils/colors'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useCallback } from 'react'
+import { useCallback, useState} from 'react'
 import { SplashMessage } from '../../components/SplashMessage'
-import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
+import * as SplashScreen from 'expo-splash-screen'
 
 const Onboarding = () => {
+	SplashScreen.preventAutoHideAsync()
 	const [fontsLoaded] = useFonts({
 		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
+		'poppins-regular': require('../../../assets/poppinsFonts/Poppins-Regular.ttf'),
 	})
 	const navigation = useNavigation()
 	const [activeStep, setActiveStep] = useState(0)

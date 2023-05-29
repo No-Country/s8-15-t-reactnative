@@ -9,6 +9,8 @@ import {
 	Octicons,
 	Ionicons,
 } from '@expo/vector-icons'
+import Historial from '../screens/historial/Historial/Historial'
+
 
 const Tab = createBottomTabNavigator()
 
@@ -62,7 +64,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='crypto'
-				component={ScannQr}
+				component={Historial}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
