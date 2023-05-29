@@ -1,11 +1,8 @@
-const { Router } = require('express');
+const { Router } = require('express')
+const { userLogin } = require('../controllers/userLogin')
 
-const router = Router();
+const router = Router()
 
+router.post('/sendSMS', userLogin, userLogin)
 
-//router.use('/', );
-
-
-
-
-module.exports = router;
+module.exports = router
