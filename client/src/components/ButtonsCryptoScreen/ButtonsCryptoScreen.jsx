@@ -17,7 +17,7 @@ const ButtonsCryptoScreen = ({ texto, onPress }) => {
 		}
 	}
 
-	return <TouchableOpacity onPress={() => onPress} className='flex justify-around items-center border border-gray-400 border-solid p-1 rounded-xl h-[80px] w-[80px] bg-white' >
+	return <TouchableOpacity onPress={onPress} className='flex justify-around items-center border border-gray-400 border-solid p-1 rounded-xl h-[80px] w-[80px] bg-white' >
 		<View>
 			{IconCriptList()}
 		</View>

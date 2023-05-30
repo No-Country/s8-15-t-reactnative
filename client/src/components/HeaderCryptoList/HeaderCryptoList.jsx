@@ -57,7 +57,7 @@ const HeaderCryptoList = () => {
 				<View className='flex flex-row justify-evenly w-[90%] absolute bottom-[-40px]' >
 					<ButtonsCryptoScreen texto='Transferir' />
 					<ButtonsCryptoScreen texto='Cambiar' />
-					<ButtonsCryptoScreen texto='Métrica'/>
+					<ButtonsCryptoScreen texto='Métrica' onPress={ () => navigation.navigate('CryptoMetric')}/>
 				</View>
 			</View>
 		</View>)

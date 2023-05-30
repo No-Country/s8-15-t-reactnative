@@ -1,21 +1,12 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { VictoryAxis, VictoryChart, VictoryLine } from 'victory-native';
+import { VictoryAxis, VictoryChart, VictoryLabel, VictoryLine, VictoryTooltip, VictoryVoronoiContainer } from 'victory-native';
 import colors from '../../utils/colors';
+import { useSelector } from 'react-redux';
 
 const CryptoChart = () => {
 
-	const chartData = [
-		{ x: '01/02', y: 11.004243 },
-		{ x: '01/02', y: 9.00004247 },
-		{ x: '01/03', y: 5.00004245 },
-		{ x: '01/05', y: 16.00004240 },
-		{ x: '01/06', y: 15.00004238 },
-		{ x: '01/07', y: 12.00004244 },
-		{ x: '01/08', y: 11.00004243 },
-	];
-
-	const months =  {x: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']}
+	const chartData = useSelector(state => state.myCryptoData.chartData)
 
 	return (
 		<View horizontal={true} className='px-4 mt-2'>
@@ -23,7 +14,32 @@ const CryptoChart = () => {
 				<Text className='text-3xl' style={{ fontFamily: 'poppins-semiBold' }}>Gráficos</Text>
 			</View>
 			<View>
-				<VictoryChart>
+				<VictoryChart
+					events={[{
+						target: 'parent',
+						eventHandlers: {
+							onTouchEnd: () => { },
+						},
+					},
+					]}
+					containerComponent={
+						<VictoryVoronoiContainer voronoiDimension="x"
+							labels={({ datum }) => `US$${datum.label}`}
+							labelComponent={<VictoryTooltip
+							
+								active={false}
+								flyoutPadding={({ text }) =>
+									text.length > 1
+										? 0
+										: { top: 5, bottom: 5, left: 20, right: 20 }
+								}
+								pointerLength={5}
+								cornerRadius={4}
+								flyoutStyle={{ fill: colors.violeta, strokeWidth: 0 }}
+								style={{ fill: '#fff', fontWeight: 'bold', fontFamily: 'poppins-semiBold' }} />}
+						/>
+					}
+				>
 					<VictoryAxis
 						dependentAxis
 						tickFormat={(num) => `$${num}`}
@@ -42,7 +58,7 @@ const CryptoChart = () => {
 						}}
 					/>
 					<VictoryAxis
-						tickFormat={(tick) =>  tick}
+						tickFormat={(tick) => tick}
 						style={{
 							axis: {
 								stroke: colors.gris_medio,
@@ -62,12 +78,12 @@ const CryptoChart = () => {
 					/>
 					<VictoryLine
 						style={{
-							data: { stroke: "#000" },
+							data: { stroke: "#000", strokeWidth: 4 },
 							parent: { borderWidth: 5 },
 						}}
-						// categories={months}
-						domain={{ y: [0, 50] }}
+						// minDomain={{ y: 0 }}
 						data={chartData}
+						labelComponent={<VictoryLabel activateData={false} style={{ opacity: 0 }} />}
 					/>
 				</VictoryChart>
 			</View>
