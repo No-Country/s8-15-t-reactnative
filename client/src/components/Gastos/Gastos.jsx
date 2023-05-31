@@ -12,55 +12,70 @@ const Gastos = () => {
 			id: '1233m34mnkj3jk4j1',
 			categoria: 'Home',
 			desc: 'Cuadro',
-			monto: -10
+			monto: -10,
+			fecha: '22/5'
 		},
 		{
 			id: '1233m34mnkj3jk4j2',
 			categoria: 'Home',
 			desc: 'Silla',
 			monto: -145
+			,
+			fecha: '12/5'
 		},
 		{
 			id: '1233m34mnkj3jk4j4',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
 			monto: -123
+			,
+			fecha: '3/5'
 		},
 		{
 			id: '1233m34mnkj3jk4j5',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
 			monto: -123
+			,
+			fecha: '28/4'
 		},
 		{
 			id: '1233m34mnkj3jk4j6',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
 			monto: -123
+			,
+			fecha: '3/4'
 		},
 		{
 			id: '1233m34mnkj3jk4j7',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
 			monto: -123
+			,
+			fecha: '25/3'
 		},
 		{
 			id: '1233m34mnkj3jk4j8',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
 			monto: -123
+			,
+			fecha: '12/5'
 		},
 		{
 			id: '1233m34mnkj3jk4j9',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
-			monto: -123
+			monto: -123,
+			fecha: '12/5'
 		},
 		{
 			id: '1233m34mnkj3jk4j10',
 			categoria: 'Supermercado',
 			desc: 'Supermercado',
-			monto: -123
+			monto: -123,
+			fecha: '12/5'
 		},
 	]
 
@@ -80,7 +95,7 @@ const Gastos = () => {
 		<View className='px-5 py-2'>
 			{dataUltimosMov?.map((item) => {
 				return (
-					<MovimientosItems key={item.id} category={item.categoria} description={item.desc} moneyAmount={item.monto} />
+					<MovimientosItems key={item.id} coloredIcon={true} date={item.fecha} category={item.categoria} description={item.desc} moneyAmount={item.monto} />
 				)
 			})}
 		</View>

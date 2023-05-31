@@ -1,16 +1,21 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { CommonTitle } from '../CommonTitle';
 import { CryptoListItem } from '../CryptoListItem';
+import { myCryptos } from '../../utils/fakeCryptoData';
 
 const ListaCrypto = () => {
+
+
 	return <View className='px-5' >
 		<CommonTitle text='Tu billetera'/>
 		<View>
-			<CryptoListItem coin='Bitcoin' amountOwned={0.00004235} inUsd={11.46} profit={0.17} />
-			<CryptoListItem coin='Bitcoin' amountOwned={0.004235} inUsd={11.46} profit={0.17} />
-			<CryptoListItem coin='Bitcoin' amountOwned={0.00004235} inUsd={11.46} profit={0.17} />
-			<CryptoListItem coin='Bitcoin' amountOwned={0.0004235} inUsd={11.46} profit={0.17} />
+			{myCryptos.map((coin) => (
+				<CryptoListItem key={coin.id} coin={coin.coin} coinSymbol={coin.symbol} amountOwned={coin.amount} inUsd={coin.actualValue} profit={coin.modifiedPercentage}
+					icon={coin.imgIcon}
+				/>
+
+			))}
 		</View>
 	</View>;
 };

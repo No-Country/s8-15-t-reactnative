@@ -3,6 +3,7 @@ import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 import { useState } from "react";
 import { ButtonsCryptoScreen } from "../ButtonsCryptoScreen";
+import { useNavigation } from '@react-navigation/native';
 
 
 const HeaderCryptoList = () => {
@@ -12,6 +13,8 @@ const HeaderCryptoList = () => {
 
 	const numeroNormalizado = dineroDisponible.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 	const numeroOculto = numeroNormalizado.replace(/[0-9]/g, '·');
+
+	const navigation = useNavigation()
 
 	return (
 		<View className='relative mb-16'>
@@ -54,7 +57,7 @@ const HeaderCryptoList = () => {
 				<View className='flex flex-row justify-evenly w-[90%] absolute bottom-[-40px]' >
 					<ButtonsCryptoScreen texto='Transferir' />
 					<ButtonsCryptoScreen texto='Cambiar' />
-					<ButtonsCryptoScreen texto='Métrica' />
+					<ButtonsCryptoScreen texto='Métrica' onPress={ () => navigation.navigate('CryptoMetric')}/>
 				</View>
 			</View>
 		</View>)
