@@ -1,8 +1,6 @@
-import { ScrollView, StatusBar, Text, View } from 'react-native'
-import { HeaderHistorial } from '../../../components/HeaderHistorial';
-import { HistorialTabs } from '../../../components/HistorialTabs';
 import { useState } from 'react';
-import { Estadisticas, Gastos, UltimosMovimientos } from '../../../components';
+import { ScrollView, StatusBar } from 'react-native'
+import { Estadisticas, Gastos, HeaderHistorial, HistorialTabs, UltimosMovimientos } from '../../components';
 
 
 const Historial = () => {
@@ -14,17 +12,17 @@ const Historial = () => {
 	const displayContent = () => {
 		switch (activeTab) {
 			case 'Historial':
-				return <UltimosMovimientos/>
+				return <UltimosMovimientos />
 			case 'Estadísticas':
-				return <Estadisticas/>
+				return <Estadisticas />
 			case 'Gastos':
-				return <Gastos/>
+				return <Gastos />
 			default:
 				break;
 		}
 	}
 	return (
-		<ScrollView>
+		<ScrollView className='bg-white'>
 			<StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
 			<HeaderHistorial />
 			<HistorialTabs

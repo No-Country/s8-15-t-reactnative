@@ -1,17 +1,10 @@
-import React from 'react'
-import { Image, View, useColorScheme } from 'react-native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Home from '../screens/Home'
-import ScannQr from '../screens/ScannQr'
-import {
-	MaterialCommunityIcons,
-	FontAwesome5,
-	Octicons,
-	Ionicons,
-} from '@expo/vector-icons'
-import CambiarDinero from './CambiarDinero/CambiarDinero'
+import React from "react";
+import { Image, View, useColorScheme } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons, FontAwesome5, Octicons, Ionicons  } from '@expo/vector-icons'; 
+import { CryptoList, Historial, Home, ScannQr } from "../screens";
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 
 const TabBar = () => {
 	const colorScheme = useColorScheme()
