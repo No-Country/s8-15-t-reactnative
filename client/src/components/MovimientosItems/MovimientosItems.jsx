@@ -1,22 +1,28 @@
-import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { House, Utensils, Wallet } from '../../../assets/svgMaterialIcons/icons';
-import colors from '../../utils/colors';
+import React from 'react'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { House, Utensils, Wallet } from '../../../assets/svgMaterialIcons/icons'
+import colors from '../../utils/colors'
 
-const MovimientosItems = ({ category = 'Supermercado', description, moneyAmount = 0, coloredIcon = false }) => {
-
+const MovimientosItems = ({
+	category = 'Supermercado',
+	description,
+	moneyAmount = 0,
+	coloredIcon = false,
+}) => {
 	const renderIcon = () => {
 		switch (category) {
 			case 'Supermercado':
-				return <Utensils size={23} color={coloredIcon ? colors.lila : '#000'} />;
+				return <Utensils size={23} color={coloredIcon ? colors.lila : '#000'} />
 			case 'Home':
-				return <House size={23} color={coloredIcon ? colors.verde_claro : '#000'} />;
+				return (
+					<House size={23} color={coloredIcon ? colors.verde_claro : '#000'} />
+				)
 			case 'Trabajo':
-				return <Wallet size={23} color={coloredIcon ? colors.rojo : '#000'} />;
+				return <Wallet size={23} color={coloredIcon ? colors.rojo : '#000'} />
 			default:
-				return null;
+				return null
 		}
-	};
+	}
 
 	const amountColor = moneyAmount < 0 ? colors.rojo : colors.verde
 
@@ -26,11 +32,14 @@ const MovimientosItems = ({ category = 'Supermercado', description, moneyAmount 
 				{renderIcon()}
 				<Text className='text-xl ml-3'>{description}</Text>
 			</View>
-			<Text style={{ fontFamily: 'roboto-medium', color: amountColor }} className='text-2xl'>
+			<Text
+				style={{ fontFamily: 'roboto-medium', color: amountColor }}
+				className='text-2xl'
+			>
 				{moneyAmount}USD
 			</Text>
 		</TouchableOpacity>
 	)
-};
+}
 
-export default MovimientosItems;
+export default MovimientosItems

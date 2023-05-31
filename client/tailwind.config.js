@@ -7,6 +7,8 @@ module.exports = {
 				violeta: '#6D39E5',
 				azul: '#5C91F7',
 				naranja: '#F18805',
+				azulAcento: '#005ABD',
+				fondo: '#FBFBFB',
 			},
 		},
 		plugins: [],
