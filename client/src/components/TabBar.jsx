@@ -32,7 +32,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CambiarDinero}
+				component={Historial}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
@@ -62,7 +62,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='crypto'
-				component={ScannQr}
+				component={CryptoList}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

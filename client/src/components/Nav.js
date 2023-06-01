@@ -1,10 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '../screens/Home'
-import Profile from '../screens/Profile'
-import ScannQr from '../screens/ScannQr'
 import TabBar from './TabBar'
-import Onboarding from '../screens/Onboarding/Onboarding'
-import { CryptoMetric } from '../screens'
+import { CryptoMetric, CryptoTransferencia, Home, Onboarding, Profile, ScannQr } from '../screens'
 
 const Stack = createStackNavigator()
 
@@ -17,6 +13,7 @@ const Nav = () => {
 			<Stack.Screen name='Profile' component={Profile} />
 			<Stack.Screen name='Home' component={Home} />
 			<Stack.Screen name='CryptoMetric' component={CryptoMetric} />
+			<Stack.Screen name='CryptoTransferencia' component={CryptoTransferencia} />
 		</Stack.Navigator>
 	)
 }

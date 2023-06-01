@@ -10,7 +10,7 @@ export { default as EditProfile } from './EditProfile';
 export * from './Estadisticas';
 export * from './EstadisticasList';
 export * from './Gastos';
-export * from './HeaderCryptoList';
+export * from './HeaderCryptoCommon';
 export * from './HeaderCryptoMetric';
 export * from './HeaderHistorial';
 export * from './HistorialTabs';
