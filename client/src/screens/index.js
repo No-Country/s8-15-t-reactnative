@@ -1,6 +1,6 @@
 export * from './CryptoList';
 export * from './CryptoMetric';
-export * from './Historial';
+export * from './historial';
 export { default as Home } from './Home';
 export * from './Onboarding/Index';
 export { default as Onboarding } from './Onboarding/Onboarding';

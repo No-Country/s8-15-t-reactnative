@@ -1,13 +1,19 @@
-import React from "react";
-import { Image, View, useColorScheme } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons, FontAwesome5, Octicons, Ionicons  } from '@expo/vector-icons'; 
-import { CryptoList, Historial, Home, ScannQr } from "../screens";
+import React from 'react';
+import { Image, View, useColorScheme } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {
+	MaterialCommunityIcons,
+	FontAwesome5,
+	Octicons,
+	Ionicons,
+} from '@expo/vector-icons';
+import { CryptoList, Historial, Home, ScannQr } from '../screens';
+import CambiarDinero from './CambiarDinero/CambiarDinero';
 
 const Tab = createBottomTabNavigator();
 
 const TabBar = () => {
-	const colorScheme = useColorScheme()
+	const colorScheme = useColorScheme();
 
 	return (
 		<Tab.Navigator
@@ -67,7 +73,7 @@ const TabBar = () => {
 				}}
 			/>
 		</Tab.Navigator>
-	)
-}
+	);
+};
 
-export default TabBar
+export default TabBar;
