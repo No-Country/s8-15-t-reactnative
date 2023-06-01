@@ -1,19 +1,20 @@
-import React from 'react';
-import { Image, View, useColorScheme } from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react'
+import { useColorScheme } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
 	FontAwesome5,
 	Octicons,
 	Ionicons,
-} from '@expo/vector-icons';
-import { CryptoList, Historial, Home, ScannQr } from '../screens';
-import CambiarDinero from './CambiarDinero/CambiarDinero';
+} from '@expo/vector-icons'
+import { CryptoList, Historial, Home, ScannQr } from '../screens'
+import CambiarDinero from './CambiarDinero/CambiarDinero'
+import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 const TabBar = () => {
-	const colorScheme = useColorScheme();
+	const colorScheme = useColorScheme()
 
 	return (
 		<Tab.Navigator
@@ -32,7 +33,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Historial}
+				component={Home}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
@@ -73,7 +74,7 @@ const TabBar = () => {
 				}}
 			/>
 		</Tab.Navigator>
-	);
-};
+	)
+}
 
-export default TabBar;
+export default TabBar
