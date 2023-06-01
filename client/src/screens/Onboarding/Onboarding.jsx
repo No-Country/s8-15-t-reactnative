@@ -34,7 +34,7 @@ const Onboarding = () => {
 		if (activeStep < 2) {
 			setActiveStep(activeStep + 1)
 		} else {
-			navigation.navigate('Bar')
+			navigation.navigate('Security')
 		}
 	}
 
