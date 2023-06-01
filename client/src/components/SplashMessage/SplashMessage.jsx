@@ -2,6 +2,8 @@ import { View, Text, TouchableOpacity, ImageBackground } from 'react-native'
 import colors from '../../utils/colors'
 import Stepper from '../Stepper/Stepper'
 import { imageList } from './OnboardingImages'
+import { useFonts } from 'expo-font'
+import { useCallback } from 'react'
 
 const SplashMessage = ({
 	title,
@@ -13,6 +15,20 @@ const SplashMessage = ({
 	description2,
 	description3,
 }) => {
+	const [fontsLoaded] = useFonts({
+		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
+		'poppins-regular': require('../../../assets/poppinsFonts/Poppins-Regular.ttf'),
+	})
+
+	const onLayoutButtom = useCallback(async () => {
+		if (fontsLoaded) {
+			await SplashScreen.hideAsync()
+		}
+	}, [fontsLoaded])
+
+	if (!fontsLoaded) {
+		return <Text>Cargando...</Text>
+	}
 	return (
 		<View className='flex-1'>
 			<ImageBackground source={imageList[activeStep]} className='h-full w-full'>
