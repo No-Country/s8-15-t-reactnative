@@ -10,7 +10,7 @@
 
 	"scripts": {
 
-		"start": "nodemon -L",
+		"start": "nodemon -L index.js",
 
 		"test": "echo \"Error: no test specified\" && exit 1",
 
