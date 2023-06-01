@@ -9,7 +9,6 @@ import {
 	Image,
 	ImageBackground,
 } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import Accordion from 'react-native-collapsible/Accordion'
 import colors from '../../utils/colors'
 
@@ -19,35 +18,58 @@ function PreguntasFrecuentes() {
 	const [activeSections, setActiveSections] = useState([])
 	const sections = [
 		{
-			title: 'Native development',
+			title: '¿Qué es Payfriend?',
 			content: (
 				<Text style={styles.textSmall}>
-					React Native lets you create truly native apps and doesn't compromise
-					your users' experiences. It provides a core set of platform agnostic
-					native components
+					Payfriend es una billetera virtual que simplificá tus cobros, facilita
+					a sus clientes el acceso a promociones y servicios financieros sin
+					comisiones ni gastos extras. Además podés comprar y vender
+					criptomonedas de forma rápida y simple.
 				</Text>
 			),
 		},
 		{
-			title: 'Fast refresh',
+			title: '¿Cómo pago mis servicios?',
 			content: (
 				<Text style={styles.textSmall}>
-					See your changes as soon as you save. With the power of JavaScript,
-					React Native lets you iterate at lightning speed.
+					Se ofrece la opción de abonar los servicios mediante el código QR o la
+					escritura manual de la factura, brindando a los usuarios la
+					posibilidad de seleccionar entre diferentes categorías o servicios de
+					pago.
 				</Text>
 			),
 		},
 		{
-			title: 'Cross-platform',
+			title: '¿Existe costo de mantenimiento?',
 			content: (
 				<>
 					<Text style={styles.textSmall}>
-						React components wrap existing native code and interact with native
-						APIs via React's declarative UI paradigm and JavaScript. This
-						enables native app development for whole new teams of developers
+						Payfriend no cuenta con costo de solicitud o mantenimiento. En
+						ningún momento se pedirá que comiences a pagar por nuestros
+						servicios.
 					</Text>
-					<View style={styles.seperator}></View>
-					<Button title='See more...' />
+				</>
+			),
+		},
+		{
+			title: '¿Puedo recibir pagos?',
+			content: (
+				<>
+					<Text style={styles.textSmall}>
+						Si, debes ingresar en la sección “Cobrar” y crear el link de pago de
+						tu producto o servicio. Luego podrás compartirlo con tus clientes.
+					</Text>
+				</>
+			),
+		},
+		{
+			title: '¿Cómo recibo mi tarjeta?',
+			content: (
+				<>
+					<Text style={styles.textSmall}>
+						La tarjeta Payfriend será entregada en la puerta de tu casa a través
+						de un medio de envío de tu elección. El envío es sin costo.
+					</Text>
 				</>
 			),
 		},
@@ -58,9 +80,9 @@ function PreguntasFrecuentes() {
 			<View style={styles.accordHeader}>
 				<Text style={styles.accordTitle}>{section.title}</Text>
 				{isActive ? (
-					<MaterialIcons name='arrow-drop-down' size={27} color='white' />
+					<MaterialIcons name='arrow-drop-down' size={27} color='black' />
 				) : (
-					<MaterialIcons name='arrow-right' size={27} color='white' />
+					<MaterialIcons name='arrow-right' size={27} color='black' />
 				)}
 			</View>
 		)
@@ -102,6 +124,7 @@ function PreguntasFrecuentes() {
 					renderContent={renderContent}
 					onChange={sections => setActiveSections(sections)}
 					sectionContainerStyle={styles.accordContainer}
+					underlayColor={colors.violeta_background}
 				/>
 			</ScrollView>
 		</SafeAreaView>
@@ -117,20 +140,21 @@ const styles = StyleSheet.create({
 	},
 	accordHeader: {
 		padding: 12,
-		backgroundColor: '#666',
 		color: '#eee',
 		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
+		borderBottomWidth: 1,
+		borderBottomColor: '#56565611',
 	},
 	accordTitle: {
-		fontSize: 20,
+		fontSize: 14,
 	},
 	accordBody: {
 		padding: 12,
 	},
 	textSmall: {
-		fontSize: 16,
+		fontSize: 12,
 	},
 	seperator: {
 		height: 12,
