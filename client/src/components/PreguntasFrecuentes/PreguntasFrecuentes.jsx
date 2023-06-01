@@ -11,11 +11,30 @@ import {
 } from 'react-native'
 import Accordion from 'react-native-collapsible/Accordion'
 import colors from '../../utils/colors'
-
+import { useCallback } from 'react'
+import { useFonts } from 'expo-font'
 import { MaterialIcons } from '@expo/vector-icons'
 
 function PreguntasFrecuentes() {
 	const [activeSections, setActiveSections] = useState([])
+	const [fontsLoaded] = useFonts({
+		'roboto-regular': require('../../../assets/robotoFonts/Roboto-Regular.ttf'),
+		'roboto-medium': require('../../../assets/robotoFonts/Roboto-Medium.ttf'),
+		'roboto-bold': require('../../../assets/robotoFonts/Roboto-Bold.ttf'),
+		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
+		'poppins-Regular': require('../../../assets/poppinsFonts/Poppins-Regular.ttf'),
+	})
+
+	const onLayoutUltimosMovimientos = useCallback(async () => {
+		if (fontsLoaded) {
+			await SplashScreen.hideAsync()
+		}
+	}, [fontsLoaded])
+
+	if (!fontsLoaded) {
+		return <Text>Cargando...</Text>
+	}
+
 	const sections = [
 		{
 			title: '¿Qué es Payfriend?',
@@ -92,7 +111,10 @@ function PreguntasFrecuentes() {
 		return <View style={styles.accordBody}>{section.content}</View>
 	}
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView
+			onLayout={onLayoutUltimosMovimientos}
+			style={styles.container}
+		>
 			<ScrollView
 				contentInsetAdjustmentBehavior='automatic'
 				style={styles.container}
@@ -109,13 +131,21 @@ function PreguntasFrecuentes() {
 									source={require('../../../assets/back_arrow.png')}
 								></Image>
 							</View>
-							<Text className='text-slate-50 font-black text-lg'>
+							<Text
+								style={{ fontFamily: 'poppins-semiBold' }}
+								className='text-slate-50 text-lg'
+							>
 								Pregunts frecuentes
 							</Text>
 						</View>
 					</View>
 				</ImageBackground>
-				<Text className='text-center mt-8 mb-6'>Estamos para aayudarte</Text>
+				<Text
+					style={{ fontFamily: 'roboto-bold' }}
+					className='text-center txt-2xl mt-8 mb-6'
+				>
+					Estamos para ayudarte
+				</Text>
 				<Accordion
 					align='bottom'
 					sections={sections}
@@ -148,13 +178,15 @@ const styles = StyleSheet.create({
 		borderBottomColor: '#56565611',
 	},
 	accordTitle: {
-		fontSize: 14,
+		fontSize: 12,
+		fontFamily: 'poppins-Regular',
 	},
 	accordBody: {
 		padding: 12,
 	},
 	textSmall: {
-		fontSize: 12,
+		fontSize: 10,
+		fontFamily: 'poppins-Regular',
 	},
 	seperator: {
 		height: 12,
