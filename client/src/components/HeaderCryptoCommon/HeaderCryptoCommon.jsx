@@ -16,7 +16,7 @@ const HeaderCryptoCommon = ({titulo}) => {
 	const dineroDisponible = 3215
 
 	const numeroNormalizado = dineroDisponible.toLocaleString('es-ES', {
-		minimumFractionDigits: 2,
+		// minimumFractionDigits: 2,
 		maximumFractionDigits: 2,
 	})
 	const numeroOculto = numeroNormalizado.replace(/[0-9]/g, '·')
@@ -73,9 +73,9 @@ const HeaderCryptoCommon = ({titulo}) => {
 					</View>
 					<Text
 						className='text-[60px] text-white'
-						style={{ fontFamily: 'poppins-bold' }}
+						style={{ fontFamily: 'poppins-semiBold' }}
 					>
-						US ${ocultarNumero ? numeroOculto : numeroNormalizado}
+						US${ocultarNumero ? numeroOculto : numeroNormalizado}
 					</Text>
 				</View>
 			</View>

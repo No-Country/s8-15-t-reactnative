@@ -10,6 +10,7 @@ SplashScreen.preventAutoHideAsync()
 
 const CryptoList = () => {
 	const [fontsLoaded] = useFonts({
+		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
 		'poppins-bold': require('../../../assets/poppinsFonts/Poppins-Bold.ttf'),
 		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
 	})
