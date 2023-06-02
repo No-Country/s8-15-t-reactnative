@@ -4,6 +4,7 @@ import { HeaderCryptoList, ListaCrypto } from '../../components';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
+import { useSelector } from 'react-redux'
 
 SplashScreen.preventAutoHideAsync();
 

@@ -1,15 +1,14 @@
 import { Text, View } from 'react-native'
-import colors from '../../utils/colors'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useCallback } from 'react'
 import { SplashMessage } from '../../components/SplashMessage'
 import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from 'expo-splash-screen'
+import { infoSteps } from './InfoStep'
 
-SplashScreen.preventAutoHideAsync();
-
+SplashScreen.preventAutoHideAsync()
 
 const Onboarding = () => {
 	const [fontsLoaded] = useFonts({
@@ -28,32 +27,6 @@ const Onboarding = () => {
 	if (!fontsLoaded) {
 		return <Text>Cargando...</Text>
 	}
-	const infoSteps = [
-		{
-			title: '¡Hola!',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit ¡Lorem ipsum dolor sit amet!',
-			buttonTitle: 'Siguiente',
-			buttonColor: 'violeta',
-			step: 0,
-		},
-		{
-			title: 'Lorem ipsum',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit ¡Lorem ipsum dolor sit amet!',
-			buttonTitle: 'Siguiente',
-			buttonColor: 'violeta',
-			step: 1,
-		},
-		{
-			title: 'Lorem ipsum2',
-			description:
-				'Lorem ipsum dolor sit amet, consectetur adipiscing elit ¡Lorem ipsum dolor sit amet!',
-			buttonTitle: 'Comenzar',
-			buttonColor: 'naranja',
-			step: 2,
-		},
-	]
 
 	const currentStep = infoSteps[activeStep]
 
@@ -61,7 +34,7 @@ const Onboarding = () => {
 		if (activeStep < 2) {
 			setActiveStep(activeStep + 1)
 		} else {
-			navigation.navigate('Bar')
+			navigation.navigate('Security')
 		}
 	}
 
@@ -78,11 +51,14 @@ const Onboarding = () => {
 			>
 				<SplashMessage
 					title={currentStep.title}
-					description={currentStep.description}
+					description1={currentStep.description1}
+					description2={currentStep.description2}
+					description3={currentStep.description3}
 					buttonTitle={currentStep.buttonTitle}
 					buttonAction={handlePress}
 					activeStep={activeStep}
 					buttonColor={currentStep.buttonColor}
+					backgroundImage={currentStep.backgroundImage}
 				/>
 			</LinearGradient>
 		</View>
