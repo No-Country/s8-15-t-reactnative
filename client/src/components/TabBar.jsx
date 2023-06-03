@@ -10,6 +10,7 @@ import {
 import { CryptoList, Historial, Home, ScannQr } from '../screens'
 import CambiarDinero from './CambiarDinero/CambiarDinero'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
+import Notificaciones from './Notificaciones/Notificaciones'
 
 const Tab = createBottomTabNavigator()
 
@@ -33,7 +34,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CambiarDinero}
+				component={Notificaciones}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

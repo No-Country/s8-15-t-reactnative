@@ -17,7 +17,7 @@ import HeaderCryptoCommon from '../HeaderCryptoCommon/HeaderCryptoCommon'
 const CambiarDinero = () => {
 	return (
 		<ScrollView>
-			<HeaderCryptoCommon titulo='Cryptom' />
+			<HeaderCryptoCommon titulo='Cryptomonedas' />
 			<View className='flex min-h-full items-center relative bg-gris_background '>
 				<View className='flex gap-2 reltive top-[-40px] justify-around items-center  w-11/12  '>
 					<View className='flex justify-center items-center bg-gris_background w-10 h-10 rounded-full absolute z-50 top-16'>
