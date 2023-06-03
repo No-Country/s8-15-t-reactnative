@@ -11,7 +11,7 @@ import { DataUser } from '../../components/DataUser/DataUser';
 import { CustomAlert } from '../../components/CustomAlert/CustomAlert';
 import { VerifiedAccount } from '../../components/VerifiedAccount/VerifiedAccount';
 import { LinearGradient } from 'expo-linear-gradient'
-import fondo from '../../Images/wave.webp'
+import fondo from '../../images/wave.webp'
 
 const ProgressStepUser = () => {
   const [activeStep, setActiveStep] = useState(0);
