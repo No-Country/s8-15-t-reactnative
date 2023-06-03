@@ -1,10 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
-import Home from '../screens/Home'
-import Profile from '../screens/Profile'
-import ScannQr from '../screens/ScannQr'
 import TabBar from './TabBar'
-import Onboarding from '../screens/Onboarding/Onboarding'
-import { CryptoMetric } from '../screens'
+import { CryptoMetric, CryptoTransferencia, Home, Onboarding, Profile, ScannQr } from '../screens'
 import FingerprintVerification from './FingerprintVerification/FingerprintVerification'
 import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'
@@ -28,6 +24,7 @@ const Nav = () => {
 			/>
 			<Stack.Screen name='FaceIdVerification' component={FaceIdVerification} />
 			<Stack.Screen name='PinVerification' component={PinVerification} />
+			<Stack.Screen name='CryptoTransferencia' component={CryptoTransferencia} />
 		</Stack.Navigator>
 	)
 }

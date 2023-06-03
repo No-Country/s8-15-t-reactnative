@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, View, useColorScheme } from 'react-native'
+import { useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
@@ -33,7 +33,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={PreguntasFrecuentes}
+				component={Home}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
@@ -63,7 +63,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='crypto'
-				component={ScannQr}
+				component={CryptoList}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
