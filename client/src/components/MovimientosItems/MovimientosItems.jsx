@@ -12,6 +12,7 @@ const MovimientosItems = ({
 	description,
 	moneyAmount = 0,
 	coloredIcon = false,
+	date
 }) => {
 	const renderIcon = () => {
 		switch (category) {
