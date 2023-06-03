@@ -10,6 +10,7 @@ import {
 import { CryptoList, Historial, Home, ScannQr } from '../screens'
 import CambiarDinero from './CambiarDinero/CambiarDinero'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
+import Notificaciones from './Notificaciones/Notificaciones'
 
 const Tab = createBottomTabNavigator()
 
