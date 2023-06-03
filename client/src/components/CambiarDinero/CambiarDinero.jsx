@@ -13,32 +13,12 @@ import {
 import colors from '../../utils/colors'
 
 import { MaterialIcons } from '@expo/vector-icons'
+import HeaderCryptoCommon from '../HeaderCryptoCommon/HeaderCryptoCommon'
 const CambiarDinero = () => {
 	return (
 		<ScrollView>
+			<HeaderCryptoCommon titulo='Cryptom' />
 			<View className='flex min-h-full items-center relative bg-gris_background '>
-				<ImageBackground
-					source={require('../../../assets/fondoHistorial.webp')}
-					resizeMode='cover'
-					className='h-[200] object-center'
-				>
-					<View className='flex  rounded-t-[40px] pt-6 h-56 w-full items-center'>
-						<View className='flex flex-row w-full justify-around items-center mb-3 px-4'>
-							<MaterialIcons
-								name='notifications-none'
-								size={27}
-								color='white'
-							/>
-							<Text className='text-slate-50 font-black text-lg'>
-								Cryptomonedas
-							</Text>
-							<View className='w-10 h-10 bg-white rounded-full'></View>
-						</View>
-						<Text className='text-slate-50 mb-3 '>Portfolio Total</Text>
-
-						<Text className='text-slate-50 font-black text-3xl'>US $3.214</Text>
-					</View>
-				</ImageBackground>
 				<View className='flex gap-2 reltive top-[-40px] justify-around items-center  w-11/12  '>
 					<View className='flex justify-center items-center bg-gris_background w-10 h-10 rounded-full absolute z-50 top-16'>
 						<Image
