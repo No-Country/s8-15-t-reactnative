@@ -15,7 +15,7 @@ const Notificaciones = () => {
 	const toggleLinks = () => setIsLinks(previousState => !previousState)
 	return (
 		<ScrollView className='flex pt-10'>
-			<View className='flex gap-4 mb-4 flex-row  bg-blue-200 mr-auto ml-auto w-10/12'>
+			<View className='flex gap-4 mb-4 flex-row  mr-auto ml-auto w-10/12'>
 				<MaterialIcons
 					name='notifications-none'
 					size={27}
@@ -25,7 +25,7 @@ const Notificaciones = () => {
 					Notificaciones
 				</Text>
 			</View>
-			<View className='flex justify-center items-center bg-blue-200 w-10/12 mr-auto ml-auto'>
+			<View className='flex justify-center items-center w-10/12 mr-auto ml-auto'>
 				<View className='flex h-10 flex-row border-b-[1px] border-gris_medio justify-between items-center w-full'>
 					<Text className='text-xl'>Pausar todas</Text>
 					<Switch
@@ -40,7 +40,7 @@ const Notificaciones = () => {
 					/>
 				</View>
 			</View>
-			<View className='flex justify-center items-center bg-blue-200 w-10/12 mr-auto ml-auto'>
+			<View className='flex justify-center items-center w-10/12 mr-auto ml-auto'>
 				<View className='flex h-10 flex-row border-b-[1px] border-gris_medio justify-between items-center w-full'>
 					<Text className='text-xl'>Por transferencias</Text>
 					<Switch
@@ -55,7 +55,7 @@ const Notificaciones = () => {
 					/>
 				</View>
 			</View>
-			<View className='flex justify-center items-center bg-blue-200 w-10/12 mr-auto ml-auto'>
+			<View className='flex justify-center items-center w-10/12 mr-auto ml-auto'>
 				<View className='flex h-10 flex-row border-b-[1px] border-gris_medio justify-between items-center w-full'>
 					<Text className='text-xl'>Por ingresos</Text>
 					<Switch
