@@ -10,10 +10,11 @@ import SplashScreen from './Components/SplashScreen'
 // import Progress from './Components/Progress';
 // import ProgressStepUser from './src/screens/ProgressStepUser/ProgressStepUser';
 import PinCodeUser from './src/screens/PinCodeUser/PinCodeUser';
+import ProgressStepUser from './src/screens/ProgressStepUser/ProgressStepUser';
 // import HomeScreen from './Components/HomeScreen'
 // import PinCode from './Components/PinCode';
 // import { StepProgresUser } from './Components/StepProgresUser';
-// import { ProgressStepsUser } from './Components/ProgressStepsUser';
+
 // import { StepUser } from './Components/StepUser';
 
 const Stack = createStackNavigator();
@@ -25,7 +26,7 @@ export default function App() {
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ headerShown: false }}>
 			  <Stack.Screen name="Splash" component={SplashScreen} />
-			  <Stack.Screen name="Home" component={PinCodeUser} />
+			  <Stack.Screen name="Home" component={ProgressStepUser} />
 			</Stack.Navigator>
 		</NavigationContainer>
 		// <View style={styles.container}>

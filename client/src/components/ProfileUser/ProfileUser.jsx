@@ -1,76 +1,128 @@
-import React, { useState } from 'react'
-import { View,Text,StyleSheet, Dimensions,Image } from 'react-native'
+import React, { useState, useRef, useEffect } from 'react';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
+import { styles } from './ProfileUser.styles';
+// import { Cloudinary } from 'cloudinary-react-native';
+import { getDownloadURL, getStorage, listAll, ref } from 'firebase/storage';
+import { storage } from '../../firebase/config';
 
 const { width } = Dimensions.get('window');
-const AVATAR_SIZE = 80;
+const AVATAR_SIZE = 85;
 
-export const ProfileUser = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+export const ProfileUser = ({form1Data,onForm1DataSubmit}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const scrollViewRef = useRef(null);
+  const [imageUrls, setImageUrls] = useState([]);
 
-    const avatars = [
-        require('../../../assets/main1.svg')
-    ];
-  
-    const handleScroll = (event) => {
-      const offsetX = event.nativeEvent.contentOffset.x;
-      const index = Math.round(offsetX / width);
-      setCurrentIndex(index);
+  const avatars = [
+    require('../../../assets/women/women7.png'),
+    require('../../../assets/main7.png'),
+    require('../../../assets/women/women6.png'),
+    require('../../../assets/main6.png'),
+    require('../../../assets/women/women5.png'),
+    require('../../../assets/main5.png'),
+    require('../../../assets/women/women4.png'),
+    require('../../../assets/main4.png'),
+    require('../../../assets/women/women3.png'),
+    require('../../../assets/main1.png'),
+    require('../../../assets/women/women2.png'),
+    require('../../../assets/main2.png'),
+    require('../../../assets/women/women1.png'),
+    require('../../../assets/main3.png')
+  ];
+
+  const handleScroll = (event) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const index = Math.round(offsetX / width);
+    console.log("position scroll",index)
+    setCurrentIndex(index);
+  };
+
+  const selectAvatar = (index) => {
+    console.log("posicion",index)
+    setCurrentIndex(index);
+    // scrollViewRef.current.scrollTo({ x: width * index, y: 0, animated: true });
+  };
+
+  const handleSubmit = () => {
+    console.log("posicion image",currentIndex)
+    const updatedForm1Data = {...form1Data};
+    updatedForm1Data.avatar = imageUrls[currentIndex];
+    console.log("imagen seleccionada",imageUrls[currentIndex])
+    onForm1DataSubmit(updatedForm1Data);
+  };
+
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const storageRef = ref(storage); // Obtener referencia a la raíz del almacenamiento
+
+        const imagesRef = ref(storageRef, 'avatar-user'); // Cambia 'your-folder-name' por el nombre de tu carpeta en Firebase Storage
+
+        const imageList = await listAll(imagesRef); // Obtener la lista de imágenes en la carpeta
+
+        const urls = await Promise.all(imageList.items.map(async (itemRef) => {
+          const downloadUrl = await getDownloadURL(itemRef); // Obtener la URL de descarga de cada imagen
+          return downloadUrl;
+        }));
+
+        // console.log("imagenes storage",urls)
+        setImageUrls(urls);
+      } catch (error) {
+        console.error('Error al obtener las imágenes de Firebase Storage:', error);
+      }
     };
-  
+
+    fetchImages();
+
+  }, []);
+
 
   return (
     <View style={styles.carouselContainer}>
+      <Text style={styles.labelMain}>Personalizar Perfil</Text>
       <ScrollView
+        ref={scrollViewRef}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
         scrollEventThrottle={16}
       >
-        {avatars.map((avatar, index) => (
-          <Image
+        {imageUrls.map((imageUrl, index) => (
+          <TouchableOpacity
             key={index}
-            source={avatar}
-            style={[
-              styles.avatar,
-              {
-                marginLeft: index === 0 ? (width - AVATAR_SIZE) / 2 : 0,
-                marginRight: index === avatars.length - 1 ? (width - AVATAR_SIZE) / 2 : 0,
-                opacity: index === currentIndex ? 1 : 0.5,
-              },
-            ]}
-          />
+            onPress={() => selectAvatar(index)}
+            activeOpacity={0.8}
+          >
+            <Image
+              source={{ uri: imageUrl }}
+              style={[
+                styles.avatar,
+                {
+                  marginRight: index === imageUrls.length - 1 ? (width - AVATAR_SIZE) / 2 : 0,
+                  opacity: index === currentIndex ? 1 : 0.5
+                }
+              ]}
+            />
+          </TouchableOpacity>
         ))}
       </ScrollView>
-
-      <View style={styles.arrowContainer}>
-        <MaterialIcons name="arrow-back" size={24} color="black" style={styles.arrow} />
-        <MaterialIcons name="arrow-forward" size={24} color="black" style={styles.arrow} />
+      <View style={styles.labelTitle}>
+        <Text style={styles.labelInfo}>Podés elegir un avatar</Text>
+        <Text style={styles.labelInfo}>para personalizar tu perfil o</Text>
+        <Text style={styles.labelInfo}>agregar una fotografía propia</Text>
+      </View>
+      <View style={styles.buttonView}>
+        <TouchableOpacity style={styles.buttonTransparent} onPress={handleSubmit}>
+          <Text style={styles.textButtonTransparent}>Añadir Fotografía</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Continuar</Text>
+        </TouchableOpacity>
       </View>
     </View>
-  )
-}
-const styles = StyleSheet.create({
-  carouselContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 50,
-  },
-  avatar: {
-    width: AVATAR_SIZE,
-    height: AVATAR_SIZE,
-    borderRadius: AVATAR_SIZE / 2,
-    marginHorizontal: 10,
-  },
-  arrowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  arrow: {
-    marginHorizontal: 10,
-  },
-});
+  );
+};

@@ -1,7 +1,6 @@
 import { useState,useRef,useEffect } from 'react';
 import {Pressable,Keyboard, Text} from "react-native"
-import * as SMS from 'expo-sms';
-import styled from 'styled-components/native'
+import axios from 'axios';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ButtonText, HiddenTextInput, OTPInput, OTPInputContainer, OTPInputFocused, OTPInputSection, OTPInputText, StyledButton, ViewButton, ViewText, styles } from './PinCode.styles';
 // styled components
@@ -53,18 +52,17 @@ const PinCodeUser = () => {
   }
 
   const sendVerificationCode = async () => {
+    console.log("entrando...")
     try {
-      const isAvailable = await SMS.isAvailableAsync();
-      if (isAvailable) {
-        const { result } = await SMS.sendSMSAsync(['+51997433697'], `Tu código de verificación es: 1234`);
-        if (result && result === SMS.SentStatus.Sent) {
-          console.log('Mensaje de verificación enviado correctamente');
-        } else {
-          console.log('Error al enviar el mensaje de verificación');
-        }
-      } else {
-        console.log('No es posible enviar mensajes SMS en este dispositivo');
-      }
+      const phoneNumber = "+51997433697"; // Reemplaza con el número de teléfono de destino
+      const message = "Tu código de verificación es: 123";
+  
+      console.log('jannet');
+      await axios.post('http://localhost:3001/sendSMS', {
+        phoneNumber: "+51997433697",
+        message: "Tu código de verificación es: 123",
+      });
+      console.log('Mensaje de verificación enviado correctamente');
     } catch (error) {
       console.log('Error al enviar el mensaje de verificación:', error);
     }

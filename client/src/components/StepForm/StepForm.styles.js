@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
     },
     fieldContainer: {
-      marginBottom: 20,
+      marginBottom: 22,
     },
     fieldContainerTop: {
       alignSelf: 'stretch',
@@ -45,6 +45,7 @@ export const styles = StyleSheet.create({
       borderStyle: 'solid',
       borderWidth: 2,
       borderColor: '#AAD4EF',
+      fontSize:19
     },
     inputField1: {
       width: '100%',
@@ -68,5 +69,16 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: 'bold',
       textAlign: 'center',
+    },
+    error: {
+      fontSize:16,
+      color: 'black',
+      fontWeight: 'bold',
+      marginTop: 3,
+    },
+    pickerContainer: {
+      borderWidth: 1,
+      borderRadius: 14,
+      overflow: 'hidden',
     },
   });
