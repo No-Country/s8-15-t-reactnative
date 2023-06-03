@@ -11,11 +11,26 @@ import { CryptoList, Historial, Home, ScannQr } from '../screens'
 import CambiarDinero from './CambiarDinero/CambiarDinero'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import SendMoney from "../screens/Transfer/SendMoney";
+import TransferMoney from '../screens/Transfer/TransferMoney';
+import Voucher from '../screens/Transfer/Voucher';
+import { useSelector } from 'react-redux';
 
 const Tab = createBottomTabNavigator()
 
 const TabBar = () => {
 	const colorScheme = useColorScheme()
+
+	const nameScreen = useSelector(state => state.changeScreen);
+ 
+	const handleScreens = () => {
+		const screens = {
+		  SendMoney: SendMoney,
+		  TransferMoney: TransferMoney,
+		  Voucher: Voucher
+		};
+	  
+		return screens[nameScreen];
+	};	  
 
 	return (
 		<Tab.Navigator
@@ -46,7 +61,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='tranferir'
-				component={SendMoney}
+				component={handleScreens()}
 				options={{
 					tabBarIcon: ({ focused, color, size }) => (
 						<FontAwesome5 name='hand-holding-usd' size={22} />
