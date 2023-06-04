@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-	Image,
-	Pressable,
-	ScrollView,
-	Text,
-	TextInput,
-	View,
-} from 'react-native'
+import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import {
 	CryptoActionCard,
 	CryptoListItem,
@@ -14,13 +7,9 @@ import {
 } from '../../components'
 import SelectDropdown from 'react-native-select-dropdown'
 import { myCryptos } from '../../utils/fakeCryptoData'
-import { MaterialIcons, Fontisto } from '@expo/vector-icons'
-import {
-	CurrencyExchange,
-	SendToMobile,
-} from '../../../assets/svgMaterialIcons/icons'
+import { Fontisto } from '@expo/vector-icons'
+import { SendToMobile } from '../../../assets/svgMaterialIcons/icons'
 import colors from '../../utils/colors'
-import { Wallet2 } from '../../../assets/svgMaterialIcons/icons'
 import { contactsList } from '../../utils/fakeContacts'
 import { styles } from './styles'
 
@@ -32,12 +21,16 @@ const CryptoTransferencia = () => {
 	return (
 		<ScrollView className='bg-white '>
 			<HeaderCryptoCommon titulo='Transferencia' />
-			<View className='relative px-6 flex'>
-				<CryptoActionCard
-					title='Transferir'
-					middelIcon={<SendToMobile color={colors.verde_claro} size='25' />}
-				/>
-				<View>
+
+			<View className='relative flex'>
+				<View className='flex justify-center items-center top-[-40px] w-full'>
+					<CryptoActionCard
+						title='Transferir'
+						showBottomIcon
+						icon={<SendToMobile color={colors.verde_claro} size='25' />}
+					/>
+				</View>
+				<View className='px-6'>
 					<Text
 						className='text-azul_oscuro text-center text-2xl mb-2'
 						style={{ fontFamily: 'poppins-semiBold' }}
@@ -49,7 +42,6 @@ const CryptoTransferencia = () => {
 					<SelectDropdown
 						data={contactsList}
 						onSelect={(selectedItem, index) => {
-							console.log(selectedItem, index)
 							setContactName({
 								name: selectedItem.name,
 							})

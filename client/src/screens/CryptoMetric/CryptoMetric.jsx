@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, Image, ActivityIndicator } from 'react-native';
 import { CryptoCarrousel, CryptoChart, HeaderCryptoMetric } from '../../components';
 import { SendToMobile } from '../../../assets/svgMaterialIcons/icons';
 import { CurrencyExchange } from '../../../assets/svgMaterialIcons/icons';
@@ -31,7 +31,7 @@ const CryptoMetric = () => {
 	}, [fontsLoaded]);
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>;
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 
 

@@ -26,9 +26,9 @@ const CambiarDinero = () => {
 		imgIcon,
 	}))
 	return (
-		<ScrollView>
+		<ScrollView className='bg-white'>
 			<HeaderCryptoCommon titulo='Cryptomonedas' />
-			<View className='flex min-h-full items-center relative bg-gris_background '>
+			<View className='flex min-h-full items-center relative bg-white'>
 				<View className='flex justify-center items-center top-[-40px] w-full'>
 					<CryptoActionCard title='Cambiar' />
 					<CryptoActionCard

@@ -10,7 +10,12 @@ import {
 	Wallet2,
 } from '../../../assets/svgMaterialIcons/icons'
 
-const CryptoActionCard = ({ title, showTopIcon = false, showBottomIcon = false, icon }) => {
+const CryptoActionCard = ({
+	title,
+	showTopIcon = false,
+	showBottomIcon = false,
+	icon,
+}) => {
 	const cryptoData = myCryptos.map(({ coin, amount, symbol, imgIcon }) => ({
 		coin,
 		amount,
@@ -126,7 +131,7 @@ const CryptoActionCard = ({ title, showTopIcon = false, showBottomIcon = false, 
 			)}
 
 			{showBottomIcon && (
-				<View className='absolute rounded-full border border-solid border-gris_medio bg-white h-10 aspect-square flex justify-center items-center bottom-[-15px]'>
+				<View className='absolute rounded-full border border-solid border-gris_medio bg-white h-10 aspect-square flex justify-center items-center bottom-[-25px]'>
 					{icon}
 				</View>
 			)}

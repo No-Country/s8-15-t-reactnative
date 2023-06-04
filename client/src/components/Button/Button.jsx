@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from 'react-native'
+import { ActivityIndicator, Pressable, Text, View } from 'react-native'
 import colors from '../../utils/colors'
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback } from 'react'
@@ -18,7 +18,7 @@ const Button = ({ text, onPress }) => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 
 	return (

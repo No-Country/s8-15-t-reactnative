@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { ActivityIndicator, Text, View } from 'react-native'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useCallback } from 'react'
@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import * as SplashScreen from 'expo-splash-screen'
 import { infoSteps } from './InfoStep'
+import colors from '../../utils/colors'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -25,7 +26,7 @@ const Onboarding = () => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>
+		return <ActivityIndicator size='large' color={colors.violeta} />
 	}
 
 	const currentStep = infoSteps[activeStep]

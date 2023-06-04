@@ -1,9 +1,10 @@
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import { MovimientosItems } from '../MovimientosItems';
 import { CommonTitle } from '../CommonTitle';
+import colors from '../../utils/colors';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,7 +23,7 @@ const UltimosMovimientos = () => {
 	}, [fontsLoaded]);
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>;
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 
 	const dataUltimosMov= [
