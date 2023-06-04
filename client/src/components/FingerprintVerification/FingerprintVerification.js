@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import fondo from '../../Images/wave.webp'
 import { useFonts } from 'expo-font'
@@ -6,6 +6,7 @@ import { useCallback } from 'react'
 import fingerprint from '../../../assets/fingerprintVioleta.png'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
+import colors from '../../utils/colors'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -23,7 +24,7 @@ const FingerprintVerification = () => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 	return (
 		<View onLayout={onLayoutButtom}>

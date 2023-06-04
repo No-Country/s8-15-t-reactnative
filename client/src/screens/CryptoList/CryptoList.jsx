@@ -1,10 +1,10 @@
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
+import { ActivityIndicator, ScrollView } from 'react-native'
 import { HeaderCryptoCommon, ListaCrypto } from '../../components'
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback } from 'react'
 import { useFonts } from 'expo-font'
-import { useSelector } from 'react-redux'
+import colors from '../../utils/colors'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -22,7 +22,7 @@ const CryptoList = () => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 
 	return (

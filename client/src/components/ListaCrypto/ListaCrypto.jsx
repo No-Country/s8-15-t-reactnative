@@ -14,7 +14,9 @@ const ListaCrypto = () => {
 			<View className=' flex justify-center w-full mb-[70px]'>
 				<View className='flex flex-row justify-evenly w-full  absolute top-[-40px]'>
 					<ButtonsCryptoScreen texto='Transferir' onPress={() => navigation.navigate('CryptoTransferencia')}/>
-					<ButtonsCryptoScreen texto='Cambiar' />
+					<ButtonsCryptoScreen texto='Cambiar'
+						onPress={() => navigation.navigate('CryptoCambio')}
+						/>
 					<ButtonsCryptoScreen
 						texto='Métrica'
 						onPress={() => navigation.navigate('CryptoMetric')}
