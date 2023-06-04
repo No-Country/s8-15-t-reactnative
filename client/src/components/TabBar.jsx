@@ -10,6 +10,7 @@ import {
 	Ionicons,
 } from '@expo/vector-icons'
 import Historial from '../screens/historial/Historial/Historial'
+import Registro from './Registro/Registro'
 
 
 const Tab = createBottomTabNavigator()
@@ -34,7 +35,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={Registro}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

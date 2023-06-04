@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import colors from '../../utils/colors';
-import Login  from '../Login/Login'; 
 import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
