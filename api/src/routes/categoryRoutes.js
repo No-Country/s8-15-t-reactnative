@@ -1,9 +1,10 @@
 const express = require("express");
-const {getCategories}=require("../controllers/categoryControllers");
+const {getCategories, postCategory}=require("../controllers/categoryControllers");
 const router = express.Router();
 
 
 router.get('/', getCategories)
+router.post('/', postCategory)
 
 
 

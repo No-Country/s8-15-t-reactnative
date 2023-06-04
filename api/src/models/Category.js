@@ -15,10 +15,6 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     
-      image: {
-        type: DataTypes.STRING,
-      },
-    
     },
     {timestamps: false}
     );
