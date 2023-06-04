@@ -13,13 +13,7 @@ DB_NAME= postgres
 DB_URL =postgresql://postgres:R9ZQHkxwhXihajko6uHf@containers-us-west-191.railway.app:7361/railway
  */
 
-const sequelize = new Sequelize(DB_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: true
-  }
-  // ...
-});
+const sequelize = new Sequelize(DB_URL);
 
 
 // const sequelize = process.env.NODE_ENV === 'production'
@@ -76,9 +70,13 @@ sequelize.models = Object.fromEntries(capsEntries)
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Category } = sequelize.models
+const { User, Category, Transaction } = sequelize.models
 
 // Aca vendrian las relaciones
+User.hasMany(Transaction, { foreignKey: 'userId' });
+Transaction.belongsTo(User, { foreignKey: 'userId' });
+Transaction.belongsTo(Category, { foreignKey: 'categoryId' });
+Category.hasMany(Transaction, { foreignKey: 'categoryId' });
 
 module.exports = {
 	...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
