@@ -1,5 +1,5 @@
 import React from 'react'
-import { useColorScheme } from 'react-native'
+import { View, useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
@@ -7,9 +7,10 @@ import {
 	Octicons,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, ScannQr } from '../screens'
+import { CryptoList, Historial, Home, PagarFactura, ScannQr } from '../screens'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import Notificaciones from './Notificaciones/Notificaciones'
+import { HouseTabBar, Transaction } from '../../assets/svgMaterialIcons/icons'
 
 const Tab = createBottomTabNavigator()
 
@@ -22,8 +23,6 @@ const TabBar = () => {
 			screenOptions={({ route }) => ({
 				headerShown: false,
 				tabBarShowLabel: false,
-				activeTintColor: '#e91e63',
-				inactiveTintColor: '#ffffff',
 				tabBarStyle: {
 					backgroundColor:
 						colorScheme === 'dark' ? 'hsl(210,10%, 15%)' : 'white',
@@ -33,13 +32,17 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={PagarFactura}
 				options={{
-					tabBarIcon: ({ focused, color, size }) =>
+					tabBarIcon: ({ focused }) =>
 						focused ? (
-							<MaterialCommunityIcons name='home-variant' size={22} />
+							<View className='bg-violeta_background py-1.5 px-6 rounded-full'>
+								<HouseTabBar size='22' />
+							</View>
 						) : (
-							<MaterialCommunityIcons name='home-variant-outline' size={22} />
+							<View>
+								<HouseTabBar size='25' />
+							</View>
 						),
 				}}
 			/>
@@ -47,29 +50,47 @@ const TabBar = () => {
 				name='tranferir'
 				component={Home}
 				options={{
-					tabBarIcon: ({ focused, color, size }) => (
-						<FontAwesome5 name='hand-holding-usd' size={22} />
-					),
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View className='bg-violeta_background py-1.5 px-6 rounded-full'>
+								<Transaction size='25' />
+							</View>
+						) : (
+							<View>
+								<Transaction size='25' />
+							</View>
+						),
 				}}
 			/>
 			<Tab.Screen
 				name='qr'
 				component={ScannQr}
 				options={{
-					tabBarIcon: ({ focused, color, size }) => (
-						<MaterialCommunityIcons name='qrcode-scan' size={22} />
-					),
+					tabBarIcon: ({ focused }) =>
+						focused ? (
+							<View className='bg-violeta_background py-1.5 px-6 rounded-full'>
+								<MaterialCommunityIcons name='qrcode-scan' size={22} />
+							</View>
+						) : (
+							<View>
+								<MaterialCommunityIcons name='qrcode-scan' size={22} />
+							</View>
+						),
 				}}
 			/>
 			<Tab.Screen
 				name='crypto'
 				component={CryptoList}
 				options={{
-					tabBarIcon: ({ focused, color, size }) =>
+					tabBarIcon: ({ focused }) =>
 						focused ? (
-							<Ionicons name='flash-sharp' size={22} />
+							<View className='bg-violeta_background py-1.5 px-6 rounded-full'>
+								<Ionicons name='flash-outline' size={22} />
+							</View>
 						) : (
-							<Ionicons name='flash-outline' size={22} />
+							<View>
+								<Ionicons name='flash-outline' size={22} />
+							</View>
 						),
 				}}
 			/>

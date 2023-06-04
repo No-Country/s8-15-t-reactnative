@@ -7,6 +7,7 @@ export { default as Home } from './Home';
 export * from './Onboarding/Index';
 export * from './Onboarding/InfoStep';
 export { default as Onboarding } from './Onboarding/Onboarding';
+export * from './PagarFactura';
 export { default as Profile } from './Profile';
 export { default as ScannQr } from './ScannQr';
 export * from './Security/Index';
