@@ -120,9 +120,10 @@ const CryptoTransferencia = () => {
 								/>
 								<TextInput
 									keyboardType='numeric'
-									placeholder='0.00'									
-									className='text-azul_oscuro text-3xl flex-1 text-right'
-									style={{ fontFamily: 'poppins-medium' }}
+									placeholder='0.00'
+									className='text-azul_oscuro text-3xl flex-1 text-right '
+									style={{ fontFamily: 'poppins-medium', }}
+									cursorColor={colors.violeta}
 								/>
 							</View>
 							<View className='flex flex-row justify-between items-center'>
