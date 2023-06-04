@@ -11,6 +11,7 @@ import {
 } from '@expo/vector-icons'
 import Historial from '../screens/historial/Historial/Historial'
 import Registro from './Registro/Registro'
+import Login from './Login/Login'
 
 
 const Tab = createBottomTabNavigator()
@@ -35,7 +36,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Registro}
+				component={Login}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

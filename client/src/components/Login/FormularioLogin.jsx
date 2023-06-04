@@ -6,14 +6,11 @@ import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-ico
 
 
 
-const RegistroFormulario = () => {
-    const [nombreApellido, setNombreApellido] = useState('');
+const FormularioLogin = () => {
+    
     const [email, setEmail] = useState('');
     const [contraseña, setContraseña] = useState('');
 
-    const changeNombreApellidos = (value) => {
-        setNombreApellido(value);
-    };
     const changeEmail = (value) => {
         setEmail(value);
     };
@@ -27,12 +24,8 @@ const RegistroFormulario = () => {
     <SafeAreaView style={styles.container}>
         <View style={styles.body}>
             <View>
+                
                 <View style={styles.contentInput}>
-                <MaterialCommunityIcons name='account-circle' size={22} />
-                    <TextInput placeholder='Nomber y Apellido' onChangeText={(value) => changeNombreApellidos(value)} value={nombreApellido} />
-                </View>
-                <View style={styles.contentInput}>
-                <MaterialCommunityIcons name='email' size={22}/>
                     <TextInput placeholder='correo@electronico.com.ar' keyboardType='email-address' onChangeText={(value) => changeEmail(value)} value={email} />
                 </View>
                 <View style={styles.contentInput}>
@@ -40,12 +33,20 @@ const RegistroFormulario = () => {
                     <TextInput placeholder='Contraseña' keyboardType='visible-password' passwordRules={true} secureTextEntry={!showPassword} onChangeText={(value) => changeContraseña(value)} value={contraseña}/>
                 </View>
                 <View>
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.textBtn}>Registrarme</Text>
+                    <TouchableOpacity>
+                    <Text style={styles.btnOlvido}>
+                        ¿Olvidaste tu contraseña?
+                    </Text>
                     </TouchableOpacity>
                 </View>
                 <View>
-                    <Text className='mt-8' style={{ fontFamily: 'poppins-regular', fontSize: 16, lineHeight: 24, textAlign: 'center', fontWeight: '400', color: "#383081" }}>
+                    <TouchableOpacity style={styles.btn}>
+                        <Text style={styles.textBtn}>Iniciar Sesion</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <Text className='mt-8' style={{ fontFamily: 'poppins-regular', fontSize: 16, 
+                    lineHeight: 24, textAlign: 'center', fontWeight: '400', color: "#383081" }}>
                     También podes conectarte desde: 
                     </Text>
                 </View>
@@ -61,11 +62,11 @@ const RegistroFormulario = () => {
                 </View>
                 <View>
                     <Text className='mt-8' style={{ fontFamily: 'poppins-regular', fontSize: 16, lineHeight: 24, textAlign: 'center', fontWeight: '400', color: "#383081" }}>
-                        ¿Ya tenés un perfil? 
+                        ¿Aún no tienes una cuenta? 
                     </Text>
-                    
-                    <Text style={ styles.btnInicioSesion}> Iniciar Sesión </Text>
-                    
+                    <TouchableOpacity>
+                    <Text style={ styles.btnRegistro}> Registrarte </Text>
+                    </TouchableOpacity>
                     
                 </View>
             </View>
@@ -103,20 +104,20 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
         borderRadius: 30,
         //borderWidth: 1,
-        backgroundColor: colors.gris_oscuro,
+        backgroundColor: '#E5E6EA',
         //fontSize: 30,       
           
     },
 
     textBtn: {
-        color: colors.naranja,
+        color: '#FFFFFF',
         fontSize: 14,
         fontWeight: 500
     },
     
     btnGoogle: {
-        width: 230,
-        height: 30,
+        width: 152,
+        height: 32,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop : 81,
@@ -124,19 +125,20 @@ const styles = StyleSheet.create({
         marginRight: 53.33,
         borderRadius: 30,
         borderWidth: 1,
-        fontSize: 30,       
+        fontSize: 30,    
+        borderColor: '#A3ADB2'   
           
     },
 
     textBtnGoogle: {
-        color: colors.naranja,
+        color: '#0B3C6A',
         fontSize: 14,
         fontWeight: 500
     },
 
     btnFacebook: {
-        width: 230,
-        height: 30,
+        width: 153,
+        height: 32,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 0,
@@ -145,25 +147,37 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 1,
         fontSize: 30,       
+        borderColor: '#A3ADB2'
           
     },
 
     textBtnFacebook
     : {
-        color: colors.naranja,
+        color: '#0B3C6A',
         fontSize: 14,
         fontWeight: 500
     },
 
-    btnInicioSesion: {
+    btnRegistro: {
         fontFamily: 'poppins-regular', 
         fontSize: 16, 
         lineHeight: 24, 
         textAlign: 'center', 
         fontWeight: 'bold', 
-        color: colors.violeta,
+        color: '#55B7FF',
+    },
+
+    btnOlvido: {
+       fontFamily: 'poppins-regular', 
+       fontSize: 16, 
+       lineHeight: 24, 
+       textAlign: 'center', 
+       fontWeight: '400', 
+       color: "#938F99", 
+       textDecorationLine: 'underline'
     }
+    
 
 })
 
-export default RegistroFormulario;
+export default FormularioLogin;
