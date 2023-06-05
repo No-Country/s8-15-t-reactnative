@@ -16,6 +16,7 @@ const Nav = () => {
 			<Stack.Screen name='Bar' component={TabBar} />
 			<Stack.Screen name='Profile' component={Profile} />
 			
+			
 		</Stack.Navigator>
 	)
 }

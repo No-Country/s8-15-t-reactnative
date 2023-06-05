@@ -7,7 +7,6 @@ import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import * as SplashScreen from 'expo-splash-screen';
 import SplashMessageRegistro from './SplashMessageRegistro'
-import { Divider } from 'react-native-material-ui'
 import { styles } from '../HeaderHistorial/headerHistorial.styles'
 
 SplashScreen.preventAutoHideAsync();
@@ -49,7 +48,7 @@ const Registro = () => {
                     title={currentStep.title}
                     description1={currentStep.description1}               
                 />
-                <Divider style={styles.divider}/>
+                
             </LinearGradient>
 
         </View>

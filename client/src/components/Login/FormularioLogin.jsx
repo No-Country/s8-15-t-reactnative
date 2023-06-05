@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import colors from '../../utils/colors';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
+
+/*
+function goToScreen(props, routeName){
+    props.navigation.navigate(routeName)
+}*/
 
 const FormularioLogin = () => {
     

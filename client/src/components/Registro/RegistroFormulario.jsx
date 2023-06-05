@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TextInput, TouchableOpacity, navigate } from 'react-native';
 import colors from '../../utils/colors';
 import { LinearGradient } from 'expo-linear-gradient';
-import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
 
+/*
+function goToScreen(props, routeName){
+    props.navigation.navigate(routeName)
+}*/
 
 const RegistroFormulario = () => {
     const [nombreApellido, setNombreApellido] = useState('');
@@ -28,11 +31,11 @@ const RegistroFormulario = () => {
         <View style={styles.body}>
             <View>
                 <View style={styles.contentInput}>
-                <MaterialCommunityIcons name='account-circle' size={22} />
+                
                     <TextInput placeholder='Nomber y Apellido' onChangeText={(value) => changeNombreApellidos(value)} value={nombreApellido} />
                 </View>
                 <View style={styles.contentInput}>
-                <MaterialCommunityIcons name='email' size={22}/>
+                
                     <TextInput placeholder='correo@electronico.com.ar' keyboardType='email-address' onChangeText={(value) => changeEmail(value)} value={email} />
                 </View>
                 <View style={styles.contentInput}>
