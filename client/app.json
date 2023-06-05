@@ -23,9 +23,13 @@
       ]
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist":{
+        "NSFaceIDUsageDescription":"This app uses Face ID to verify the user's identity and protect sensitive data"
+      }
     },
     "android": {
+      "permissions": ["READ_SMS", "RECEIVE_SMS"],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
