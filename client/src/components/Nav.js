@@ -5,6 +5,7 @@ import FingerprintVerification from './FingerprintVerification/FingerprintVerifi
 import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'
 import Security from '../screens/Security/Security'
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
 const Stack = createStackNavigator()
 
@@ -18,6 +19,7 @@ const Nav = () => {
 			<Stack.Screen name='Home' component={Home} />
 			<Stack.Screen name='CryptoMetric' component={CryptoMetric} />
 			<Stack.Screen name='Security' component={Security} />
+			<Stack.Screen  name='VerificationUser' component={ProgressStepUser}/>
 			<Stack.Screen
 				name='FingerprintVerification'
 				component={FingerprintVerification}

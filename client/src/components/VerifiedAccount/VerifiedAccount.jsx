@@ -1,5 +1,5 @@
 import { Text, View,StyleSheet,Image,TouchableOpacity } from 'react-native'
-import CircleWithCheck from '../../images/CircleWithCheck.jsx';
+import CircleWithCheck from '../../Images/CircleWithCheck';
 
 export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
   const handleSubmit = () => {

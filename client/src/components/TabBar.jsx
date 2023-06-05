@@ -10,6 +10,7 @@ import {
 import { CryptoList, Historial, Home, ScannQr } from '../screens'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import Notificaciones from './Notificaciones/Notificaciones'
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
 const Tab = createBottomTabNavigator()
 
@@ -45,7 +46,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='tranferir'
-				component={Home}
+				component={ProgressStepUser}
 				options={{
 					tabBarIcon: ({ focused, color, size }) => (
 						<FontAwesome5 name='hand-holding-usd' size={22} />
