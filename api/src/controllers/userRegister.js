@@ -1,47 +1,38 @@
-const { hash } = require('bcrypt')
-const { User } = require('../db.js')
-const data = {
-	statusCode: 200,
-	errors: {},
-}
-const userRegister = async (req, res) => {
-	const { repeatedPassword, password, name, email, phone } = req.body
-	const hashedPassword = await hash(password, 12)
-	const emailExist = await User.findOne({
-		where: { email: email },
-	}).then(user => user)
-	const phoneExist = await User.findOne({
-		where: { phone: phone },
-	}).then(user => user)
-	if (emailExist) {
-		data.statusCode = 401
-		data.errors.email = 'Este email ya está registrado'
-	}
-	if (phoneExist) {
-		data.statusCode = 401
-		data.errors.phone = 'Este teléfono ya está registrado'
-	}
+const { hash } = require('bcrypt');
+const { User } = require('../db.js');
 
-	if (repeatedPassword !== password) {
-		data.statusCode = 401
-		data.errors.password = 'Las copntraseñas no coinciden'
-	}
-	if (data.statusCode !== 200) {
-		return res.send(data)
-	}
-	User.create({
-		name,
-		email,
-		phone,
-		password: hashedPassword,
-	})
-		.then(nuevoUsuario => {
-			res.status(200).send(data)
-		})
-		.catch(error => {
-			res.status(401).send(error)
-		})
-}
+const userRegister = async (req, res) => {
+  try {
+    const { repeatedPassword, password, name, email, phone } = req.body;
+    const hashedPassword = await hash(password, 12);
+
+    const emailExist = await User.findOne({ where: { email: email } });
+    const phoneExist = await User.findOne({ where: { phone: phone } });
+
+    if (emailExist) {
+      return res.status(401).json({ error: 'Este email ya está registrado' });
+    }
+    if (phoneExist) {
+      return res.status(401).json({ error: 'Este teléfono ya está registrado' });
+    }
+    if (repeatedPassword !== password) {
+      return res.status(401).json({ error: 'Las contraseñas no coinciden' });
+    }
+
+    const newUser = await User.create({
+      name: name,
+      email: email,
+      phone: phone,
+      password: hashedPassword,
+    });
+
+    res.status(200).json(newUser);
+  } catch (error) {
+	console.log(error)
+    res.status(500).json({ error: 'Ocurrió un error al registrar al usuario' });
+  }
+};
+
 module.exports = {
-	userRegister,
-}
+  userRegister,
+};
