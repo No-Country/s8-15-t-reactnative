@@ -1,12 +1,11 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import {Button} from 'react-native-material-ui';
+import { View, Text, Button } from 'react-native'
 
 const Home = () => {
     return (
-        <View>
+        <View className='flex h-full flex-1 items-center justify-center'>
             <Text>HOME</Text>
-            <Button primary variant='contained' text="Press me" />
+            <Button   title="Press me" />
         </View>
     )
 }
