@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
@@ -32,6 +32,8 @@ const TabBar = () => {
 		return screens[nameScreen];
 	};	  
 
+	const ScreenComponent = useMemo(() => handleScreens(), [nameScreen]);
+
 	return (
 		<Tab.Navigator
 			initialRouteName='Home'
@@ -61,7 +63,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='tranferir'
-				component={handleScreens()}
+				component={ScreenComponent}
 				options={{
 					tabBarIcon: ({ focused, color, size }) => (
 						<FontAwesome5 name='hand-holding-usd' size={22} />

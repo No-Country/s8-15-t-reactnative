@@ -36,7 +36,11 @@ const Voucher = () => {
       style={{ marginTop: Constants.statusBarHeight, flexGrow: 1, height: '100%', width: '100%' }}
     >
       <View className='w-full h-[18%] flex-row items-center justify-between p-4'> 
-        <Text><AntDesign name="leftcircleo" size={25} color="white" /></Text>
+        <TouchableOpacity 
+          onPress={()=> 
+          dispatch(setChangeScreen('TransferMoney'))}>
+            <AntDesign name="leftcircleo" size={25} color="white" />
+        </TouchableOpacity>
         <Text className='text-[22px] text-white font-semibold'>Comprobante</Text>
         <Image className='bg-slate-100 w-[40px] h-[40px] rounded-full mr-2 border-[2px] border-white' source={''}/>
       </View>

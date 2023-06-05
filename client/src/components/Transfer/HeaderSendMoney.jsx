@@ -1,13 +1,22 @@
-import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import { View, Text, Image, TextInput} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import FindContacts from '../../components/Transfer/FindContacts';
+//import waveImage from '../../../assets/whiteLinesSvg/wave.js';
+//import { SvgXml } from 'react-native-svg';
+
+//const waveSvg = waveImage;
 
 const HeaderSendMoney = ({ setIsSelected }) => {
 
     const [ value, setValue ] = useState('');
+
+ /*   const [svgXml, setSvgXml] = useState('');
+
+    useEffect(() => {
+        setSvgXml(waveSvg);
+    }, []);*/
 
     return (
         <LinearGradient
@@ -17,6 +26,9 @@ const HeaderSendMoney = ({ setIsSelected }) => {
             style={{height: 150, width: '100%' }}
             className='rounded-bl-[36px] rounded-br-[36px] flex-row items-center justify-between p-4 relative z-30'
         >
+            {/*<View className='w-screen h-full absolute top-[50]'>
+                svgXml !== '' && <SvgXml xml={svgXml} width='100%' height={100} />
+            </View>*/}
             <Text><AntDesign name="bells" size={20} color="white" /></Text>
             <Text className='text-[22px] text-white font-semibold'>Enviar dinero</Text>
             <Image className='bg-slate-100 w-[40px] h-[40px] rounded-full border-[2px] border-white' source={''}/>
