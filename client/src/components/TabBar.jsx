@@ -12,6 +12,7 @@ import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import Notificaciones from './Notificaciones/Notificaciones'
 import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
 import CobroDescripcion from '../screens/CobroPorProducto/CobroDescripcion'
+import CobroPersonalizaLink from '../screens/CobroPorProducto/CobroPersonalizaLink'
 
 const Tab = createBottomTabNavigator()
 
@@ -35,7 +36,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CobroDescripcion}
+				component={CobroPersonalizaLink}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
