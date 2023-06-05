@@ -1,2 +1,13 @@
+export * from './CambiarDinero';
+export * from './CryptoList';
+export * from './CryptoMetric';
+export * from './CryptoTransferencia';
+export * from './Historial';
 export { default as Home } from './Home';
-export * from './historial/Historial';
+export * from './Onboarding/Index';
+export * from './Onboarding/InfoStep';
+export { default as Onboarding } from './Onboarding/Onboarding';
+export { default as Profile } from './Profile';
+export { default as ScannQr } from './ScannQr';
+export * from './Security/Index';
+export { default as Security } from './Security/Security';
