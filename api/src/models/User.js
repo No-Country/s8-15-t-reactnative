@@ -3,11 +3,12 @@ module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('user', {
       
-     /*  user_id: {
-        type: DataTypes.STRING,
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         unique: true,
-      }, */
+      },
   
       name: {
         type: DataTypes.STRING,

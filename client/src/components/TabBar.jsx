@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
 	FontAwesome5,
-	Octicons,
 	Ionicons,
 } from '@expo/vector-icons'
 import { CryptoList, Historial, Home, ScannQr } from '../screens'
@@ -14,6 +13,8 @@ import TransferMoney from '../screens/Transfer/TransferMoney';
 import Voucher from '../screens/Transfer/Voucher';
 import { useSelector } from 'react-redux';
 import Notificaciones from './Notificaciones/Notificaciones'
+import { CryptoList, Home, ScannQr } from '../screens'
+import { Login } from '../screens/Login'
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
 const Tab = createBottomTabNavigator()
@@ -52,7 +53,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={Login}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
