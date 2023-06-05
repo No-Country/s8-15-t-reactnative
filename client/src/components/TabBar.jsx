@@ -7,6 +7,7 @@ import {
 } from '@expo/vector-icons'
 import { CryptoList, Home, ScannQr } from '../screens'
 import { Login } from '../screens/Login'
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
 const Tab = createBottomTabNavigator()
 
@@ -42,7 +43,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='tranferir'
-				component={Home}
+				component={ProgressStepUser}
 				options={{
 					tabBarIcon: ({ focused, color, size }) => (
 						<FontAwesome5 name='hand-holding-usd' size={22} />
