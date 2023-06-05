@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native'
+import { View, Text, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native'
 import colors from '../../utils/colors'
 import Stepper from '../Stepper/Stepper'
 import { imageList } from './OnboardingImages'
@@ -27,7 +27,7 @@ const SplashMessage = ({
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 	return (
 		<View className='flex-1'>

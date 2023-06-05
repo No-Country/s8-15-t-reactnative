@@ -8,12 +8,13 @@ import {
 	Ionicons,
 } from '@expo/vector-icons'
 import { CryptoList, Historial, Home, ScannQr } from '../screens'
-import CambiarDinero from './CambiarDinero/CambiarDinero'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import SendMoney from "../screens/Transfer/SendMoney";
 import TransferMoney from '../screens/Transfer/TransferMoney';
 import Voucher from '../screens/Transfer/Voucher';
 import { useSelector } from 'react-redux';
+import Notificaciones from './Notificaciones/Notificaciones'
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
 const Tab = createBottomTabNavigator()
 

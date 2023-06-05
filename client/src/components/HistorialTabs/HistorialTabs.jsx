@@ -22,7 +22,7 @@ const HistorialTabs = ({ tabs, activeTab, setActiveTab }) => {
 	}, [fontsLoaded]);
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>;
+		return '';
 	}
 
 	const TabButtom = ({ name, activeTab, onHandleSearchTab }) => (

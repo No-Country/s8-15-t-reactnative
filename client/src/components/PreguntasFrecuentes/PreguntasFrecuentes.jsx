@@ -1,13 +1,13 @@
-import React, { PropsWithChildren, useState } from 'react'
+import React, { useState } from 'react'
 import {
 	SafeAreaView,
 	ScrollView,
 	StyleSheet,
 	Text,
 	View,
-	Button,
 	Image,
 	ImageBackground,
+	ActivityIndicator,
 } from 'react-native'
 import Accordion from 'react-native-collapsible/Accordion'
 import colors from '../../utils/colors'
@@ -32,7 +32,7 @@ function PreguntasFrecuentes() {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 
 	const sections = [

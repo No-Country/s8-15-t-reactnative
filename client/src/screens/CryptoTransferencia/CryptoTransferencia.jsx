@@ -1,43 +1,19 @@
 import React, { useState } from 'react'
+import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import {
-	Image,
-	Pressable,
-	ScrollView,
-	Text,
-	TextInput,
-	View,
-} from 'react-native'
-import {
-	Button,
-	CryptoBilletera,
+	CryptoActionCard,
 	CryptoListItem,
 	HeaderCryptoCommon,
 } from '../../components'
 import SelectDropdown from 'react-native-select-dropdown'
 import { myCryptos } from '../../utils/fakeCryptoData'
-import { MaterialIcons, Fontisto } from '@expo/vector-icons'
-import {
-	CurrencyExchange,
-	SendToMobile,
-} from '../../../assets/svgMaterialIcons/icons'
+import { Fontisto } from '@expo/vector-icons'
+import { SendToMobile } from '../../../assets/svgMaterialIcons/icons'
 import colors from '../../utils/colors'
-import { Wallet2 } from '../../../assets/svgMaterialIcons/icons'
 import { contactsList } from '../../utils/fakeContacts'
 import { styles } from './styles'
 
 const CryptoTransferencia = () => {
-	const cryptoData = myCryptos.map(({ coin, amount, symbol, imgIcon }) => ({
-		coin,
-		amount,
-		symbol,
-		imgIcon,
-	}))
-
-	const [selectedCrypto, setSelectedCrypto] = useState({
-		amount: 0,
-		symbol: '',
-	})
-
 	const [contactName, setContactName] = useState({
 		name: '',
 	})
@@ -45,107 +21,16 @@ const CryptoTransferencia = () => {
 	return (
 		<ScrollView className='bg-white '>
 			<HeaderCryptoCommon titulo='Transferencia' />
-			<View className='relative px-6 flex'>
-				<View className='mx-1 mb-20 relative flex items-center'>
-					<View className='border border-gray-400 border-solid pt-2 px-4 pb-3 w-full rounded-3xl bg-white absolute top-[-60px]'>
-						<Text
-							className='text-azul_oscuro text-lg'
-							style={{ fontFamily: 'poppins-medium' }}
-						>
-							Transferir
-						</Text>
-						<View className='flex'>
-							<View className='flex flex-row justify-between items-center'>
-								<SelectDropdown
-									data={cryptoData}
-									onSelect={(selectedItem, index) => {
-										setSelectedCrypto({
-											amount: selectedItem.amount,
-											symbol: selectedItem.symbol,
-										})
-									}}
-									buttonStyle={{
-										height: 40,
-										width: '40%',
-										maxWidth: '60%',
-										backgroundColor: '#fff',
-										paddingHorizontal: 0,
-									}}
-									rowStyle={{ bottom: 0 }}
-									selectedRowStyle={{ backgroundColor: '#ccc' }}
-									renderCustomizedButtonChild={(selectedItem, index) => {
-										return (
-											<View className='flex flex-row justify-between items-center'>
-												{selectedItem ? (
-													<Image
-														source={{ uri: selectedItem.imgIcon }}
-														style={{
-															height: 25,
-															width: 25,
-															resizeMode: 'contain',
-														}}
-													/>
-												) : (
-													<CurrencyExchange size='25' color={colors.naranja} />
-												)}
-												<Text
-													className='text-base'
-													style={{ fontFamily: 'poppins-medium' }}
-												>
-													{selectedItem ? selectedItem.coin : 'Elige'}
-												</Text>
-												<MaterialIcons
-													name='keyboard-arrow-down'
-													size={24}
-													color='black'
-												/>
-											</View>
-										)
-									}}
-									renderCustomizedRowChild={(item, index) => {
-										return (
-											<View className='flex flex-row items-center p-3'>
-												<Image
-													source={{ uri: item.imgIcon }}
-													style={{
-														height: 25,
-														width: 25,
-														resizeMode: 'contain',
-													}}
-												/>
-												<Text className='mx-3'>{item.coin}</Text>
-											</View>
-										)
-									}}
-								/>
-								<TextInput
-									keyboardType='numeric'
-									placeholder='0.00'									
-									className='text-azul_oscuro text-3xl flex-1 text-right'
-									style={{ fontFamily: 'poppins-medium' }}
-								/>
-							</View>
-							<View className='flex flex-row justify-between items-center'>
-								<View className='flex flex-row items-center'>
-									<Wallet2 size='12' color={colors.gris_texto} />
-									<Text className='text-gris_texto text-xl ml-2'>
-										{selectedCrypto.amount} {selectedCrypto.symbol}
-									</Text>
-								</View>
-								<Text
-									className='text-azul_oscuro text-lg text-right'
-									style={{ fontFamily: 'poppins-medium' }}
-								>
-									{selectedCrypto.symbol}
-								</Text>
-							</View>
-						</View>
-					</View>
-					<View className='absolute rounded-full border border-solid border-gris_medio bg-white h-10 aspect-square flex justify-center items-center top-[25px]'>
-						<SendToMobile color={colors.verde_claro} size='25' />
-					</View>
+
+			<View className='relative flex'>
+				<View className='flex justify-center items-center top-[-40px] w-full'>
+					<CryptoActionCard
+						title='Transferir'
+						showBottomIcon
+						icon={<SendToMobile color={colors.verde_claro} size='25' />}
+					/>
 				</View>
-				<View>
+				<View className='px-6'>
 					<Text
 						className='text-azul_oscuro text-center text-2xl mb-2'
 						style={{ fontFamily: 'poppins-semiBold' }}
@@ -157,7 +42,6 @@ const CryptoTransferencia = () => {
 					<SelectDropdown
 						data={contactsList}
 						onSelect={(selectedItem, index) => {
-							console.log(selectedItem, index)
 							setContactName({
 								name: selectedItem.name,
 							})
