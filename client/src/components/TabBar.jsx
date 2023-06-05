@@ -11,6 +11,7 @@ import { CambiarDinero, CryptoList, Historial, Home, ScannQr } from '../screens'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import Notificaciones from './Notificaciones/Notificaciones'
 import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
+import CobroDescripcion from '../screens/CobroPorProducto/CobroDescripcion'
 
 const Tab = createBottomTabNavigator()
 
@@ -34,7 +35,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CobroPorProducto}
+				component={CobroDescripcion}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
