@@ -1,15 +1,13 @@
-import React from 'react';
 import { Text, View, TouchableOpacity, ScrollView, Image, ActivityIndicator } from 'react-native';
 import { CryptoCarrousel, CryptoChart, HeaderCryptoMetric } from '../../components';
-import { SendToMobile } from '../../../assets/svgMaterialIcons/icons';
-import { CurrencyExchange } from '../../../assets/svgMaterialIcons/icons';
+import { SendToMobile, CurrencyExchange } from '../../../assets/svgMaterialIcons/icons';
 import { Feather } from '@expo/vector-icons';
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useState } from 'react';
-import { useFonts } from 'expo-font';
 import colors from '../../utils/colors';
 import { myCryptos } from '../../utils/fakeCryptoData';
 import { useSelector } from 'react-redux'
+import { useFonts } from 'expo-font';
+import { useCallback } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -33,7 +31,6 @@ const CryptoMetric = () => {
 	if (!fontsLoaded) {
 		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
-
 
 	return <ScrollView onLayout={onLayoutCryptoMetryc} className='bg-white'>
 		<HeaderCryptoMetric />

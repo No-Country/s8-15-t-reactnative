@@ -1,22 +1,35 @@
-import React from 'react'
+import { useMemo } from 'react'
 import { View, useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
-	FontAwesome5,
-	Octicons,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, PagarFactura, ScannQr } from '../screens'
-import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
-import Notificaciones from './Notificaciones/Notificaciones'
-import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
+import { CryptoList, PagarFactura, ScannQr } from '../screens'
+import SendMoney from "../screens/Transfer/SendMoney";
+import TransferMoney from '../screens/Transfer/TransferMoney';
+import Voucher from '../screens/Transfer/Voucher';
+import { useSelector } from 'react-redux';
 import { HouseTabBar, Transaction } from '../../assets/svgMaterialIcons/icons'
 
 const Tab = createBottomTabNavigator()
 
 const TabBar = () => {
 	const colorScheme = useColorScheme()
+
+	const nameScreen = useSelector(state => state.changeScreen);
+ 
+	const handleScreens = () => {
+		const screens = {
+		  SendMoney,
+		  TransferMoney,
+		  Voucher
+		};
+	  
+		return screens[nameScreen];
+	};	  
+
+	const ScreenComponent = useMemo(() => handleScreens(), [nameScreen]);
 
 	return (
 		<Tab.Navigator
@@ -49,7 +62,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='tranferir'
-				component={ProgressStepUser}
+				component={ScreenComponent}
 				options={{
 					tabBarIcon: ({ focused }) =>
 						focused ? (

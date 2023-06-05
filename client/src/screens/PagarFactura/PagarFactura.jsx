@@ -1,16 +1,42 @@
-import React from 'react'
-import { ScrollView, StatusBar, View, TouchableOpacity, Text } from 'react-native'
+import {
+	ScrollView,
+	StatusBar,
+	View,
+	TouchableOpacity,
+	Text,
+	ActivityIndicator,
+} from 'react-native'
 import { Input, SmallProfilePicture } from '../../components'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native'
-import { Ionicons } from '@expo/vector-icons'
 import Constants from 'expo-constants'
+import { useFonts } from 'expo-font';
+import { useCallback } from 'react';
+import * as SplashScreen from 'expo-splash-screen';
+import colors from '../../utils/colors'
+import { BackArrow } from '../../../assets/svgMaterialIcons/icons'
+
+SplashScreen.preventAutoHideAsync();
+
 
 const PagarFactura = () => {
 	const navigation = useNavigation()
+	const [fontsLoaded] = useFonts({
+		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
+	});
+
+	const onLayoutPagoFactura = useCallback(async () => {
+		if (fontsLoaded) {
+			await SplashScreen.hideAsync();
+		}
+	}, [fontsLoaded]);
+
+	if (!fontsLoaded) {
+		return <ActivityIndicator size="large" color={colors.violeta} />
+	}
 
 	return (
-		<ScrollView>
+		<ScrollView onLayout={onLayoutPagoFactura} >
 			<LinearGradient
 				colors={['#7029E2', '#55B7FF']}
 				start={{ x: 0, y: 0 }}
@@ -27,11 +53,7 @@ const PagarFactura = () => {
 					className='flex flex-row justify-between items-center px-4'
 				>
 					<TouchableOpacity onPress={() => navigation.goBack()}>
-						<Ionicons
-							name='chevron-back-circle-outline'
-							size={44}
-							color='#fff'
-						/>
+						<BackArrow/>
 					</TouchableOpacity>
 					<View className='flex flex-row justify-between items-center gap-x-2 '>
 						<Text

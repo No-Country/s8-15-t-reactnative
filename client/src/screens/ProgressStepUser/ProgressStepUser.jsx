@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View,TouchableOpacity, Text, Button,Image } from 'react-native';
+import { View,TouchableOpacity, Image } from 'react-native';
 import StepIndicator from 'react-native-step-indicator';
 import StepForm from '../../components/StepForm/StepForm';
 import { customStyles } from './ProgressStep.styles';
