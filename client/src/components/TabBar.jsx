@@ -5,9 +5,8 @@ import {
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, ScannQr } from '../screens'
-import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
-import Notificaciones from './Notificaciones/Notificaciones'
+import { CryptoList, Home, ScannQr } from '../screens'
+import { Login } from '../screens/Login'
 
 const Tab = createBottomTabNavigator()
 
@@ -31,7 +30,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={Login}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text, View } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useCallback, useState} from 'react'

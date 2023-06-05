@@ -4,16 +4,12 @@ import {
 	Text,
 	StyleSheet,
 	SafeAreaView,
-	TextInput,
 	TouchableOpacity,
+	Image,
 } from 'react-native'
 import colors from '../../utils/colors'
-import { LinearGradient } from 'expo-linear-gradient'
-import {
-	MaterialCommunityIcons,
-	Ionicons,
-	FontAwesome5,
-} from '@expo/vector-icons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
+import InputsBasic from '../../components/InputsBasic/InputsBasic'
 
 const FormularioLogin = () => {
 	const [email, setEmail] = useState('')
@@ -29,45 +25,45 @@ const FormularioLogin = () => {
 	const [showPassword, setShowPassword] = useState(false)
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView style={styles.container} className='w-full'>
 			<View style={styles.body}>
-				<View>
-					<View className='flex flex-row px-2 py-4 border border-solid border-violeta rounded-full'>
-						<View >
+				<View className='w-full px-5'>
+					<InputsBasic
+						icon={
 							<MaterialCommunityIcons
-								name='account-circle-outline'
+								name='email-outline'
 								size={24}
-								color={colors.gris}
+								color={colors.gris_texto}
 							/>
-						</View>
-						<TextInput
-							placeholder='correo@electronico.com.ar'
-							keyboardType='email-address'
-							onChangeText={value => changeEmail(value)}
-							value={email}
-                            className='flex-1'
-						/>
-					</View>
-					<View style={styles.contentInput}>
-						<TextInput
-							placeholder='Contraseña'
-							keyboardType='visible-password'
-							passwordRules={true}
-							secureTextEntry={!showPassword}
-							onChangeText={value => changeContraseña(value)}
-							value={contraseña}
-						/>
-					</View>
-					<View>
-						<TouchableOpacity>
-							<Text style={styles.btnOlvido}>¿Olvidaste tu contraseña?</Text>
-						</TouchableOpacity>
-					</View>
-					<View>
-						<TouchableOpacity style={styles.btn}>
-							<Text style={styles.textBtn}>Iniciar Sesion</Text>
-						</TouchableOpacity>
-					</View>
+						}
+						placeholder={'correo@electronico.com.ar'}
+						onChangeText={setEmail}
+						value={email}
+					/>
+					<InputsBasic
+						icon={
+							<MaterialCommunityIcons
+								name='lock-outline'
+								size={24}
+								color={colors.gris_texto}
+							/>
+						}
+						placeholder={'Contraseña'}
+						onChangeText={setContraseña}
+						value={contraseña}
+					/>
+					<TouchableOpacity className='mt-3'>
+						<Text style={styles.btnOlvido}>¿Olvidaste tu contraseña?</Text>
+					</TouchableOpacity>
+
+					<TouchableOpacity className='mt-5 w-min' style={styles.btn}>
+						<Text
+							className='text-lg text-white'
+							style={{ fontFamily: 'poppins-semiBold' }}
+						>
+							Iniciar Sesión
+						</Text>
+					</TouchableOpacity>
 					<View>
 						<Text
 							className='mt-8'
@@ -83,14 +79,24 @@ const FormularioLogin = () => {
 							También podes conectarte desde:
 						</Text>
 					</View>
-					<View>
-						<TouchableOpacity style={styles.btnGoogle}>
-							<Text style={styles.textBtnGoogle}>Iniciar con Google</Text>
+					<View className='flex flex-row items-center justify-between mt-4'>
+						<TouchableOpacity className='flex flex-row items-center border border-solid border-gris_border px-1.5 py-1 rounded-full'>
+							<Image
+							source={require('../../../assets/logoGoogle.png')}
+							className='h-5 w-5'
+							resizeMode='contain'
+							/>
+							<Text className='text-base text-azul_marino' style={{fontFamily: 'poppins-medium'}}>
+								Iniciar con Google
+							</Text>
 						</TouchableOpacity>
-					</View>
-					<View>
-						<TouchableOpacity style={styles.btnFacebook}>
-							<Text style={styles.textBtnFacebook}>Iniciar con Facebook</Text>
+						<TouchableOpacity className='flex flex-row items-center border border-solid border-gris_border px-1.5 py-1 rounded-full'>
+							<Image
+							source={require('../../../assets/logoFacebook.png')}
+							className='h-5 w-5'
+							resizeMode='contain'
+							/>
+							<Text className='text-base text-azul_marino' style={{fontFamily: 'poppins-medium'}}>Iniciar con Facebook</Text>
 						</TouchableOpacity>
 					</View>
 					<View>
@@ -126,68 +132,24 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
-
-	contentInput: {
-		width: 326,
-		height: 30,
-		borderColor: colors.violeta,
-		borderWidth: 1,
-		borderRadius: 30,
-		justifyContent: 'center',
-		paddingLeft: 5,
-		marginBottom: 8,
-	},
-
 	btn: {
-		width: 230,
 		height: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginHorizontal: 50,
 		borderRadius: 30,
-		//borderWidth: 1,
 		backgroundColor: '#E5E6EA',
-		//fontSize: 30,
 	},
 
 	textBtn: {
 		color: '#FFFFFF',
-		fontSize: 14,
-		fontWeight: 500,
 	},
 
-	btnGoogle: {
-		width: 152,
-		height: 32,
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginTop: 81,
-		marginLeft: 4.44,
-		marginRight: 53.33,
-		borderRadius: 30,
-		borderWidth: 1,
-		fontSize: 30,
-		borderColor: '#A3ADB2',
-	},
 
 	textBtnGoogle: {
 		color: '#0B3C6A',
 		fontSize: 14,
 		fontWeight: 500,
-	},
-
-	btnFacebook: {
-		width: 153,
-		height: 32,
-		justifyContent: 'center',
-		alignItems: 'center',
-		marginTop: 0,
-		marginLeft: 0,
-		marginRight: 0,
-		borderRadius: 30,
-		borderWidth: 1,
-		fontSize: 30,
-		borderColor: '#A3ADB2',
 	},
 
 	textBtnFacebook: {
