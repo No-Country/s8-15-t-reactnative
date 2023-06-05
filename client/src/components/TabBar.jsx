@@ -10,6 +10,7 @@ import {
 import { CryptoList, Historial, Home, PagarFactura, ScannQr } from '../screens'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import Notificaciones from './Notificaciones/Notificaciones'
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 import { HouseTabBar, Transaction } from '../../assets/svgMaterialIcons/icons'
 
 const Tab = createBottomTabNavigator()
@@ -48,7 +49,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='tranferir'
-				component={Home}
+				component={ProgressStepUser}
 				options={{
 					tabBarIcon: ({ focused }) =>
 						focused ? (
