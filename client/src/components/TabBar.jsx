@@ -1,15 +1,13 @@
 import { useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Home from '../screens/Home'
-import ScannQr from '../screens/ScannQr'
 import {
 	MaterialCommunityIcons,
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
-import Historial from '../screens/historial/Historial/Historial'
-import Login from './Login/Login'
-
+import { CryptoList, Historial, Home, ScannQr } from '../screens'
+import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
+import Notificaciones from './Notificaciones/Notificaciones'
 
 const Tab = createBottomTabNavigator()
 
@@ -33,7 +31,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Login}
+				component={Home}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
@@ -63,7 +61,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='crypto'
-				component={Historial}
+				component={CryptoList}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

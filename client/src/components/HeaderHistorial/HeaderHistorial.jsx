@@ -22,7 +22,7 @@ const HeaderHistorial = () => {
 	}, [fontsLoaded]);
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>;
+		return ''
 	}
 
 	const dineroDisponible = 1547.74
