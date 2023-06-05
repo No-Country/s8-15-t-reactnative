@@ -76,15 +76,15 @@ const styles = StyleSheet.create({
   labelTitle: {
     fontStyle: 'normal',
     fontWeight: '600',
-    fontSize: 22,
+    fontSize: 23,
     lineHeight: 33,
-    marginBottom:30,
+    marginBottom:50,
     color:'white'
   },
   labelInfo:{
     fontStyle: 'normal',
     fontWeight: '400',
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 24,
     color:'white',
     alignItems: 'center',
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   pinDigitContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: 'gray',
+    borderBottomColor: 'white',
     marginHorizontal: 5,
   },
   pinDigit: {

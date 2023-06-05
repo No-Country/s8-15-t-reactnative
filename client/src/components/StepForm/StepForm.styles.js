@@ -6,7 +6,8 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
     },
     fieldContainer: {
-      marginBottom: 22,
+      marginTop:12,
+      marginBottom: 10,
     },
     fieldContainerTop: {
       alignSelf: 'stretch',

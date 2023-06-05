@@ -1,8 +1,10 @@
 import { Text, View,StyleSheet,Image,TouchableOpacity } from 'react-native'
+import Check from '../../images/CircleWithCheck.jsx';
+import CircleWithCheck from '../../images/CircleWithCheck.jsx';
 
-export const VerifiedAccount = ({form2Data}) => {
+export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
   const handleSubmit = () => {
-
+    setShowAlertPassword(true)
   };
   return (
     <View style={styles.container}>
@@ -10,13 +12,16 @@ export const VerifiedAccount = ({form2Data}) => {
         <View style={styles.viewData}>
             <Image
                 source={{ uri: form2Data.avatar }}
-                style={styles.avatar}
+                style={[styles.avatar, { position: 'absolute', top: 10, left: 10 }]}
             />
-            <Text style={styles.labelTitleFinaly}>Cuenta Verificada</Text>
+            <CircleWithCheck/>
         </View>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.buttonText}>Ir a Payfriend</Text>
-        </TouchableOpacity>
+        <View style={{marginTop:28}}>
+            <Text style={styles.labelTitleFinaly}>Cuenta Verificada</Text>
+            <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                <Text style={styles.buttonText}>Ir a Payfriend</Text>
+            </TouchableOpacity>
+        </View>
     </View>
 
   )
@@ -28,15 +33,17 @@ export const styles = StyleSheet.create({
       gap:25
     },
     viewData:{
+        marginTop:30,
         gap:23,
-        marginBottom:30
+        marginBottom:40,
+        transform: [{ translateX: -76 }, { translateY: -50 }],
     },
     labelTitle: {
         fontStyle: 'normal',
         fontWeight: '600',
-        fontSize: 22,
+        fontSize: 26,
         lineHeight: 33,
-        marginBottom:15,
+        marginBottom:25,
         color:'white'
     },
     labelTitleFinaly:{
@@ -48,8 +55,8 @@ export const styles = StyleSheet.create({
         color:'white'
     },
     avatar: {
-        width: 170,
-        height: 170,
+        width: 190,
+        height: 185,
         borderRadius: 120,
         marginHorizontal: 10
     },
@@ -57,7 +64,7 @@ export const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         paddingVertical: 10,
         borderRadius: 20,
-        marginTop: 20,
+        marginTop: 80,
         width:210
     },
     buttonText: {

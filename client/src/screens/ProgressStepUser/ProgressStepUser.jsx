@@ -12,6 +12,8 @@ import { CustomAlert } from '../../components/CustomAlert/CustomAlert';
 import { VerifiedAccount } from '../../components/VerifiedAccount/VerifiedAccount';
 import { LinearGradient } from 'expo-linear-gradient'
 import fondo from '../../images/wave.webp'
+import { CustomDialog } from '../../components/CustomDialog/CustomDialog';
+import { AntDesign } from '@expo/vector-icons'; 
 
 const ProgressStepUser = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -27,6 +29,8 @@ const ProgressStepUser = () => {
 
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertData, setShowAlertData] = useState(false);
+
+  const [showAlertPassword, setShowAlertPassword] = useState(false);
 
   const handleForm1Submit = (formData) => {
     setForm1Data(formData);
@@ -44,19 +48,39 @@ const ProgressStepUser = () => {
   const handleCloseAlertCelphone = ()=>{
     setShowAlertData(false)
   }
+  const handlePreviousStep = () => {
+    console.log('Botón de flecha presionado');
+  };
+  // close olvido contrasena
+  const handleClosePassword = () => {
+    setShowAlertPassword(false);
+  };
   return (
-    <View style={{ flex: 1,gap:34,flexDirection:'column'}}>
+    <View style={{ flex: 1,gap:34,flexDirection:'column'}} >
       <LinearGradient
         colors={['#7029E2', '#55B7FF']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-        style={{ height: '100%', width: '100%' }}
+        style={{ height: '100%', width: '100%', position: 'relative' }}
       >
         <Image
 					source={fondo}
 					className='absolute w-full object-fill justify-center items-center -bottom-5'
-				/>
-        <View style={{marginTop:80}}>
+          style={{ 
+            position: 'absolute', 
+            bottom: 0, 
+            left: 3,
+            height:'40%',
+            width: '99%',
+          }}
+        />
+        <View>
+          <TouchableOpacity style={{marginTop:60}} onPress={handlePreviousStep}>
+            <AntDesign name="left" size={34} color="white" />
+          </TouchableOpacity>
+        </View>
+
+        <View style={{marginTop:'6%'}}>
           <StepIndicator
             currentPosition={activeStep}
             stepCount={5}
@@ -64,7 +88,7 @@ const ProgressStepUser = () => {
           />
         </View>
         
-        <View>
+        <View style={{marginTop:30}}>
           {activeStep === 0 && (
             <View>
               <StepForm 
@@ -102,20 +126,29 @@ const ProgressStepUser = () => {
           )}
           {activeStep === 4 && (
             <View>
-              <VerifiedAccount form2Data={form2Data}/>
+              <VerifiedAccount form2Data={form2Data} setShowAlertPassword={setShowAlertPassword}/>
               {/* Renderizar los campos del paso 4 y el botón "Finish" */}
-              <TouchableOpacity onPress={() => setActiveStep(5)}>
+              {/* <TouchableOpacity onPress={() => setActiveStep(4)}>
                 <Text>Finish</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </View>
           )}
         </View>
         {showAlert && (
+          // <CustomDialog onClose={handleCloseAlert}/>
             <CustomAlert
-              title="Datos Incompletos"
-              message= {`Por favor complete\ntodos los datos`}
-              onClose={handleCloseAlert}
+            title="Datos Incompletos"
+            message= {`Por favor complete\ntodos los datos`}
+            onClose={handleCloseAlert}
             />
+        )}
+        {showAlertPassword && (
+          <CustomDialog onClose={handleClosePassword}/>
+            // <CustomAlert
+            //   title="Datos Incompletos"
+            //   message= {`Por favor complete\ntodos los datos`}
+            //   onClose={handleCloseAlert}
+            // />
         )}
         {showAlertData && (
             <CustomAlert
