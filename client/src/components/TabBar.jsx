@@ -7,9 +7,10 @@ import {
 	Octicons,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, ScannQr } from '../screens'
+import { CambiarDinero, CryptoList, Historial, Home, ScannQr } from '../screens'
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import Notificaciones from './Notificaciones/Notificaciones'
+import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
 
 const Tab = createBottomTabNavigator()
 
@@ -33,7 +34,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={CobroPorProducto}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
