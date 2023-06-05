@@ -32,9 +32,7 @@ const Login = () => {
 
     
     return (
-        <View
-            
-        >
+        <View>
             <LinearGradient
                 colors={['#7029E2', '#55B7FF']}
                 start={{ x: 0, y: 0 }}

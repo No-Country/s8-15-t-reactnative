@@ -63,9 +63,9 @@ const RegistroFormulario = () => {
                     <Text className='mt-8' style={{ fontFamily: 'poppins-regular', fontSize: 16, lineHeight: 24, textAlign: 'center', fontWeight: '400', color: "#383081" }}>
                         ¿Ya tenés un perfil? 
                     </Text>
-                    
+                    <TouchableOpacity>
                     <Text style={ styles.btnInicioSesion}> Iniciar Sesión </Text>
-                    
+                    </TouchableOpacity>
                     
                 </View>
             </View>

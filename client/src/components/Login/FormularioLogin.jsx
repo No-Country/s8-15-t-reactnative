@@ -5,7 +5,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 
 
-
 const FormularioLogin = () => {
     
     const [email, setEmail] = useState('');
@@ -67,7 +66,6 @@ const FormularioLogin = () => {
                     <TouchableOpacity>
                     <Text style={ styles.btnRegistro}> Registrarte </Text>
                     </TouchableOpacity>
-                    
                 </View>
             </View>
         </View>
@@ -176,8 +174,6 @@ const styles = StyleSheet.create({
        color: "#938F99", 
        textDecorationLine: 'underline'
     }
-    
-
 })
 
 export default FormularioLogin;
