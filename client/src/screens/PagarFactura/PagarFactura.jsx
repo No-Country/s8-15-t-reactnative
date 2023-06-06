@@ -47,7 +47,9 @@ const PagarFactura = () => {
 		},
 	})
 
-	const onSubmit = data => console.log(data)
+	const onSubmit = data => {
+		navigation.navigate('PagoFacturaComprobante', data)
+	}
 	const [isFocused, setIsFocused] = useState(false)
 
 	const [fontsLoaded] = useFonts({
