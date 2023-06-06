@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import {
 	View,
 	Image,
@@ -8,17 +8,31 @@ import {
 	StyleSheet,
 	ImageBackground,
 	TouchableOpacity,
+	Modal,
 } from 'react-native'
 import CheckBox from 'expo-checkbox'
 import Constants from 'expo-constants'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons'
-
 import Button from '../../components/Button/Button'
 import colors from '../../utils/colors'
+import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker'
 const CobroPersonalizaLink = () => {
-	const [text, onChangeText] = useState('añadir descripcion')
 	const [payfriend, setpayfriend] = useState(false)
 	const [efectivo, setefectivo] = useState(false)
+	const [openDate, setOpenDate] = useState(false)
+	const today = new Date()
+	const startDate = getFormatedDate(
+		today.setDate(today.getDate() + 1),
+		'YYYY/MM/DD'
+	)
+	const [selectedStartDate, setSelectedStartDate] = useState('')
+	const [startedDate, setstartedDate] = useState('12/12/2023')
+	const onPressStartData = () => {
+		setOpenDate(!openDate)
+	}
+	const handleChangeStartDate = propDate => {
+		setstartedDate(propDate)
+	}
 	return (
 		<ScrollView className='bg-white'>
 			<ImageBackground
@@ -93,16 +107,37 @@ const CobroPersonalizaLink = () => {
 				<Text className='font-bold mb-2 text-[20px]'>Vigencia de link</Text>
 				<Text>Definir hasta cuanto tiempo se puede</Text>
 				<Text>cobrar el link</Text>
-
-				<View className='bg-white bg-opacity-100 w-16 z-50 left-4 -bottom-2'>
-					<Text className=''>Descripcion</Text>
-				</View>
-				<TextInput
-					className=' w-[230] h-10 rounded-md border-[1px] border-gris_medio mb-2 py-2 px-4 text-gris_texto'
-					onChangeText={onChangeText}
-					value={text}
-				/>
-
+				<TouchableOpacity
+					onPress={onPressStartData}
+					className='w-32 rounded-lg px-2 bg-red-200 py-2'
+				>
+					<Text>{selectedStartDate}</Text>
+				</TouchableOpacity>
+				<Modal
+					animationType='
+				slide'
+					transparent={true}
+					visible={openDate}
+				>
+					<View className='w-64 mt-32 bg-blue-200 mr-auto ml-auto flex justify-center items-center'>
+						<DatePicker
+							mode='calendar'
+							minimumDate={startDate}
+							selected={startedDate}
+							onDateChange={handleChangeStartDate}
+							onSelectedChange={date => setSelectedStartDate(date)}
+							options={{
+								mainColor: '#6D39E5',
+								textHeaderColor: '#6D39E5',
+								selectedTextColor: '#fff',
+								borderColor: '#cdcdcd',
+							}}
+						/>
+						<TouchableOpacity onPress={onPressStartData}>
+							<Text>Cerrar</Text>
+						</TouchableOpacity>
+					</View>
+				</Modal>
 				<View className='w-[240px] mr-auto ml-auto flex '>
 					<Button text={'Continuar'} onPress={() => console.log('press')} />
 				</View>
