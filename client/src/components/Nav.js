@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import TabBar from './TabBar'
-import { CambiarDinero, CryptoMetric, CryptoTransferencia, Home, Onboarding, Profile, ScannQr } from '../screens'
+import { CambiarDinero, CryptoMetric, CryptoTransferencia, Home, Onboarding, Profile } from '../screens'
 import FingerprintVerification from './FingerprintVerification/FingerprintVerification'
 import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'

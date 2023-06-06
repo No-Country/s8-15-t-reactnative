@@ -1,15 +1,12 @@
-import React from 'react'
 import { useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
 	FontAwesome5,
-	Octicons,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, ScannQr } from '../screens'
-import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
-import Notificaciones from './Notificaciones/Notificaciones'
+import { CryptoList, Home, ScannQr } from '../screens'
+import { Login } from '../screens/Login'
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
 const Tab = createBottomTabNavigator()
@@ -34,7 +31,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={Login}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

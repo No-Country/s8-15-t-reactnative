@@ -1,14 +1,9 @@
 import {
 	Text,
 	View,
-	ImageBackground,
-	Image,
-	Button,
 	StyleSheet,
 	ScrollView,
-	SafeAreaView,
 	TouchableOpacity,
-	StatusBar,
 } from 'react-native'
 import {
 	CryptoActionCard,
@@ -19,12 +14,6 @@ import { myCryptos } from '../../utils/fakeCryptoData'
 import colors from '../../utils/colors'
 import { CurrencyExchange } from '../../../assets/svgMaterialIcons/icons'
 const CambiarDinero = () => {
-	const cryptoData = myCryptos.map(({ coin, amount, symbol, imgIcon }) => ({
-		coin,
-		amount,
-		symbol,
-		imgIcon,
-	}))
 	return (
 		<ScrollView className='bg-white'>
 			<HeaderCryptoCommon titulo='Cryptomonedas' />

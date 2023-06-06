@@ -1,11 +1,9 @@
-import React from 'react';
 import { Text, View, TouchableOpacity, ScrollView, Image, ActivityIndicator } from 'react-native';
 import { CryptoCarrousel, CryptoChart, HeaderCryptoMetric } from '../../components';
-import { SendToMobile } from '../../../assets/svgMaterialIcons/icons';
-import { CurrencyExchange } from '../../../assets/svgMaterialIcons/icons';
+import { SendToMobile, CurrencyExchange } from '../../../assets/svgMaterialIcons/icons';
 import { Feather } from '@expo/vector-icons';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import colors from '../../utils/colors';
 import { myCryptos } from '../../utils/fakeCryptoData';
