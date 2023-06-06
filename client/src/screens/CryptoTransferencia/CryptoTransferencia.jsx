@@ -104,7 +104,6 @@ const CryptoTransferencia = () => {
 							)
 						}}
 						search
-						// searchInputStyle={styles.dropdown3searchInputStyleStyle}
 						searchPlaceHolder={'Alias/Nombre/CVU'}
 						searchPlaceHolderColor={colors.gris_texto}
 						renderSearchInputRightIcon={() => {
