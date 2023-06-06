@@ -19,19 +19,34 @@ import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker'
 const CobroPersonalizaLink = () => {
 	const [payfriend, setpayfriend] = useState(false)
 	const [efectivo, setefectivo] = useState(false)
+	const [indefinido, setIndefinido] = useState(false)
 	const [openDate, setOpenDate] = useState(false)
+	const [openEndDate, setOpenEndDate] = useState(false)
 	const today = new Date()
 	const startDate = getFormatedDate(
 		today.setDate(today.getDate() + 1),
 		'YYYY/MM/DD'
 	)
-	const [selectedStartDate, setSelectedStartDate] = useState('')
+	const [selectedStartDate, setSelectedStartDate] = useState('YY/MM/DD')
 	const [startedDate, setstartedDate] = useState('12/12/2023')
 	const onPressStartData = () => {
 		setOpenDate(!openDate)
 	}
 	const handleChangeStartDate = propDate => {
 		setstartedDate(propDate)
+	}
+
+	const endDate = getFormatedDate(
+		today.setDate(today.getDate() + 1),
+		'YYYY/MM/DD'
+	)
+	const [selectedEndDate, setSelectedEndDate] = useState('YY/MM/DD')
+	const [endedDate, setEndedDate] = useState('12/12/2023')
+	const onPressEndData = () => {
+		setOpenEndDate(!openEndDate)
+	}
+	const handleChangeEndDate = propDate => {
+		setEndedDate(propDate)
 	}
 	return (
 		<ScrollView className='bg-white'>
@@ -106,12 +121,13 @@ const CobroPersonalizaLink = () => {
 				</View>
 				<Text className='font-bold mb-2 text-[20px]'>Vigencia de link</Text>
 				<Text>Definir hasta cuanto tiempo se puede</Text>
-				<Text>cobrar el link</Text>
+				<Text className='mb-4'>cobrar el link</Text>
+				<Text className='mb-2 text-gris_texto'>Fecha de comienzo</Text>
 				<TouchableOpacity
 					onPress={onPressStartData}
-					className='w-32 rounded-lg px-2 bg-red-200 py-2'
+					className='w-32 rounded-lg px-2 border-gris_texto border-[1px] mb-2 py-2'
 				>
-					<Text>{selectedStartDate}</Text>
+					<Text className='text-gris_texto'>{selectedStartDate}</Text>
 				</TouchableOpacity>
 				<Modal
 					animationType='
@@ -119,12 +135,12 @@ const CobroPersonalizaLink = () => {
 					transparent={true}
 					visible={openDate}
 				>
-					<View className='w-64 mt-32 bg-blue-200 mr-auto ml-auto flex justify-center items-center'>
+					<View className='w-64 mt-32  mr-auto ml-auto flex justify-center items-center'>
 						<DatePicker
 							mode='calendar'
 							minimumDate={startDate}
 							selected={startedDate}
-							onDateChange={handleChangeStartDate}
+							onDateChange={handleChangeEndDate}
 							onSelectedChange={date => setSelectedStartDate(date)}
 							options={{
 								mainColor: '#6D39E5',
@@ -138,7 +154,49 @@ const CobroPersonalizaLink = () => {
 						</TouchableOpacity>
 					</View>
 				</Modal>
-				<View className='w-[240px] mr-auto ml-auto flex '>
+				<Text className='mb-2 text-gris_texto'>Fecha de finalización</Text>
+				<TouchableOpacity
+					onPress={onPressEndData}
+					className='w-32 rounded-lg px-2 mb-4 border-gris_texto border-[1px] py-2'
+				>
+					<Text className='text-gris_texto'>{selectedEndDate}</Text>
+				</TouchableOpacity>
+				<Modal
+					animationType='
+				slide'
+					transparent={true}
+					visible={openEndDate}
+				>
+					<View className='w-64 mt-52 mr-auto ml-auto flex justify-center items-center'>
+						<DatePicker
+							mode='calendar'
+							minimumDate={endDate}
+							selected={endedDate}
+							onDateChange={handleChangeStartDate}
+							onSelectedChange={date => setSelectedEndDate(date)}
+							options={{
+								mainColor: '#6D39E5',
+								textHeaderColor: '#6D39E5',
+								selectedTextColor: '#fff',
+								borderColor: '#cdcdcd',
+							}}
+						/>
+						<TouchableOpacity onPress={onPressEndData}>
+							<Text>Cerrar</Text>
+						</TouchableOpacity>
+					</View>
+				</Modal>
+				<View className='flex flex-row mb-6 items-center'>
+					<CheckBox
+						className='mr-2'
+						value={indefinido}
+						onValueChange={() => setIndefinido(!indefinido)}
+						color={indefinido ? colors.violeta : undefined}
+					/>
+					<Text>Indefinido</Text>
+				</View>
+
+				<View className='w-[240px] mb-4 mr-auto ml-auto flex '>
 					<Button text={'Continuar'} onPress={() => console.log('press')} />
 				</View>
 			</View>
