@@ -1,15 +1,12 @@
 import { useMemo } from 'react'
 import { View, useColorScheme } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import {
-	MaterialCommunityIcons,
-	Ionicons,
-} from '@expo/vector-icons'
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 import { CryptoList, PagarFactura, ScannQr } from '../screens'
-import SendMoney from "../screens/Transfer/SendMoney";
-import TransferMoney from '../screens/Transfer/TransferMoney';
-import Voucher from '../screens/Transfer/Voucher';
-import { useSelector } from 'react-redux';
+import SendMoney from '../screens/Transfer/SendMoney'
+import TransferMoney from '../screens/Transfer/TransferMoney'
+import Voucher from '../screens/Transfer/Voucher'
+import { useSelector } from 'react-redux'
 import { HouseTabBar, Transaction } from '../../assets/svgMaterialIcons/icons'
 
 const Tab = createBottomTabNavigator()
@@ -17,19 +14,19 @@ const Tab = createBottomTabNavigator()
 const TabBar = () => {
 	const colorScheme = useColorScheme()
 
-	const nameScreen = useSelector(state => state.changeScreen);
- 
+	const nameScreen = useSelector(state => state.changeScreen)
+
 	const handleScreens = () => {
 		const screens = {
-		  SendMoney,
-		  TransferMoney,
-		  Voucher
-		};
-	  
-		return screens[nameScreen];
-	};	  
+			SendMoney,
+			TransferMoney,
+			Voucher,
+		}
 
-	const ScreenComponent = useMemo(() => handleScreens(), [nameScreen]);
+		return screens[nameScreen]
+	}
+
+	const ScreenComponent = useMemo(() => handleScreens(), [nameScreen])
 
 	return (
 		<Tab.Navigator

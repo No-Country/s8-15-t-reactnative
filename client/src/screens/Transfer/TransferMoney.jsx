@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Keyboard from '../../components/Transfer/Keyboard';
 import { setTransferData } from '../../reduxApp/feature/transferDataSlice';
 import { setChangeScreen } from '../../reduxApp/feature/changeScreenSlice';
+import { GoBackButton, SmallProfilePicture } from '../../components';
 
 const TransferMoney = () => {
 
@@ -39,9 +40,9 @@ const TransferMoney = () => {
       style={{ marginTop: Constants.statusBarHeight, flexGrow: 1, height: '100%', width: '100%' }}
     >
       <View className='w-full h-[18%] flex-row items-center justify-between p-4'> 
-        <Text><AntDesign name="bells" size={20} color="white" /></Text>
-        <Text className='text-[22px] text-white font-semibold'>Transferir Dinero</Text>
-        <Image className='bg-slate-100 w-[40px] h-[40px] rounded-full border-[2px] border-white' source={''}/>
+        <GoBackButton/>
+        <Text className='text-3xl text-white'style={{fontFamily: 'poppins-semiBold'}}>Transferir Dinero</Text>
+        <SmallProfilePicture/>
       </View>
       <View className='rounded-tl-[36px] rounded-tr-[36px] w-full h-[82%] p-10 bg-[#FBFBFB]'>
         <View className='flex-row justify-center items-center border-slate-300 border-[1px] rounded-[20px] py-5'>

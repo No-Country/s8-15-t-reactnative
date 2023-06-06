@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons'
+import { Text, TextInput, View } from 'react-native'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import colors from '../../utils/colors'
 import { Controller } from 'react-hook-form'
 import { useState } from 'react'

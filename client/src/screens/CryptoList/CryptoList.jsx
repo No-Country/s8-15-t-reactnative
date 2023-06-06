@@ -1,4 +1,3 @@
-import React from 'react'
 import { ActivityIndicator, ScrollView } from 'react-native'
 import { HeaderCryptoCommon, ListaCrypto } from '../../components'
 import * as SplashScreen from 'expo-splash-screen'

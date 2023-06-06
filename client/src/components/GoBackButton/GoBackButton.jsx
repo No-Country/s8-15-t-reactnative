@@ -1,8 +1,7 @@
 import { TouchableOpacity } from 'react-native'
-import { BackArrow } from '../../../assets/svgMaterialIcons/icons'
 import { useNavigation } from '@react-navigation/native'
-
-const PagoFacturaComprobante = () => {
+import { BackArrow } from '../../../assets/svgMaterialIcons/icons';
+const GoBackButton = () => {
 	const navigation = useNavigation()
 
 	return (
@@ -10,6 +9,6 @@ const PagoFacturaComprobante = () => {
 			<BackArrow />
 		</TouchableOpacity>
 	)
-}
+};
 
-export default PagoFacturaComprobante
+export default GoBackButton;

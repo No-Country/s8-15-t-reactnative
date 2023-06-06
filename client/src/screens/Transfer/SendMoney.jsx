@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Constants from 'expo-constants';
 import { View, Text } from 'react-native';
 import MyContacts from '../../components/Transfer/MyContacts';

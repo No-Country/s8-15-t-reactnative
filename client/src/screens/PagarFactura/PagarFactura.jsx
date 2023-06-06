@@ -9,7 +9,7 @@ import {
 	Modal,
 	TextInput,
 } from 'react-native'
-import { InputSecondModel, SmallProfilePicture } from '../../components'
+import { GoBackButton, InputSecondModel, SmallProfilePicture } from '../../components'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native'
 import Constants from 'expo-constants'
@@ -17,7 +17,6 @@ import { useFonts } from 'expo-font'
 import { useCallback, useState } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import colors from '../../utils/colors'
-import { BackArrow } from '../../../assets/svgMaterialIcons/icons'
 import { useForm, Controller } from 'react-hook-form'
 import DatePicker from 'react-native-modern-datepicker'
 import { Fontisto } from '@expo/vector-icons'
@@ -82,9 +81,7 @@ const PagarFactura = () => {
 					style={{ paddingTop: Constants.statusBarHeight + 27 }}
 					className='flex flex-row justify-between items-center px-4 pb-14'
 				>
-					<TouchableOpacity onPress={() => navigation.goBack()}>
-						<BackArrow />
-					</TouchableOpacity>
+					<GoBackButton/>
 					<View className='flex flex-row justify-between items-center gap-x-2 '>
 						<Text
 							className='text-3xl text-white'
