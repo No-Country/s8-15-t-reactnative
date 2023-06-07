@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Text, View,StyleSheet, TextInput, Button } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import axios from 'axios';
 
-export const VerifyEmail = ({ setActiveStep }) => {
+export const VerifyEmail = ({ setActiveStep,form1Data }) => {
   const [pin, setPin] = useState('');
 
   const handlePinChange = (value) => {
@@ -13,12 +14,38 @@ export const VerifyEmail = ({ setActiveStep }) => {
     console.log('Código PIN:', pin);
     setActiveStep(2);
   };
+
+  const enviarCorreo = async()=>{
+    try {
+      const codigoAleatorio = Math.floor(Math.random() * 9000) + 1000; // Genera un número aleatorio de 4 dígitos
+
+      const response = await axios.post('http://localhost:3001/enviar-correo', {
+        destinatario: 'ccapo4matemacc@gmail.com',
+        remitente: 'payfrend24@gmail.com',
+        asunto: 'Asunto del correo',
+        contenido: 'Contenido del correo',
+        nombre: 'juan',
+        codigo: codigoAleatorio.toString() // Convierte el código a una cadena de texto
+      });
+
+      console.log('Respuesta del servidor:', response.data);
+      // Realiza cualquier acción adicional necesaria con la respuesta del servidor
+    } catch (error) {
+      console.error('Error al enviar el correo:', error);
+      // Maneja el error de alguna manera adecuada
+    }
+  }
+
+  useEffect(() => {
+    enviarCorreo();
+  }, []);
+  
   return (
     <View style={styles.container}>
         <Text style={styles.labelTitle}>Verifica tu correo</Text>
         <Text style={styles.labelInfo}>Escribe el código de verificación que</Text>
         <Text style={styles.labelInfo}>enviamos al:</Text>
-        <Text style={styles.labelInfo}>ejemplo@correo.com</Text>
+        <Text style={styles.labelInfo}>{form1Data.email}</Text>
         <View style={styles.pinContainer}>
           <View style={styles.pinDigitContainer}>
             <TextInput
