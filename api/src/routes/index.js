@@ -13,7 +13,7 @@ const router = Router()
 
 router.post('/login', userLogin, userLogin)
 router.post('/register', verifiRegisterData, userRegister)
-router.put('/user-edit', userEdit);
+router.put('/user-edit/:userId', userEdit);
 router.post('/sendSMS', userSms)
 router.use('/user', userRoutes );
 router.use('/category', categoryRoutes );
