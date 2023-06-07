@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { ActivityIndicator } from 'react-native'
 import TabBar from './TabBar'
-import { CambiarDinero, CryptoMetric, CryptoTransferencia, Home, Onboarding, Profile } from '../screens'
+import { CambiarDinero, CryptoMetric, CryptoTransferencia, Home, Onboarding, PagoFacturaComprobante, Profile } from '../screens'
 import FingerprintVerification from './FingerprintVerification/FingerprintVerification'
 import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'
@@ -24,6 +24,7 @@ const Stack = createStackNavigator()
 
 
 const Nav = () => {
+
 	const dispatch = useDispatch();
 	
 	const user = useSelector((state) => state.user?.user);
@@ -99,3 +100,5 @@ const Nav = () => {
 };
 
 export default Nav;
+
+
