@@ -15,6 +15,7 @@ import CobroDescripcion from '../screens/CobroPorProducto/CobroDescripcion'
 import CobroPersonalizaLink from '../screens/CobroPorProducto/CobroPersonalizaLink'
 import CobroListo from '../screens/CobroPorProducto/CobroListo'
 import CobroLinksCreados from '../screens/CobroPorProducto/CobroLinksCreados'
+import CobrosIndex from '../screens/CobroPorProducto/CobrosIndex'
 
 const Tab = createBottomTabNavigator()
 
@@ -38,7 +39,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CobroLinksCreados}
+				component={CobrosIndex}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

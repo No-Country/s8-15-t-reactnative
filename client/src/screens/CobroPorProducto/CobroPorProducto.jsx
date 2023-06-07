@@ -9,25 +9,13 @@ import {
 	TouchableOpacity,
 } from 'react-native'
 import Constants from 'expo-constants'
-import { MaterialIcons, Ionicons } from '@expo/vector-icons'
-import { OTPInput } from '../../components/OTPInput/OTPInput'
+
+import colors from '../../utils/colors'
 import Button from '../../components/Button/Button'
-const CobroPorProducto = () => {
-	const [otpValue, setOtpValue] = useState('000')
-	const inputRefs = useRef([])
-
-	// const handleChange = (text, index) => {
-	// 	const newValue = [...otpValue]
-	// 	newValue[index] = text
-	// 	setOtpValue(newValue)
-	// 	onChange(newValue)
-
-	// 	if (text.length !== 0) {
-	// 		return inputRefs.current[index + 1]?.focus()
-	// 	}
-
-	// 	return inputRefs.current[index - 1]?.focus()
-	// }
+import { myCryptos } from '../../utils/fakeCryptoData'
+import { CryptoListItem } from '../../components/CryptoListItem'
+const CobroPorProducto = ({ navigation }) => {
+	const [otpValue, setOtpValue] = useState('')
 
 	return (
 		<ScrollView className='bg-white'>
@@ -80,56 +68,34 @@ const CobroPorProducto = () => {
 
 			<View className='w-full flex items-center'>
 				<View className='flex items-center w-full'>
-					<Text className='text-center font-black text-violeta text-3xl'>
-						0,40000
-					</Text>
-					<View className='flex flex-row justify-between items-center w-10/12 '>
-						<View className='flex w-14'>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>1</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>4</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>7</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>*</Text>
-							</View>
-						</View>
-						<View className='flex w-14'>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>2</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>5</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>8</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>0</Text>
-							</View>
-						</View>
-						<View className='flex w-14'>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>3</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>6</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>9</Text>
-							</View>
-							<View className='flex justify-center items-center bg-white w-14 h-14 rounded-full mb-2'>
-								<Text className='font-black text-xl'>0</Text>
-							</View>
-						</View>
+					<TextInput
+						className='w-[230] border-[1px] border-gris_medio mb-2 py-2 text-violeta font-bold border-t-0 border-l-0 border-r-0'
+						style={{ fontSize: 26, fontWeight: 'bold', textAlign: 'center' }}
+						onChangeText={otpValue => setOtpValue(otpValue)}
+						defaultValue={otpValue}
+						keyboardType='decimal-pad'
+						placeholder='000'
+						placeholderTextColor={colors.violeta}
+					/>
+					<View>
+						{myCryptos.map(coin => (
+							<CryptoListItem
+								key={coin.id}
+								coin={coin.coin}
+								coinSymbol={coin.symbol}
+								amountOwned={coin.amount}
+								inUsd={coin.actualValue}
+								profit={coin.modifiedPercentage}
+								icon={coin.imgIcon}
+							/>
+						))}
 					</View>
 				</View>
 				<View className='w-[240px] bg-green-200 flex '>
-					<Button text={'Continuar'} onPress={() => console.log('press')} />
+					<Button
+						text={'Continuar'}
+						// onPress={navigation.navigate('cobros-custom-link')}
+					/>
 				</View>
 			</View>
 		</ScrollView>
