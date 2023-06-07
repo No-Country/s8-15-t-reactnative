@@ -21,7 +21,7 @@ const userEdit = async (req, res) => {
       res.status(200).json(user);
     } catch (error) {
       console.log(error);
-      res.status(500).json({ error: 'Ocurrió un error al editar los datos del usuario' });
+      res.status(500).json({ error: 'Ocurrió un error al intentar editar los datos del usuario' });
     }
 };
   
