@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { View, Text, Image, Pressable, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import fondo from '../../Images/wave.webp'
 import { useFonts } from 'expo-font'
-import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 

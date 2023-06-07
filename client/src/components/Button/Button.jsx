@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { ActivityIndicator, Pressable, Text, View } from 'react-native'
 import colors from '../../utils/colors'
 import * as SplashScreen from 'expo-splash-screen'
