@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { View, Text, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native'
 import colors from '../../utils/colors'
 import Stepper from '../Stepper/Stepper'

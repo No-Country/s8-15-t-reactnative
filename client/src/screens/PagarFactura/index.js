@@ -1,0 +1,1 @@
+export { default as PagarFactura } from './PagarFactura';
