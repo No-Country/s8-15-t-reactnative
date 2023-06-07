@@ -6,6 +6,7 @@ const verifiRegisterData = require('../middleware/verifyRegisterData')
 const userRoutes = require('./userRoutes')
 const categoryRoutes = require('./categoryRoutes')
 const transactionRoutes = require('./transactionRoutes')
+const { userMessageEmail } = require('../controllers/userMessageEmail')
 
 const router = Router()
 
@@ -16,5 +17,6 @@ router.use('/category', categoryRoutes );
 router.use('/transaction', transactionRoutes );
 router.post('/sendSMS', userSms)
 
+router.post('/enviar-correo',userMessageEmail)
 
 module.exports = router

@@ -1,13 +1,22 @@
-import { View, Text, TouchableOpacity, Image, TextInput, ActivityIndicator } from 'react-native'
+import {
+	View,
+	Text,
+	TouchableOpacity,
+	Image,
+	TextInput,
+	ActivityIndicator,
+} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useFonts } from 'expo-font'
 import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 import fondo from '../../Images/wave.webp'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
+import * as SecureStore from 'expo-secure-store'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -30,7 +39,7 @@ const PinVerification = () => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <ActivityIndicator size="large" color={colors.violeta} />
+		return <ActivityIndicator size='large' color={colors.violeta} />
 	}
 	return (
 		<View onLayout={onLayoutButtom}>
