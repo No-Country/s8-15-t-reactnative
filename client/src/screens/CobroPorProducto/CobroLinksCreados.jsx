@@ -8,33 +8,8 @@ import {
 	TouchableOpacity,
 } from 'react-native'
 import Constants from 'expo-constants'
-import {
-	Menu,
-	MenuOption,
-	MenuOptions,
-	MenuTrigger,
-	MenuProvider,
-} from 'react-native-popup-menu'
-const CobroLinksCreados = () => {
-	const handleShare = async () => {
-		try {
-			const result = await Share.share({
-				message: 'www.pyfriend.com/link-pyment?id=1215456131',
-			})
-			if (result.action === Share.sharedAction) {
-				if (result.activityType) {
-					// shared with activity type of result.activityType
-				} else {
-					// shared
-				}
-			} else if (result.action === Share.dismissedAction) {
-				// dismissed
-			}
-		} catch (error) {
-			Alert.alert(error.message)
-		}
-	}
 
+const CobroLinksCreados = () => {
 	return (
 		<ScrollView className='bg-gris_background'>
 			<ImageBackground
@@ -196,7 +171,6 @@ const CobroLinksCreados = () => {
 					<Text className='font-bold text-lg mb-2'>Descripción</Text>
 					<Text className='font-bold text-naranja text-lg'>Compartir</Text>
 				</View>
-
 				<View className='flex mt-auto'>
 					<TouchableOpacity className='ml-auto'>
 						<View className='w-2 h-2 bg-gray-200 rounded-full '></View>
