@@ -55,7 +55,8 @@ const TabBar = () => {
 				component={ScannQr}
 				options={{
 					tabBarIcon: ({ focused, color, size }) => (
-						<MaterialCommunityIcons name='qrcode-scan' size={22} />
+						<MaterialCommunityIcons 
+						name='qrcode-scan' size={22} />
 					),
 				}}
 			/>
@@ -65,9 +66,11 @@ const TabBar = () => {
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
-							<Ionicons name='flash-sharp' size={22} />
+							<Ionicons name='flash-sharp' 
+							size={22} />
 						) : (
-							<Ionicons name='flash-outline' size={22} />
+							<Ionicons name='flash-outline' 
+							size={22} />
 						),
 				}}
 			/>
