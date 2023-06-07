@@ -101,7 +101,7 @@ const ProgressStepUser = () => {
           )}
           {activeStep === 1 && (
             <View>
-              <VerifyEmail setActiveStep={setActiveStep} />
+              <VerifyEmail setActiveStep={setActiveStep} form1Data={form1Data}/>
             </View>
           )}
           {activeStep === 2 && (

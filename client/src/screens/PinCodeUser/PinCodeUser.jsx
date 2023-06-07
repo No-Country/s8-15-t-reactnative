@@ -3,13 +3,15 @@ import {Pressable,Keyboard, Text} from "react-native"
 import axios from 'axios';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ButtonText, HiddenTextInput, OTPInput, OTPInputContainer, OTPInputFocused, OTPInputSection, OTPInputText, StyledButton, ViewButton, ViewText, styles } from './PinCode.styles';
-// styled components
+import { random } from 'lodash';
 
 const PinCodeUser = () => {
   const [code,setCode] = useState("");
   const [pinReady,setPinReady]= useState(false);
   // monitoring input focus
   const [inputContainerIsFocused,setInputContainerIsFocused]=useState(false);
+  const [generateCode, setGenerateCode] = useState("");
+  const [showGeneratedCode, setShowGeneratedCode] = useState(false);
 
   const MAX_CODE_LENGTH = 4;
   // ref for text input
@@ -18,22 +20,49 @@ const PinCodeUser = () => {
 
   const handleOnPress =()=>{
     setInputContainerIsFocused(true);
+    setCode(generateCode);
     textInputRef?.current?.focus();
   }
+  
+  const handleShowGeneratedCode = () => {
+    setShowGeneratedCode(true);
+  };
+
   const handleOnBlur =()=>{
     setInputContainerIsFocused(false);
   };
 
+  const sendVerificationCode = async (verificationCode) => {
+    console.log("entrando...")
+    try {
+
+      await axios.post('https://s8-15-t-reactnative-production.up.railway.app/sendSMS', {
+        phoneNumber: "+51997433697",
+        message: `Tu código de verificación es: ${verificationCode}`,
+      });
+      setGenerateCode(verificationCode);
+      console.log('Mensaje de verificación enviado correctamente');
+    } catch (error) {
+      console.log('Error al enviar el mensaje de verificación:', error);
+    }
+  };
+  
   useEffect(()=>{
     // update pin ready value
     setPinReady(code.length === MAX_CODE_LENGTH);
     return ()=> setPinReady(false);
   },[code]);
 
+  useEffect(() => {
+    const verificationCode = String(random(1000, 9999));
+    sendVerificationCode(verificationCode);
+  }, []);
+
+
   const toCodeDigitInput = (_value,index)=>{
     const emptyInputChar =" ";
     const digit = code[index] || emptyInputChar;
-
+    const generatedDigit = generateCode[index] || emptyInputChar; 
     // formatting
     const isCurrentDigit = index === code.length;
     const isLastDigit = index === MAX_CODE_LENGTH-1;
@@ -46,27 +75,11 @@ const PinCodeUser = () => {
 
     return(
       <StyleOTPInput key={index}>
-        <OTPInputText>{digit}</OTPInputText>
+         <OTPInputText>{showGeneratedCode ? generatedDigit : digit}</OTPInputText>
       </StyleOTPInput>
     );
   }
 
-  const sendVerificationCode = async () => {
-    console.log("entrando...")
-    try {
-      const phoneNumber = "+51997433697"; // Reemplaza con el número de teléfono de destino
-      const message = "Tu código de verificación es: 123";
-  
-      console.log('jannet');
-      await axios.post('http://localhost:3001/sendSMS', {
-        phoneNumber: "+51997433697",
-        message: "Tu código de verificación es: 123",
-      });
-      console.log('Mensaje de verificación enviado correctamente');
-    } catch (error) {
-      console.log('Error al enviar el mensaje de verificación:', error);
-    }
-  };
 
   return (
     <LinearGradient
@@ -103,13 +116,11 @@ const PinCodeUser = () => {
         </OTPInputSection>
 
         <ViewText>
-          <Text style={styles.linkText}>Codigo recibido</Text>
+          <Text style={styles.linkText} onPress={handleShowGeneratedCode}>Codigo recibido</Text>
         </ViewText>
-
         <ViewButton>
           <StyledButton
             disabled={!pinReady}
-            onPress={sendVerificationCode}
           >
             <ButtonText>
               Confirmar
