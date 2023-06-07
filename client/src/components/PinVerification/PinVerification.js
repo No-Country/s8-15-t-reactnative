@@ -3,16 +3,14 @@ import {
 	Text,
 	TouchableOpacity,
 	Image,
-	TextInput,
 	ActivityIndicator,
 } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useFonts } from 'expo-font'
-import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 import fondo from '../../Images/wave.webp'
-import { useState, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
 import * as SecureStore from 'expo-secure-store'
