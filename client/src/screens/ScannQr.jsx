@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import {
 	Text,
 	View,
 	Button,
-	StyleSheet,
-	ActivityIndicator,
-	Image,
 	TouchableOpacity,
 	Modal,
 } from 'react-native'
@@ -111,27 +108,5 @@ const ScannQr = () => {
 		</>
 	)
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'center',
-	},
-	qrContainer: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	image: {
-		width: 200,
-		height: 200,
-	},
-	loadingIndicator: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-})
 
 export default ScannQr

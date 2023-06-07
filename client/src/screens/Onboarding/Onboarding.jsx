@@ -1,7 +1,7 @@
 import { ActivityIndicator, View } from 'react-native'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useCallback, useState} from 'react'
+import { useCallback, useState } from 'react'
 import { SplashMessage } from '../../components/SplashMessage'
 import { useNavigation } from '@react-navigation/native'
 import * as SplashScreen from 'expo-splash-screen'
