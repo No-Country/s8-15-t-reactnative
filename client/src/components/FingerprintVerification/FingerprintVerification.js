@@ -1,4 +1,13 @@
-import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
+import {
+	View,
+	Text,
+	Image,
+	TouchableOpacity,
+	ActivityIndicator,
+	Alert,
+	Pressable,
+} from 'react-native'
+import { useEffect, useState } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import fondo from '../../Images/wave.webp'
 import { useFonts } from 'expo-font'
@@ -7,11 +16,59 @@ import fingerprint from '../../../assets/fingerprintVioleta.png'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 import colors from '../../utils/colors'
+import * as LocalAuthentication from 'expo-local-authentication'
 
 SplashScreen.preventAutoHideAsync()
 
 const FingerprintVerification = () => {
+	const [isHardware, setIsHardware] = useState(false)
+	const [isEnrolled, setIsEnrolled] = useState(false)
+	const [authenticationButton, setAuthenticationButton] = useState(false)
 	const navigation = useNavigation()
+
+	useEffect(() => {
+		;(async () => {
+			const hardware = await LocalAuthentication.hasHardwareAsync()
+			const enrolled = await LocalAuthentication.isEnrolledAsync()
+			setIsHardware(hardware)
+			setIsEnrolled(enrolled)
+			setAuthenticationButton(true)
+		})()
+
+		return () => {
+			setIsHardware(false)
+			setIsEnrolled(false)
+		}
+	}, [])
+
+	useEffect(() => {
+		if (authenticationButton) {
+			if (!isHardware) {
+				Alert.alert('Error', 'No tiene hardware')
+				return
+			}
+			if (!isEnrolled) {
+				Alert.alert('Error', 'No tiene huella registrada')
+				return
+			}
+			;(async () => {
+				const { success } = await LocalAuthentication.authenticateAsync({
+					promptMessage: 'Autentique su huella',
+					cancelLabel: 'Cancelar',
+					disableDeviceFallback: true,
+				})
+
+				if (success) {
+					setAuthenticationButton(false)
+					navigation.navigate('Bar')
+				} else {
+					Alert.alert('Error', 'No se pudo autenticar')
+					navigation.navigate('Security')
+				}
+			})()
+		}
+	}, [authenticationButton])
+
 	const [fontsLoaded] = useFonts({
 		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
 		'poppins-regular': require('../../../assets/poppinsFonts/Poppins-Regular.ttf'),
@@ -24,8 +81,9 @@ const FingerprintVerification = () => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <ActivityIndicator size="large" color={colors.violeta} />
+		return <ActivityIndicator size='large' color={colors.violeta} />
 	}
+
 	return (
 		<View onLayout={onLayoutButtom}>
 			<LinearGradient
@@ -64,10 +122,16 @@ const FingerprintVerification = () => {
 					<View>
 						<View className='flex justify-center items-center mt-12'>
 							<View className='bg-white w-28 h-28 rounded-full flex justify-center items-center'>
-								<Image
-									source={fingerprint}
-									className=' h-[64] object-scale-down'
-								/>
+								<Pressable
+									onPress={() => {
+										setAuthenticationButton(true)
+									}}
+								>
+									<Image
+										source={fingerprint}
+										className=' h-[64] object-scale-down'
+									/>
+								</Pressable>
 							</View>
 						</View>
 						<Text

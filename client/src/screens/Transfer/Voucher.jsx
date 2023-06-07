@@ -34,7 +34,6 @@ const Voucher = () => {
 			start={{ x: 0, y: 0 }}
 			end={{ x: 1, y: 0 }}
 			style={{
-				marginTop: Constants.statusBarHeight,
 				flexGrow: 1,
 				height: '100%',
 				width: '100%',

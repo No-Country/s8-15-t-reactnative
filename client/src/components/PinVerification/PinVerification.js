@@ -3,6 +3,7 @@ import {
 	Text,
 	TouchableOpacity,
 	Image,
+	TextInput,
 	ActivityIndicator,
 } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -13,6 +14,8 @@ import { useNavigation } from '@react-navigation/native'
 import fondo from '../../Images/wave.webp'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
+import * as SecureStore from 'expo-secure-store'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -91,7 +94,7 @@ const PinVerification = () => {
 					<TouchableOpacity
 						className='flex justify-center items-center py-2.5 px-16 rounded-3xl mt-14 bg-white'
 						onPress={() => {
-							navigation.navigate('Login')
+							navigation.navigate('Bar')
 						}}
 					>
 						<Text

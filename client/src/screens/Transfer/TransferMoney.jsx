@@ -38,7 +38,7 @@ const TransferMoney = () => {
       colors={['#7029E2', '#55B7FF']}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
-      style={{ marginTop: Constants.statusBarHeight, flexGrow: 1, height: '100%', width: '100%' }}
+      style={{ flexGrow: 1, height: '100%', width: '100%' }}
     >
       <View className='w-full h-[18%] flex-row items-center justify-between p-4'> 
         <GoBackButton/>
