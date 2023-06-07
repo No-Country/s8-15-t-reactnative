@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import contacts from './contacts';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ const MyContacts = ({ setIsSelected }) => {
     };
 
     return (
-        <View className='h-64 w-full overflow-auto mt-5'>
+        <ScrollView className='h-[547px] w-full mt-5'>
             {
                 contacts.map(contact =>(
                     <TouchableOpacity 
@@ -33,7 +33,7 @@ const MyContacts = ({ setIsSelected }) => {
                     </TouchableOpacity>
                 ))
             }
-        </View>
+        </ScrollView>
     );
 };
 

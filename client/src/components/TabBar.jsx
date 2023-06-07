@@ -1,21 +1,20 @@
 import React, { useMemo } from 'react'
-import { useColorScheme } from 'react-native'
+import { useColorScheme, View, Text } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {
 	MaterialCommunityIcons,
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, ScannQr } from '../screens'
+import { CryptoList, Historial, Home, ScannQr } from '../screens';
 import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
 import SendMoney from "../screens/Transfer/SendMoney";
 import TransferMoney from '../screens/Transfer/TransferMoney';
 import Voucher from '../screens/Transfer/Voucher';
 import { useSelector } from 'react-redux';
-import Notificaciones from './Notificaciones/Notificaciones'
-import { CryptoList, Home, ScannQr } from '../screens'
-import { Login } from '../screens/Login'
-import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
+import Notificaciones from './Notificaciones/Notificaciones';
+import { Login } from '../screens/Login';
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser';
 
 const Tab = createBottomTabNavigator()
 
@@ -57,9 +56,14 @@ const TabBar = () => {
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
-							<MaterialCommunityIcons name='home-variant' size={22} />
+							<>
+								<View className='bg-[#6D39E5] w-[64px] h-[25px] rounded-[16px] justify-center items-center'> 
+									<MaterialCommunityIcons name='home-variant' size={16} color='white'/>
+								</View>
+								<Text className='text-[12px]'>Inicio</Text>
+							</>
 						) : (
-							<MaterialCommunityIcons name='home-variant-outline' size={22} />
+							<MaterialCommunityIcons name='home-variant' size={22} />
 						),
 				}}
 			/>
@@ -67,7 +71,15 @@ const TabBar = () => {
 				name='tranferir'
 				component={ScreenComponent}
 				options={{
-					tabBarIcon: ({ focused, color, size }) => (
+					tabBarIcon: ({ focused, color, size }) => 
+					focused? (
+						<>
+							<View className='bg-[#6D39E5] w-[64px] h-[25px] rounded-[16px] justify-center items-center'> 
+								<FontAwesome5 name='hand-holding-usd' size={16} color='white'/>
+							</View>
+							<Text className='text-[12px]'>Transferir</Text>
+						</>
+					) : (
 						<FontAwesome5 name='hand-holding-usd' size={22} />
 					),
 				}}
@@ -76,9 +88,18 @@ const TabBar = () => {
 				name='qr'
 				component={ScannQr}
 				options={{
-					tabBarIcon: ({ focused, color, size }) => (
+					tabBarIcon: ({ focused, color, size }) => 
+					focused? (
+						<>
+							<View className='bg-[#6D39E5] w-[64px] h-[25px] rounded-[16px] justify-center items-center'> 
+								<MaterialCommunityIcons name='qrcode-scan' size={16} color='white'/>
+							</View>
+							<Text className='text-[12px]'>QR</Text>
+						</>
+					) : (
 						<MaterialCommunityIcons name='qrcode-scan' size={22} />
 					),
+						
 				}}
 			/>
 			<Tab.Screen
@@ -87,9 +108,15 @@ const TabBar = () => {
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
-							<Ionicons name='flash-sharp' size={22} />
+							<>
+								<View className='bg-[#6D39E5] w-[64px] h-[25px] rounded-[16px] justify-center items-center'> 
+									<Ionicons name='flash-sharp' size={16} color='white'/>
+								</View>
+								<Text className='text-[12px]'>Crypto</Text>
+							</>
+							
 						) : (
-							<Ionicons name='flash-outline' size={22} />
+							<Ionicons name='flash-sharp' size={22} />
 						),
 				}}
 			/>
