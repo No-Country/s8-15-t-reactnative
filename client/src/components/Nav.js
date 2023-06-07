@@ -6,6 +6,8 @@ import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'
 import Security from '../screens/Security/Security'
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
+import { Login } from '../screens/Login'
+import Registro from '../screens/Registro/Registro'
 
 const Stack = createStackNavigator()
 
@@ -13,9 +15,12 @@ const Nav = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name='Onboarding' component={Onboarding} />
+			<Stack.Screen name='Login' component={Login} />
+			<Stack.Screen name='Home' component={Home} />
 			<Stack.Screen name='Bar' component={TabBar} />
 			<Stack.Screen name='Profile' component={Profile} />
-			<Stack.Screen name='Home' component={Home} />
+			
+			<Stack.Screen name='Registro' component={Registro} />
 			<Stack.Screen name='CryptoMetric' component={CryptoMetric} />
 			<Stack.Screen name='Security' component={Security} />
 			<Stack.Screen  name='VerificationUser' component={ProgressStepUser}/>

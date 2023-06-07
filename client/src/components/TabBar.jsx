@@ -8,6 +8,8 @@ import {
 import { CryptoList, Home, ScannQr } from '../screens'
 import { Login } from '../screens/Login'
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
+import Registro from '../screens/Registro/Registro'
+
 
 const Tab = createBottomTabNavigator()
 
@@ -31,7 +33,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Login}
+				component={Home}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (
