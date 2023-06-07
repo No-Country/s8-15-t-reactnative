@@ -14,6 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import fondo from '../../Images/wave.webp'
 import { CustomDialog } from '../../components/CustomDialog/CustomDialog';
 import { AntDesign } from '@expo/vector-icons'; 
+import {useNavigation} from '@react-navigation/core';
 
 const ProgressStepUser = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -23,6 +24,8 @@ const ProgressStepUser = () => {
     celphone: '',
     dni: '',
   });
+
+  const navigation = useNavigation();
 
   const [form1Data, setForm1Data] = useState(null);
   const [form2Data, setForm2Data] = useState(null);
@@ -50,6 +53,7 @@ const ProgressStepUser = () => {
   }
   const handlePreviousStep = () => {
     console.log('Botón de flecha presionado');
+    navigation.goBack()
   };
   // close olvido contrasena
   const handleClosePassword = () => {

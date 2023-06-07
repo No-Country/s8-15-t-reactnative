@@ -6,11 +6,10 @@ import {
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Home, ScannQr } from '../screens'
-import { Login } from '../screens/Login'
+import { CryptoList, Home, Profile, ScannQr } from '../screens'
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
-import Registro from '../screens/Registro/Registro'
 import {useSelector} from 'react-redux'
+
 
 
 const Tab = createBottomTabNavigator()
@@ -83,7 +82,7 @@ const TabBar = () => {
 			/>
 			<Tab.Screen
 				name='qr'
-				component={ScannQr}
+				component={Profile}
 				options={{
 					tabBarIcon: ({ focused, color, size }) => 
 					focused? (

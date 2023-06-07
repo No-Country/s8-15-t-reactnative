@@ -11,19 +11,41 @@ import colors from '../../utils/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import InputsBasic from '../../components/InputsBasic/InputsBasic'
 import {useNavigation} from '@react-navigation/native'
+import {useDispatch} from 'react-redux'
+import {setUserData} from '../../reduxApp/feature/userSlice'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios'
+import {login} from '../../reduxApp/feature/authSlice'
 
 const FormularioLogin = () => {
-	const [email, setEmail] = useState('')
-	const [contraseña, setContraseña] = useState('')
-	const navigation = useNavigation()
 
+	const navigation = useNavigation()
+	const dispatch = useDispatch()
+	const [input, setInput] = useState({
+		email: '',
+		password: '',
+	})
 	
-	const changeEmail = value => {
-		setEmail(value)
-	}
-	const changeContraseña = value => {
-		setContraseña(value)
-	}
+
+const handleLogin = async () => {
+  try {
+    const response = await axios.post('https://s8-15-t-reactnative-production.up.railway.app/login', input);
+    const data = response.data;
+
+    // Guardar los datos del usuario en AsyncStorage
+    await AsyncStorage.setItem('userData', JSON.stringify(data));
+
+    dispatch(setUserData(data));
+	dispatch(login())
+    console.log(data);
+  } catch (error) {
+    console.log('Error:', error);
+  }
+};
+
+	  
+			
+		
 
 	const [showPassword, setShowPassword] = useState(false)
 
@@ -40,8 +62,8 @@ const FormularioLogin = () => {
 							/>
 						}
 						placeholder={'correo@electronico.com.ar'}
-						onChangeText={setEmail}
-						value={email}
+						onChangeText={(text) => setInput({...input, email: text})}
+						value={input.email}
 					/>
 					<InputsBasic
 						icon={
@@ -52,14 +74,14 @@ const FormularioLogin = () => {
 							/>
 						}
 						placeholder={'Contraseña'}
-						onChangeText={setContraseña}
-						value={contraseña}
+						onChangeText={(text) => setInput({...input, password: text}) }
+						value={input.password}
 					/>
 					<TouchableOpacity className='mt-3'>
 						<Text style={styles.btnOlvido}>¿Olvidaste tu contraseña?</Text>
 					</TouchableOpacity>
 
-					<TouchableOpacity className='mt-5 w-min' style={styles.btn}>
+					<TouchableOpacity onPress={() => handleLogin()} className='mt-5 w-min' style={styles.btn}>
 						<Text
 							className='text-lg text-white'
 							style={{ fontFamily: 'poppins-semiBold' }}

@@ -5,55 +5,37 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import InputsBasic from '../../components/InputsBasic/InputsBasic'
 import { Login } from '../Login'
 import axios from 'axios'
+import {useNavigation} from '@react-navigation/core'
 
 const RegistroFormulario = () => {
-    const [nombreApellido, setNombreApellido] = useState('');
-    const [email, setEmail] = useState('');
-    const [contraseña, setContraseña] = useState('');
+   
+    const [input, setInput] = useState({
+        name: '',
+        email: '',
+        password: ''
 
-    console.log(nombreApellido, email, contraseña)
+    });
+    const navigation = useNavigation()
 
-    /* Guarda los datos al momento de registrarme */
+    
+    
+
+  
 
     const buttonPressed = () => {
-        const arrayData = [];
-        console.log('HOlass')
-        if (nombreApellido && email && contraseña) {
-            const data = {
-                nombreApellido: nombreApellido,
-                email: email,
-                contraseña: contraseña
-            }
-            console.log('buenas noches')
-            arrayData.push(data);
-            axios.post('https://s8-15-t-reactnative-production.up.railway.app/register', data)
-                .then(response => console.log(response))
-                .catch(err => console.log(err))
-
-            try {
-                AsyncStorage.getItem('database_form').them((value) => {
-                    if (value !== null) {
-                        const d = JSON.parse(value);
-                        d.push(data)
-                        AsyncStorage.setItem('database_form', JSON.stringify(d)).then(() => {
-                            props.navigator.push({
-                                tittle: 'Registro hecho',
-                                component: Login
-                            })
-                        })
-                    } else {
-                        AsyncStorage.setItem('database_form', JSON.stringify(arrayData)).then(() => {
-                            props.navigator.push({
-                                tittle: 'Registro hecho',
-                                component: Login
-                            })
-                        })
-                    }
-                })
-            } catch (error) {
-                console.log(error)
-            }
-        }
+       if(input.name === '' || input.email === '' || input.password === ''){
+           Alert.alert('Error', 'Todos los campos son obligatorios')
+       }
+       else{
+           axios.post('https://s8-15-t-reactnative-production.up.railway.app/register', input)
+           .then(res => {
+               console.log(res.data)
+               navigation.navigate('Login')
+           })
+           .catch(err => {
+               console.log(err)
+           })
+       }
     }
     const [showPassword, setShowPassword] = useState(false)
 
@@ -70,8 +52,8 @@ const RegistroFormulario = () => {
                             />
                         }
                         placeholder={'Nomber y Apellido'}
-                        onChangeText={setNombreApellido}
-                        nombreApellido={nombreApellido}
+                        onChangeText={(text) => setInput({...input, name: text})}
+                        nombreApellido={input.name}
                     />
                     <InputsBasic
                         icon={
@@ -82,8 +64,8 @@ const RegistroFormulario = () => {
                             />
                         }
                         placeholder={'correo@electronico.com.ar'}
-                        onChangeText={setEmail}
-                        email={email}
+                        onChangeText={(text) => setInput({...input, email: text})}
+                        email={input.email}
                     />
                     <InputsBasic
                         icon={
@@ -94,12 +76,12 @@ const RegistroFormulario = () => {
                             />
                         }
                         placeholder={'Contraseña'}
-                        onChangeText={setContraseña}
-                        contraseña={contraseña}
+                        onChangeText={(text) =>setInput({...input, password: text})}
+                        contraseña={input.password}
                     />
 
 
-                    <TouchableOpacity className='mt-5 w-min' style={styles.btn} onPress={() => { buttonPressed }}>
+                    <TouchableOpacity className='mt-5 w-min' style={styles.btn} onPress={() =>  buttonPressed()}>
                         <Text className='text-lg text-white'>
 
                             Registrarme
@@ -152,7 +134,7 @@ const RegistroFormulario = () => {
                             }}>
                             ¿Ya tenés un perfil?
                         </Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Login')} >
                             <Text style={styles.btnInicioSesion}> Iniciar Sesión </Text>
                         </TouchableOpacity>
                     </View>

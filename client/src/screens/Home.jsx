@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <View>        
             
-            <Registro />
+          
         </View>
     )
 }
