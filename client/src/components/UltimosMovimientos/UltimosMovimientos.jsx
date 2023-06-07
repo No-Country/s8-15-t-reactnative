@@ -1,8 +1,10 @@
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import { useFonts } from 'expo-font';
 import { MovimientosItems } from '../MovimientosItems';
+import { CommonTitle } from '../CommonTitle';
+import colors from '../../utils/colors';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -11,6 +13,7 @@ const UltimosMovimientos = () => {
 		'roboto-regular': require('../../../assets/robotoFonts/Roboto-Regular.ttf'),
 		'roboto-medium': require('../../../assets/robotoFonts/Roboto-Medium.ttf'),
 		'roboto-bold': require('../../../assets/robotoFonts/Roboto-Bold.ttf'),
+		'poppins-semiBold': require('../../../assets/poppinsFonts/Poppins-SemiBold.ttf'),
 	});
 
 	const onLayoutUltimosMovimientos = useCallback(async () => {
@@ -20,7 +23,7 @@ const UltimosMovimientos = () => {
 	}, [fontsLoaded]);
 
 	if (!fontsLoaded) {
-		return <Text>Cargando...</Text>;
+		return <ActivityIndicator size="large" color={colors.violeta} />
 	}
 
 	const dataUltimosMov= [
@@ -77,7 +80,7 @@ const UltimosMovimientos = () => {
 	]
 
 	return <View onLayout={onLayoutUltimosMovimientos} className='px-5 py-2'>
-		<Text className='text-center text-2xl mb-4' style={{ fontFamily: 'roboto-bold' }}>Últimos movimientos</Text>
+		<CommonTitle text='Últimos movimientos'/>
 		{dataUltimosMov?.map((item)=> {
 			return (
 				<MovimientosItems key={item.id} category={item.categoria} description={item.desc} moneyAmount={item.monto}/>
