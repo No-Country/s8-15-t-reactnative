@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { AntDesign } from '@expo/vector-icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { setChangeScreen } from '../../reduxApp/feature/changeScreenSlice';
+import icon from '../../../assets/user.png';
 
 const Voucher = () => {
 
@@ -42,7 +43,9 @@ const Voucher = () => {
             <AntDesign name="leftcircleo" size={25} color="white" />
         </TouchableOpacity>
         <Text className='text-[22px] text-white font-semibold'>Comprobante</Text>
-        <Image className='bg-slate-100 w-[40px] h-[40px] rounded-full mr-2 border-[2px] border-white' source={''}/>
+        <View className='bg-slate-100 w-[40px] h-[40px] rounded-full mr-2 border-[2px] border-white'>
+          <Image className='w-full h-full object-contain'  source={icon}/>
+        </View>
       </View>
       <View className='rounded-tl-[36px] rounded-tr-[36px] w-full h-[82%] p-10 bg-[#FBFBFB] relative'>
         <Text className='text-center mb-5'><AntDesign name="checkcircle" size={73.02} color="#32C993" /></Text>
