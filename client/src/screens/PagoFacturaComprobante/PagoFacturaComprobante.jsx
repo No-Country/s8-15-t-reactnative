@@ -1,5 +1,4 @@
 import {
-	Image,
 	ScrollView,
 	StatusBar,
 	Text,
