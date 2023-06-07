@@ -1,53 +1,35 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
 	View,
 	Image,
 	Text,
 	ScrollView,
-	TextInput,
-	StyleSheet,
 	ImageBackground,
 	TouchableOpacity,
-	Modal,
+	Share,
 } from 'react-native'
-import CheckBox from 'expo-checkbox'
 import Constants from 'expo-constants'
-import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 import Button from '../../components/Button/Button'
-import colors from '../../utils/colors'
-import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker'
 const CobroListo = () => {
-	const [payfriend, setpayfriend] = useState(false)
-	const [efectivo, setefectivo] = useState(false)
-	const [indefinido, setIndefinido] = useState(false)
-	const [openDate, setOpenDate] = useState(false)
-	const [openEndDate, setOpenEndDate] = useState(false)
-	const today = new Date()
-	const startDate = getFormatedDate(
-		today.setDate(today.getDate() + 1),
-		'YYYY/MM/DD'
-	)
-	const [selectedStartDate, setSelectedStartDate] = useState('YY/MM/DD')
-	const [startedDate, setstartedDate] = useState('12/12/2023')
-	const onPressStartData = () => {
-		setOpenDate(!openDate)
-	}
-	const handleChangeStartDate = propDate => {
-		setstartedDate(propDate)
+	const handleShare = async () => {
+		try {
+			const result = await Share.share({
+				message: 'www.pyfriend.com/link-pyment?id=1215456131',
+			})
+			if (result.action === Share.sharedAction) {
+				if (result.activityType) {
+					// shared with activity type of result.activityType
+				} else {
+					// shared
+				}
+			} else if (result.action === Share.dismissedAction) {
+				// dismissed
+			}
+		} catch (error) {
+			Alert.alert(error.message)
+		}
 	}
 
-	const endDate = getFormatedDate(
-		today.setDate(today.getDate() + 1),
-		'YYYY/MM/DD'
-	)
-	const [selectedEndDate, setSelectedEndDate] = useState('YY/MM/DD')
-	const [endedDate, setEndedDate] = useState('12/12/2023')
-	const onPressEndData = () => {
-		setOpenEndDate(!openEndDate)
-	}
-	const handleChangeEndDate = propDate => {
-		setEndedDate(propDate)
-	}
 	return (
 		<ScrollView className='bg-gris_background'>
 			<ImageBackground
@@ -112,27 +94,21 @@ const CobroListo = () => {
 					<Text className='text-lg'>Link del producto o servicio</Text>
 				</TouchableOpacity>
 				<View className='flex flex-row w-full justify-between'>
-					<Image
-						className='w-8 h-8'
-						source={require('../../../assets/copy.png')}
-					/>
-					<Image
-						className='w-8 h-8'
-						source={require('../../../assets/whatsapp.png')}
-					/>
-					<Image
-						className='w-8 h-8'
-						source={require('../../../assets/fb.png')}
-					/>
-					<Image
-						className='w-8 h-8'
-						source={require('../../../assets/compartir.png')}
-					/>
+					<TouchableOpacity
+						className='w-full bg-violeta rounded-2xl py-2'
+						onPress={handleShare}
+					>
+						<View>
+							<Text className='text-white font-bold text-lg text-center'>
+								Compartir link
+							</Text>
+						</View>
+					</TouchableOpacity>
 				</View>
 			</View>
 			<TouchableOpacity className='bg-white rounded-3xl py-2 px-16 mb-2 mr-auto ml-auto '>
 				<Text className='text-center font-bold text-xl text-violeta'>
-					Crer link de pgo
+					Crear link de pgo
 				</Text>
 			</TouchableOpacity>
 			<View className='w-10/12 mr-auto ml-auto flex'>
@@ -143,21 +119,5 @@ const CobroListo = () => {
 		</ScrollView>
 	)
 }
-const styles = StyleSheet.create({
-	container: {
-		width: '100%',
-		padding: 16,
-		paddingTop: 100,
-	},
-	wrapper: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignContent: 'center',
-	},
-	text: {
-		lineHeight: 30,
-		marginLeft: 10,
-	},
-})
 
 export default CobroListo
