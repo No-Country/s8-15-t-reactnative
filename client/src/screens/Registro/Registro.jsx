@@ -2,13 +2,11 @@ import { Text, View, Image } from 'react-native'
 import colors from '../../utils/colors'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useCallback } from 'react'
 import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import * as SplashScreen from 'expo-splash-screen';
 import SplashMessageRegistro from './SplashMessageRegistro'
-import { Divider } from 'react-native-material-ui'
-import { styles } from '../HeaderHistorial/headerHistorial.styles'
+
 
 SplashScreen.preventAutoHideAsync();
 
@@ -42,14 +40,15 @@ const Registro = () => {
                 style={{ height: '100%', width: '100%' }}
             >
             <Image
-            source={require("../../Images/OBJECTS.png")}
-            resizeMode='contain'
+            source={require('../../../assets/FondoLoginRegistro.png')}
+				className='h-[250px] w-full'
+				resizeMode='cover'
             />
                 <SplashMessageRegistro
                     title={currentStep.title}
                     description1={currentStep.description1}               
                 />
-                <Divider style={styles.divider}/>
+                
             </LinearGradient>
 
         </View>

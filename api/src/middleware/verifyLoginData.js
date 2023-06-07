@@ -3,15 +3,15 @@ const verifyLoginData = (req, res, next) => {
 		statusCode: 200,
 		errors: {},
 	}
-	const { email, password, repeatedPassword } = req.body
+	const { email, password } = req.body
 	const invalidEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 	if (!invalidEmail.test(email)) {
 		data.statusCode(401)
 		data.errors.email = 'Ingrese formato de email válido'
 	}
-	if (password !== repeatedPassword) {
+	if (!password) {
 		data.statusCode(401)
-		data.errors.password = 'Las contraseñas son diferentes'
+		data.errors.password = 'Las contraseñas'
 	}
 	if (data.statusCode !== 200) return res.send(data)
 	next()

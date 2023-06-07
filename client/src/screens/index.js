@@ -2,7 +2,7 @@ export * from './CambiarDinero';
 export * from './CryptoList';
 export * from './CryptoMetric';
 export * from './CryptoTransferencia';
-export * from './Historial';
+export * from './historial';
 export { default as Home } from './Home';
 export * from './Login';
 export * from './Onboarding/Index';
