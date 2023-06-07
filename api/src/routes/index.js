@@ -7,10 +7,11 @@ const userRoutes = require('./userRoutes')
 const categoryRoutes = require('./categoryRoutes')
 const transactionRoutes = require('./transactionRoutes')
 const { userMessageEmail } = require('../controllers/userMessageEmail')
+const verifyLoginData=require('../middleware/verifyLoginData')
 
 const router = Router()
 
-router.post('/login', userLogin, userLogin)
+router.post('/login', verifyLoginData, userLogin)
 router.post('/register', verifiRegisterData, userRegister)
 router.use('/user', userRoutes );
 router.use('/category', categoryRoutes );
