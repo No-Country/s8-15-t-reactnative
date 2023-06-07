@@ -58,6 +58,18 @@ const contacts = [
         cbu: '01702046600000011111',
         alias: 'MarianaR',
         dni: '11111111'
+    },
+    {
+        name: 'Ana López',
+        cbu: '01702046600000044444',
+        alias: 'AnaL',
+        dni: '44444444'
+    },
+    {
+        name: 'Carlos Sánchez',
+        cbu: '01702046600000033333',
+        alias: 'CarlosS',
+        dni: '33333333'
     }
 ];
 

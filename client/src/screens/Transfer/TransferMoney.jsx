@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Keyboard from '../../components/Transfer/Keyboard';
 import { setTransferData } from '../../reduxApp/feature/transferDataSlice';
 import { setChangeScreen } from '../../reduxApp/feature/changeScreenSlice';
+import icon from '../../../assets/user.png';
 import { GoBackButton, SmallProfilePicture } from '../../components';
 
 const TransferMoney = () => {
