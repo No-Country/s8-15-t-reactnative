@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479423999507",
+    "project_id": "payfriend-4f45b",
+    "storage_bucket": "payfriend-4f45b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479423999507:android:28f586d95a990722bf19e6",
+        "android_client_info": {
+          "package_name": "Pay.friend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479423999507-9dikdreppfbmqn3o1i46s6k1661kgqa7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlumV_IPGBkXERbIeFuySHd9hqRRkyb9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479423999507-2tnj4i7s0ukahmevo76f12965dq76p0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

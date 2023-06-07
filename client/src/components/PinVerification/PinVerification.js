@@ -94,7 +94,7 @@ const PinVerification = () => {
 					<TouchableOpacity
 						className='flex justify-center items-center py-2.5 px-16 rounded-3xl mt-14 bg-white'
 						onPress={() => {
-							navigation.navigate('Bar')
+							navigation.navigate('Login')
 						}}
 					>
 						<Text
