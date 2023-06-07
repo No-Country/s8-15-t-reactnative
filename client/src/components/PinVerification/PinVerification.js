@@ -1,11 +1,16 @@
-import { View, Text, TouchableOpacity, Image, TextInput, ActivityIndicator } from 'react-native'
+import {
+	View,
+	Text,
+	TouchableOpacity,
+	Image,
+	ActivityIndicator,
+} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useFonts } from 'expo-font'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 import fondo from '../../Images/wave.webp'
-import { useState } from 'react'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
 
@@ -30,7 +35,7 @@ const PinVerification = () => {
 	}, [fontsLoaded])
 
 	if (!fontsLoaded) {
-		return <ActivityIndicator size="large" color={colors.violeta} />
+		return <ActivityIndicator size='large' color={colors.violeta} />
 	}
 	return (
 		<View onLayout={onLayoutButtom}>
@@ -86,7 +91,7 @@ const PinVerification = () => {
 					<TouchableOpacity
 						className='flex justify-center items-center py-2.5 px-16 rounded-3xl mt-14 bg-white'
 						onPress={() => {
-							navigation.navigate('Bar')
+							navigation.navigate('Login')
 						}}
 					>
 						<Text
