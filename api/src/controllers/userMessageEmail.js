@@ -4,7 +4,7 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey('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');
 
 const userMessageEmail = async (req, res) => {
-    const { destinatario, remitente, asunto, contenido,nombre,codigo } = req.body;
+    const { destinatario, remitente,nombre,codigo } = req.body;
     const msg = {
       to: destinatario,
       from: remitente,
