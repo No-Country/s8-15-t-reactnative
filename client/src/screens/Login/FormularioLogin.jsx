@@ -10,11 +10,14 @@ import {
 import colors from '../../utils/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import InputsBasic from '../../components/InputsBasic/InputsBasic'
+import {useNavigation} from '@react-navigation/native'
 
 const FormularioLogin = () => {
 	const [email, setEmail] = useState('')
 	const [contraseña, setContraseña] = useState('')
+	const navigation = useNavigation()
 
+	
 	const changeEmail = value => {
 		setEmail(value)
 	}
@@ -113,7 +116,7 @@ const FormularioLogin = () => {
 						>
 							¿Aún no tienes una cuenta?
 						</Text>
-						<TouchableOpacity>
+						<TouchableOpacity onPress={() => navigation.navigate('Register')}>
 							<Text style={styles.btnRegistro}> Registrarte </Text>
 						</TouchableOpacity>
 					</View>

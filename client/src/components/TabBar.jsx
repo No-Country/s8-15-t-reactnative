@@ -6,15 +6,12 @@ import {
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
-import { CryptoList, Historial, Home, ScannQr } from '../screens';
-import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
-import SendMoney from "../screens/Transfer/SendMoney";
-import TransferMoney from '../screens/Transfer/TransferMoney';
-import Voucher from '../screens/Transfer/Voucher';
-import { useSelector } from 'react-redux';
-import Notificaciones from './Notificaciones/Notificaciones';
-import { Login } from '../screens/Login';
-import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser';
+import { CryptoList, Home, ScannQr } from '../screens'
+import { Login } from '../screens/Login'
+import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
+import Registro from '../screens/Registro/Registro'
+import {useSelector} from 'react-redux'
+
 
 const Tab = createBottomTabNavigator()
 
@@ -25,9 +22,9 @@ const TabBar = () => {
  
 	const handleScreens = () => {
 		const screens = {
-		  SendMoney: SendMoney,
-		  TransferMoney: TransferMoney,
-		  Voucher: Voucher
+		  SendMoney: 'SendMoney',
+		  TransferMoney: 'TransferMoney',
+		  Voucher: 'Voucher'
 		};
 	  
 		return screens[nameScreen];
@@ -52,7 +49,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Login}
+				component={Home}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

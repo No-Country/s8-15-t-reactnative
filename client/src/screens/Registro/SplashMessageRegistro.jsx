@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, SafeAreaView } from 'react-native'
-import Stepper from '../Stepper/Stepper'
+import Stepper from '../../components/Stepper/Stepper'
 import RegistroFormulario from './RegistroFormulario'
 
 const SplashMessageRegistro = ({
