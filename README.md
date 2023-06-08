@@ -1,6 +1,5 @@
 # Bienvenidos 
-### al repositorio de 
-# PAYFRIEND 
+### al repositorio de # PAYFRIEND 
 ## Tu billetera virtual
                     
 -------------
@@ -36,9 +35,9 @@ Figma/ After Effects/ jira
 
 **Javier Márquez** > Frontend
 
-**Jose Armando Ccama Cruz** > Frontend
+**Jose Armando Ccama Cruz** > Backend/Frontend
 
-**Nicolás Lo Giudice** > Frontend
+**Nicolás Lo Giudice** > Backend/Frontend
 
 **Silvia Ratero** > Frontend
 
