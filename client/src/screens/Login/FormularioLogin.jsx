@@ -75,6 +75,7 @@ const FormularioLogin = ({setShowAlertPassword}) => {
 						placeholder={'Contraseña'}
 						onChangeText={(text) => setInput({...input, password: text}) }
 						value={input.password}
+						secureTextEntry={true}
 					/>
 					<TouchableOpacity className='mt-3' onPress={handleRecoverPassword}>
 						<Text style={styles.btnOlvido}>¿Olvidaste tu contraseña?</Text>
@@ -160,7 +161,7 @@ const styles = StyleSheet.create({
 		height: 30,
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginHorizontal: 50,
+		// marginHorizontal: 50,
 		borderRadius: 30,
 		backgroundColor: '#E5E6EA',
 	},

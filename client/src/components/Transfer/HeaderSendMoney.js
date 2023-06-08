@@ -3,7 +3,6 @@ import { useState, useEffect, useCallback } from 'react'
 import {
 	View,
 	Text,
-	Image,
 	TextInput,
 	TouchableOpacity,
 	ActivityIndicator,
@@ -16,6 +15,7 @@ import { waveSvg } from '../../../assets/whiteLinesSvg/wave'
 import { useFonts } from 'expo-font'
 import * as SplashScreen from 'expo-splash-screen'
 import colors from '../../utils/colors'
+import { SmallProfilePicture } from '../SmallProfilePicture'
 
 SplashScreen.preventAutoHideAsync()
 const HeaderSendMoney = ({ setIsSelected }) => {
@@ -48,7 +48,10 @@ const HeaderSendMoney = ({ setIsSelected }) => {
 			style={{ height: 150, width: '100%' }}
 			className='rounded-bl-[36px] rounded-br-[36px] flex-row items-center justify-between p-4 relative z-30'
 		>
-			<View onLayout={onLayoutHeaderEnvio} className='w-screen h-full absolute top-[40] overflow-hidden'>
+			<View
+				onLayout={onLayoutHeaderEnvio}
+				className='w-screen h-full absolute top-[40] overflow-hidden'
+			>
 				{svgXml !== '' && (
 					<SvgXml
 						xml={svgXml}
@@ -72,14 +75,7 @@ const HeaderSendMoney = ({ setIsSelected }) => {
 					className='flex flex-row justify-center items-center 
 				gap-x-7'
 				>
-					<View className='border-solid border-2 border-white rounded-full'>
-						<Image
-							className='h-[40px] w-[40px] rounded-full'
-							source={{
-								uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
-							}}
-						/>
-					</View>
+					<SmallProfilePicture />
 				</View>
 			</View>
 			<View className='justify-center items-center absolute bottom-[-25] inset-x-0'>

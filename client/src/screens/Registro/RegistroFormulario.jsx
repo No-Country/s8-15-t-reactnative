@@ -3,7 +3,6 @@ import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Image, Alert } 
 import colors from '../../utils/colors'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import InputsBasic from '../../components/InputsBasic/InputsBasic'
-import { Login } from '../Login'
 import axios from 'axios'
 import {useNavigation} from '@react-navigation/core'
 
@@ -16,11 +15,6 @@ const RegistroFormulario = () => {
 
     });
     const navigation = useNavigation()
-
-    
-    
-
-  
 
     const buttonPressed = () => {
        if(input.name === '' || input.email === '' || input.password === ''){
@@ -37,12 +31,11 @@ const RegistroFormulario = () => {
            })
        }
     }
-    const [showPassword, setShowPassword] = useState(false)
 
     return (
         <SafeAreaView style={styles.container} className='w-full'>
             <View style={styles.body}>
-                <View className='w-full px-5'>
+                <View className='w-full px-2'>
                     <InputsBasic
                         icon={
                             <MaterialCommunityIcons
@@ -103,8 +96,8 @@ const RegistroFormulario = () => {
                             También podes conectarte desde:
                         </Text>
                     </View>
-                    <View className='flex flex-row items-center justify-between mt-4'>
-                        <TouchableOpacity className='flex flex-row items-center border border-solid border-gris_border px-1.5 py-1 rounded-full'>
+                    <View className='flex flex-row items-center justify-between mt-4 w-full'>
+                        <TouchableOpacity className='flex flex-row items-center border border-solid border-gris_border px-2 py-1 rounded-full'>
                             <Image
                                 source={require('../../../assets/logoGoogle.png')}
                                 className='h-5 w-5'
@@ -114,7 +107,7 @@ const RegistroFormulario = () => {
                                 Iniciar con Google
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity className='flex flex-row items-center border border-solid border-gris_border px-1.5 py-1 rounded-full'>
+                        <TouchableOpacity className='flex flex-row items-center border border-solid border-gris_border px-2 py-1 rounded-full'>
                             <Image
                                 source={require('../../../assets/logoFacebook.png')}
                                 className='h-5 w-5'

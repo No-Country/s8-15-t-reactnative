@@ -2,6 +2,7 @@ import { Text, View,StyleSheet,Image,TouchableOpacity } from 'react-native'
 import CircleWithCheck from '../../Images/CircleWithCheck.jsx';
 import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
 
