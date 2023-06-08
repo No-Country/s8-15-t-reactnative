@@ -1,10 +1,14 @@
 import { Text, View,StyleSheet,Image,TouchableOpacity } from 'react-native'
-import Check from '../../Images/CircleWithCheck.jsx';
 import CircleWithCheck from '../../Images/CircleWithCheck.jsx';
+import { useNavigation } from '@react-navigation/native';
 
 export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
+
+  const navigation = useNavigation();
+
   const handleSubmit = () => {
-    setShowAlertPassword(true)
+    navigation.navigate('UserProfile');
+    // setShowAlertPassword(true)
   };
   return (
     <View style={styles.container}>
