@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import {
 	View,
 	Text,
@@ -26,6 +26,7 @@ import { GoBackButton } from '../components'
 
 const Profile = () => {
 	const dispatch = useDispatch()
+	const user = useSelector(state => state.user?.user);
 	const cerrar = async () => {
 		try {
 			await AsyncStorage.removeItem('userData')
@@ -59,13 +60,13 @@ const Profile = () => {
 						<Image
 							className='h-[90px] w-[90px] rounded-full'
 							source={{
-								uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
+								uri: user?.picture||'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
 							}}
 						/>
 					</View>
-					<Text className='text-lg text-white font-bold '>Esteban Leisz</Text>
+					<Text className='text-lg text-white font-bold '>{user?.name}</Text>
 					<Text className='text-lg text-white font-normal'>
-						esteban.leisz@gmail.com
+						{user?.email}
 					</Text>
 				</View>
 			</ImageBackground>
