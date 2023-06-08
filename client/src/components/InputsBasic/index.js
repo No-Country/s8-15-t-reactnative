@@ -1,0 +1,1 @@
+export { default as InputsBasic } from './InputsBasic';

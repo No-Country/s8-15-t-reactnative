@@ -1,0 +1,1 @@
+export { default as InputSecondModel } from './InputSecondModel';

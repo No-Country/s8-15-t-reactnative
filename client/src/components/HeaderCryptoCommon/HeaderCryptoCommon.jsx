@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
 	Image,
 	ImageBackground,
@@ -8,20 +9,16 @@ import {
 import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 import Constants from 'expo-constants'
 import { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
 
-const HeaderCryptoCommon = ({titulo}) => {
+const HeaderCryptoCommon = ({ titulo }) => {
 	const [ocultarNumero, setOcultarNumero] = useState(false)
 
 	const dineroDisponible = 3215
 
 	const numeroNormalizado = dineroDisponible.toLocaleString('es-ES', {
-		// minimumFractionDigits: 2,
 		maximumFractionDigits: 2,
 	})
 	const numeroOculto = numeroNormalizado.replace(/[0-9]/g, '·')
-
-	const navigation = useNavigation()
 
 	return (
 		<ImageBackground

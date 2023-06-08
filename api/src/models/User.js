@@ -3,11 +3,12 @@ module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('user', {
       
-     /*  user_id: {
-        type: DataTypes.STRING,
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
         primaryKey: true,
         unique: true,
-      }, */
+      },
   
       name: {
         type: DataTypes.STRING,
@@ -15,7 +16,6 @@ module.exports = (sequelize) => {
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
        
       },
       lastName: {
@@ -37,7 +37,7 @@ module.exports = (sequelize) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       picture: {
         type: DataTypes.STRING,

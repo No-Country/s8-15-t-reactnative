@@ -1,10 +1,14 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import { useState } from 'react'
+import { View, Text, AsyncStorage } from 'react-native'
+import Registro from './Registro/Registro'
+import Profile from './Profile'
 
 const Home = () => {
+    const [loading, setLoading] = useState(false);
     return (
-        <View>
-            <Text>HOME</Text>
+        <View>        
+            
+          
         </View>
     )
 }

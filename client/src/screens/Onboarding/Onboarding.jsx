@@ -1,9 +1,8 @@
-import { ActivityIndicator, Text, View } from 'react-native'
+import { ActivityIndicator, View } from 'react-native'
 import { useFonts } from 'expo-font'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { SplashMessage } from '../../components/SplashMessage'
-import { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import * as SplashScreen from 'expo-splash-screen'
 import { infoSteps } from './InfoStep'
@@ -12,6 +11,7 @@ import colors from '../../utils/colors'
 SplashScreen.preventAutoHideAsync()
 
 const Onboarding = () => {
+	SplashScreen.preventAutoHideAsync()
 	const [fontsLoaded] = useFonts({
 		'poppins-medium': require('../../../assets/poppinsFonts/Poppins-Medium.ttf'),
 		'poppins-regular': require('../../../assets/poppinsFonts/Poppins-Regular.ttf'),
@@ -35,7 +35,7 @@ const Onboarding = () => {
 		if (activeStep < 2) {
 			setActiveStep(activeStep + 1)
 		} else {
-			navigation.navigate('Security')
+			navigation.navigate('Login')
 		}
 	}
 
