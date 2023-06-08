@@ -9,7 +9,10 @@ import {
 } from 'react-native'
 import Constants from 'expo-constants'
 
-const CobroLinksCreados = () => {
+const CobroLinksCreados = ({ navigation }) => {
+	const goBack = () => {
+		navigation.goBack()
+	}
 	return (
 		<ScrollView className='bg-gris_background'>
 			<ImageBackground
@@ -21,7 +24,7 @@ const CobroLinksCreados = () => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={goBack}>
 						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
 							<Image
 								className='h-4 w-4 rounded-full'

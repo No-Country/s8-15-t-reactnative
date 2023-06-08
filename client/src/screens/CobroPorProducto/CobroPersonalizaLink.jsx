@@ -16,7 +16,8 @@ import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 import Button from '../../components/Button/Button'
 import colors from '../../utils/colors'
 import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker'
-const CobroPersonalizaLink = () => {
+const CobroPersonalizaLink = ({ navigation, route }) => {
+	const { monto } = route.params
 	const [payfriend, setpayfriend] = useState(false)
 	const [efectivo, setefectivo] = useState(false)
 	const [indefinido, setIndefinido] = useState(false)
@@ -48,6 +49,19 @@ const CobroPersonalizaLink = () => {
 	const handleChangeEndDate = propDate => {
 		setEndedDate(propDate)
 	}
+	const goShare = () => {
+		const data = {
+			monto: monto,
+			method: payfriend ? 'payfriend' : 'efectivo',
+			vigencia: `desde: ${selectedStartDate} hasta: ${selectedEndDate}`,
+		}
+		if (indefinido) data.vigencia = 'indefinido'
+		console.log(data)
+		navigation.navigate('cobrosDescripcion', data)
+	}
+	const goBack = () => {
+		navigation.goBack()
+	}
 	return (
 		<ScrollView className='bg-white'>
 			<ImageBackground
@@ -59,7 +73,7 @@ const CobroPersonalizaLink = () => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={goBack}>
 						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
 							<Image
 								className='h-4 w-4 rounded-full'
@@ -73,6 +87,7 @@ const CobroPersonalizaLink = () => {
 					>
 						Cobros
 					</Text>
+
 					<View
 						className='flex flex-row justify-center items-center 
 				gap-x-7'
@@ -196,9 +211,14 @@ const CobroPersonalizaLink = () => {
 					<Text>Indefinido</Text>
 				</View>
 
-				<View className='w-[240px] mb-4 mr-auto ml-auto flex '>
-					<Button text={'Continuar'} onPress={() => console.log('press')} />
-				</View>
+				<TouchableOpacity
+					onPress={goShare}
+					className='w-[240px] px-[22px] pt-1 pb-1 text-white rounded-2xl bg-naranja '
+				>
+					<Text className='text-white font-bold text-center text-xl'>
+						Continuar
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</ScrollView>
 	)

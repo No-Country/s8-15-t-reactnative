@@ -39,7 +39,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CobrosIndex}
+				component={CobroPorProducto}
 				options={{
 					tabBarIcon: ({ focused, color, size }) =>
 						focused ? (

@@ -13,8 +13,16 @@ import Constants from 'expo-constants'
 import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 
 import Button from '../../components/Button/Button'
-const CobroDescripcion = () => {
-	const [text, onChangeText] = useState('añadir descripcion')
+const CobroDescripcion = ({ navigation, route }) => {
+	const [text, onChangeText] = useState('')
+	const data = route.params
+	const goShare = () => {
+		data.descripcion = text
+		navigation.navigate('cobrosListo', data)
+	}
+	const goBack = () => {
+		navigation.goBack()
+	}
 
 	return (
 		<ScrollView className='bg-white'>
@@ -27,7 +35,7 @@ const CobroDescripcion = () => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={goBack}>
 						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
 							<Image
 								className='h-4 w-4 rounded-full'
@@ -74,14 +82,20 @@ const CobroDescripcion = () => {
 					className=' w-[230] h-10 rounded-md border-[1px] border-gris_medio mb-2 py-2 px-4 text-gris_texto'
 					onChangeText={onChangeText}
 					value={text}
+					placeholder='Describa su producto'
 				/>
 				<Text className='text-center mb-6'>
 					Se vera cundo envies el link 0/35
 				</Text>
 				<View className='w-40 h-32 mb-20 bg-slate-200 ml-auto mr-auto'></View>
-				<View className='w-[240px] mr-auto ml-auto flex '>
-					<Button text={'Continuar'} onPress={() => console.log('press')} />
-				</View>
+				<TouchableOpacity
+					onPress={goShare}
+					className='w-[240px] px-[22px] pt-1 pb-1 text-white rounded-2xl bg-naranja '
+				>
+					<Text className='text-white font-bold text-center text-xl'>
+						Continuar
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</ScrollView>
 	)

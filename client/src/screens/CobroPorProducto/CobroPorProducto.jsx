@@ -7,15 +7,22 @@ import {
 	TextInput,
 	ImageBackground,
 	TouchableOpacity,
+	Button,
 } from 'react-native'
 import Constants from 'expo-constants'
 
 import colors from '../../utils/colors'
-import Button from '../../components/Button/Button'
+// import Button from '../../components/Button/Button'
 import { myCryptos } from '../../utils/fakeCryptoData'
 import { CryptoListItem } from '../../components/CryptoListItem'
 const CobroPorProducto = ({ navigation }) => {
 	const [otpValue, setOtpValue] = useState('')
+	const goCustomLink = () => {
+		const data = {
+			monto: otpValue,
+		}
+		navigation.navigate('cobrosCustomLink', data)
+	}
 
 	return (
 		<ScrollView className='bg-white'>
@@ -91,12 +98,14 @@ const CobroPorProducto = ({ navigation }) => {
 						))}
 					</View>
 				</View>
-				<View className='w-[240px] bg-green-200 flex '>
-					<Button
-						text={'Continuar'}
-						// onPress={navigation.navigate('cobros-custom-link')}
-					/>
-				</View>
+				<TouchableOpacity
+					onPress={goCustomLink}
+					className='w-[240px] px-[22px] pt-1 pb-1 text-white rounded-2xl bg-naranja '
+				>
+					<Text className='text-white font-bold text-center text-xl'>
+						Continuar
+					</Text>
+				</TouchableOpacity>
 			</View>
 		</ScrollView>
 	)
