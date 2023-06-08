@@ -5,7 +5,7 @@ import {Picker} from '@react-native-picker/picker';
 import { countries } from '../../utils/stepFormCountries';
 
 const StepForm = ({ onSubmit,setShowAlert,setShowAlertData,form2Data }) => {
-  const [activeErrorEmail,setActiveErrorEmail] = useState(false);
+  // const [activeErrorEmail,setActiveErrorEmail] = useState(false);
 
   const [formData, setFormData] = useState({
     email: '',
@@ -38,35 +38,35 @@ const StepForm = ({ onSubmit,setShowAlert,setShowAlertData,form2Data }) => {
     formData.country,
   ]);
 
-  const phoneNumberError = useMemo(() => {
-    if (selectedCountry) {
-      const { maxLength, minLength } = selectedCountry;
-      const { celphone } = formData;
-      if (celphone.length < minLength) {
-        return `El celular debe tener al menos ${minLength} dígitos`;
-      }
-      if (celphone.length > maxLength) {
-        return `El celular debe tener como máximo ${maxLength} dígitos`;
-      }
-    }
-    return '';
-  }, [selectedCountry, formData]);
+  // const phoneNumberError = useMemo(() => {
+  //   if (selectedCountry) {
+  //     const { maxLength, minLength } = selectedCountry;
+  //     const { celphone } = formData;
+  //     if (celphone.length < minLength) {
+  //       return `El celular debe tener al menos ${minLength} dígitos`;
+  //     }
+  //     if (celphone.length > maxLength) {
+  //       return `El celular debe tener como máximo ${maxLength} dígitos`;
+  //     }
+  //   }
+  //   return '';
+  // }, [selectedCountry, formData]);
 
-  const dniError = useMemo(() => {
-    if (selectedCountry) {
-      const { digitCelphone } = selectedCountry;
-      const { dni } = formData;
+  // const dniError = useMemo(() => {
+  //   if (selectedCountry) {
+  //     const { digitCelphone } = selectedCountry;
+  //     const { dni } = formData;
       
-      if (dni.length < digitCelphone) {
-        return `El DNI debe tener al menos ${digitCelphone} dígitos`;
-      }
+  //     if (dni.length < digitCelphone) {
+  //       return `El DNI debe tener al menos ${digitCelphone} dígitos`;
+  //     }
       
-      if (dni.length > digitCelphone) {
-        return `El DNI debe tener como máximo ${digitCelphone} dígitos`;
-      }  
-    }
-    return '';
-  }, [selectedCountry, formData]);
+  //     if (dni.length > digitCelphone) {
+  //       return `El DNI debe tener como máximo ${digitCelphone} dígitos`;
+  //     }  
+  //   }
+  //   return '';
+  // }, [selectedCountry, formData]);
 
   const emailError = useMemo(() => {
     const { email } = formData;
@@ -87,23 +87,28 @@ const StepForm = ({ onSubmit,setShowAlert,setShowAlertData,form2Data }) => {
   };
 
   const handleSubmit = () => {
-    if (Object.values(formData).some(value => value === '')) {
-      setShowAlert(true);
-    } else if (phoneNumberError !== '') {
-      setShowAlertData(true)
-    } else if (dniError !== ''){
-      setShowAlertData(true)
-    }else if(emailError!==''){
-      setActiveErrorEmail(true)
-      setShowAlertData(true)
-    }
+    const countryName = formData.country.split(' - ')[1];
+    const celPhoneCode = formData.country.split(' - ')[0];
+    const modifiedFormData = { ...formData, country: countryName,celphone: celPhoneCode+' '+ formData.celphone };
+    onSubmit(modifiedFormData);
+
+    // if (Object.values(formData).some(value => value === '')) {
+    //   setShowAlert(true);
+    // } else if (phoneNumberError !== '') {
+    //   setShowAlertData(true)
+    // } else if (dniError !== ''){
+    //   setShowAlertData(true)
+    // }else if(emailError!==''){
+    //   setActiveErrorEmail(true)
+    //   setShowAlertData(true)
+    // }
     
-    else {
-      const countryName = formData.country.split(' - ')[1];
-      const celPhoneCode = formData.country.split(' - ')[0];
-      const modifiedFormData = { ...formData, country: countryName,celphone: celPhoneCode+' '+ formData.celphone };
-      onSubmit(modifiedFormData);
-    }
+    // else {
+    //   const countryName = formData.country.split(' - ')[1];
+    //   const celPhoneCode = formData.country.split(' - ')[0];
+    //   const modifiedFormData = { ...formData, country: countryName,celphone: celPhoneCode+' '+ formData.celphone };
+    //   onSubmit(modifiedFormData);
+    // }
   };
 
   return (
@@ -117,7 +122,7 @@ const StepForm = ({ onSubmit,setShowAlert,setShowAlertData,form2Data }) => {
           value={formData.email}
           onChangeText={(value) => handleInputChange('email', value)}
         />
-        {activeErrorEmail && renderError(emailError)}
+        {/* {activeErrorEmail && renderError(emailError)} */}
       </View>
       <View style={styles.fieldContainerGroup}>
         {/* <View style={[styles.fieldContainer, styles.fieldContainerGroupItem]}>
@@ -150,7 +155,7 @@ const StepForm = ({ onSubmit,setShowAlert,setShowAlertData,form2Data }) => {
             value={formData.celphone}
             onChangeText={(value) => handleInputChange('celphone', value)}
           />
-          {renderError(phoneNumberError)}
+          {/* {renderError(phoneNumberError)} */}
         </View>
       </View>
 
@@ -161,7 +166,7 @@ const StepForm = ({ onSubmit,setShowAlert,setShowAlertData,form2Data }) => {
           value={formData.dni}
           onChangeText={(value) => handleInputChange('dni', value)}
         />
-        {renderError(dniError)}
+        {/* {renderError(dniError)} */}
       </View>
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>

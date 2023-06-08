@@ -1,9 +1,27 @@
 import { Text, View,StyleSheet,Image,TouchableOpacity } from 'react-native'
-import CircleWithCheck from '../../Images/CircleWithCheck';
+import CircleWithCheck from '../../Images/CircleWithCheck.jsx';
+import { useNavigation } from '@react-navigation/native';
 
 export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
-  const handleSubmit = () => {
-    setShowAlertPassword(true)
+
+  const navigation = useNavigation();
+
+  const handleSubmit = async() => {
+    try {
+        const { country, dni, ...formDataToSend } = form2Data;
+    
+        const response = await axios.put(
+          `https://s8-15-t-reactnative-production.up.railway.app/user-edit/${}`,
+          formDataToSend
+        );
+        // Realizar acciones adicionales después de la solicitud exitosa
+        console.log(response.data); // Puedes mostrar la respuesta en la consola o realizar otras acciones
+        navigation.navigate('UserProfile');
+    } catch (error) {
+        // Manejar errores de la solicitud
+        console.error(error);
+    }
+    // setShowAlertPassword(true)
   };
   return (
     <View style={styles.container}>
