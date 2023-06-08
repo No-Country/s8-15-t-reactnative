@@ -3,7 +3,7 @@ import { TextInput, View } from 'react-native'
 import colors from '../../utils/colors'
 
 // eslint-disable-next-line react/prop-types
-const InputsBasic = ({icon, placeholder, inputMode = 'text', onChangeText, value}) => {
+const InputsBasic = ({icon, placeholder, inputMode = 'text', onChangeText, value, secureTextEntry=false}) => {
 	const [isFocused, setIsFocused] = useState(false)
 
 	return (
@@ -22,6 +22,7 @@ const InputsBasic = ({icon, placeholder, inputMode = 'text', onChangeText, value
 				placeholderTextColor={isFocused ? colors.violeta : colors.gris_medio}
 				keyboardType='default'
 				inputMode={inputMode}
+				secureTextEntry={secureTextEntry}
 				onChangeText={onChangeText}
 				value={value}
 				className='flex-1 text-xl text-violeta'

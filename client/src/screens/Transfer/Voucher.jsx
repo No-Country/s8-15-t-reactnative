@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react'
 import Constants from 'expo-constants'
-import { View, Text, TouchableOpacity, Image, StatusBar } from 'react-native'
+import {
+	View,
+	Text,
+	TouchableOpacity,
+	Image,
+	StatusBar,
+	ScrollView,
+} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { AntDesign } from '@expo/vector-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { setChangeScreen } from '../../reduxApp/feature/changeScreenSlice'
-import { GoBackButton, SmallProfilePicture } from '../../components'
+import { SmallProfilePicture } from '../../components'
+import colors from '../../utils/colors'
+import { BackArrow, Succes } from '../../../assets/svgMaterialIcons/icons'
+import { useNavigation } from '@react-navigation/native'
 
 const Voucher = () => {
 	const transferData = useSelector(state => state.transferData)
@@ -27,99 +37,156 @@ const Voucher = () => {
 	}
 
 	const randomNumber = Math.floor(Math.random() * 111111111111111)
+	const navigation = useNavigation()
 
 	return (
-		<LinearGradient
-			colors={['#7029E2', '#55B7FF']}
-			start={{ x: 0, y: 0 }}
-			end={{ x: 1, y: 0 }}
-			style={{
-				flexGrow: 1,
-				height: '100%',
-				width: '100%',
-			}}
-		>
-			<View className='w-full h-[18%] flex-row items-center justify-between p-4'>
-				<TouchableOpacity
-					onPress={() => dispatch(setChangeScreen('TransferMoney'))}
-				>
-					<GoBackButton />
-				</TouchableOpacity>
-				<Text
-					className='text-3xl text-white'
-					style={{ fontFamily: 'poppins-semiBold' }}
-				>
-					Comprobante
-				</Text>
-				<SmallProfilePicture />
+		<ScrollView className='bg-white'>
+			<LinearGradient
+				colors={['#7029E2', '#55B7FF']}
+				start={{ x: 0, y: 0 }}
+				end={{ x: 1, y: 0 }}
+				style={{
+					flexGrow: 1,
+					width: '100%',
+				}}
+			>
+				<View className='w-full flex-row items-center justify-between p-4 py-10'>
+					<TouchableOpacity
+						onPress={() => dispatch(setChangeScreen('TransferMoney'))}
+					>
+						<BackArrow /> 
+					</TouchableOpacity>
+					<Text
+						className='text-3xl text-white'
+						style={{ fontFamily: 'poppins-semiBold' }}
+					>
+						Comprobante
+					</Text>
+					<SmallProfilePicture />
+				</View>
+			</LinearGradient>
+			<View className='rounded-tl-[36px] rounded-t-3xl py-5 bg-[#FBFBFB] h-[100%] relative top-[-20px]'>
+				<View className='border-b border-solid border-gris_border'>
+					<Text className='text-center mb-5'>
+						<Succes color={colors.verde_claro} size={80} />
+					</Text>
+					<Text className='absolute right-10 top-10'>
+						<AntDesign name='export' size={30} color='#5449C8' />
+					</Text>
+					<Text
+						className='text-3xl text-center'
+						style={{ fontFamily: 'poppins-semiBold' }}
+					>
+						Transferencia exitoso!
+					</Text>
+					<Text
+						className='text-center text-xl text-gris_texto px-16 py-5'
+						style={{ fontFamily: 'poppins-semiBold' }}
+					>
+						Tu dinero fue transferido con exito
+					</Text>
+				</View>
+				<View className='px-8'>
+					<View className='flex-row justify-between py-6'>
+						<Text
+							className='text-gris_texto text-xl'
+							style={{ fontFamily: 'poppins-semiBold' }}
+						>
+							Monto transferido
+						</Text>
+						<Text
+							className='text-violeta text-xl'
+							style={{ fontFamily: 'poppins-semiBold' }}
+						>
+							US$ {transferData.amount}
+						</Text>
+					</View>
+					<View
+						style={{ gap: 5 }}
+						className='flex-row border-slate-300 border-[1px] rounded-[20px] py-5 px-3'
+					>
+						<View className='h-[50px] w-[50px]   rounded-full overflow-hidden'>
+							<Image
+								className='h-full w-full'
+								resizeMode='cover'
+								source={{
+									uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
+								}}
+							/>
+						</View>
+						<View>
+							<Text
+								className='text-xl font-semibold] '
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								Cintia J. Martinez
+							</Text>
+							<Text
+								className='text-xl text-gris_texto'
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								CVU - {transferData.cbu}
+							</Text>
+						</View>
+					</View>
+					<View className='py-8'>
+						<View className='flex flex-row justify-between pb-4'>
+							<Text
+								className='text-gris_texto text-xl '
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								Fecha y Hora
+							</Text>
+							<Text
+								className='text-xl'
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								{formattedDateTime}
+							</Text>
+						</View>
+						<View className='flex flex-row justify-between pb-4'>
+							<Text
+								className='text-gris_texto text-xl '
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								No. Ref
+							</Text>
+							<Text
+								className='text-xl'
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								{randomNumber}
+							</Text>
+						</View>
+						<View className='flex flex-row justify-between pb-4'>
+							<Text
+								className='text-gris_texto text-xl '
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								Categoría
+							</Text>
+							<Text
+								className='text-xl'
+								style={{ fontFamily: 'poppins-semiBold' }}
+							>
+								Amistades
+							</Text>
+						</View>
+					</View>
+					<TouchableOpacity
+						className='bg-[#F18805] w-[200px] py-[12px] rounded-[25px] mx-auto'
+						onPress={() => navigation.navigate('Home')}
+					>
+						<Text
+							className='text-center text-white text-xl'
+							style={{ fontFamily: 'poppins-semiBold' }}
+						>
+							Finalizar
+						</Text>
+					</TouchableOpacity>
+				</View>
 			</View>
-			<View className='rounded-tl-[36px] rounded-tr-[36px] w-full h-[82%] p-10 bg-[#FBFBFB] relative'>
-				<Text className='text-center mb-5'>
-					<AntDesign name='checkcircle' size={73.02} color='#32C993' />
-				</Text>
-				<Text className='absolute right-10 top-10'>
-					<AntDesign name='export' size={21.58} color='#5449C8' />
-				</Text>
-				<Text className='font-semibold text-[20px] text-center '>
-					Transferencia exitosa
-				</Text>
-				<Text className='text-center text-[#B3B3B5] font-semibold text-[16px] px-10 py-5'>
-					Tu dinero fue transferido con éxito.
-				</Text>
-				<View className='flex-row justify-evenly py-5'>
-					<Text className='text-[#B3B3B5] font-semibold text-[16px]'>
-						Monto transferido
-					</Text>
-					<Text className='text-[#6D39E5] font-semibold text-[16px]'>
-						US$ {Number(transferData.amount).toLocaleString()}
-					</Text>
-				</View>
-				<View className='flex-row justify-center items-center border-slate-300 border-[1px] rounded-[20px] py-5'>
-					<Image
-						className='bg-slate-100 w-[48px] h-[48px] rounded-full mr-2'
-						source={''}
-					/>
-					<View>
-						<Text className='text-[15px] font-semibold leading-[22px]'>
-							{transferData.name}
-						</Text>
-						<Text className='text-[15px] font-semibold text-slate-500'>
-							CBU - {transferData.cbu}
-						</Text>
-					</View>
-				</View>
-				<View className='flex-row justify-between py-8'>
-					<View className='flex-col gap-3'>
-						<Text className='text-[#B3B3B5] font-semibold text-[16px]'>
-							Fecha y Hora
-						</Text>
-						<Text className='text-[#B3B3B5] font-semibold text-[16px]'>
-							No. Ref
-						</Text>
-						<Text className='text-[#B3B3B5] font-semibold text-[16px]'>
-							Categoría
-						</Text>
-					</View>
-					<View className='flex-col gap-3'>
-						<Text className='font-semibold text-[16px]'>
-							{formattedDateTime}
-						</Text>
-						<Text className='font-semibold text-[16px]'>{randomNumber}</Text>
-						<Text className='font-semibold text-[16px]'>
-							{transferData.categoryName}
-						</Text>
-					</View>
-				</View>
-				<TouchableOpacity
-					className='bg-[#F18805] w-[200px] py-[12px] rounded-[25px] m-auto'
-					onPress={() => dispatch(setChangeScreen('SendMoney'))}
-				>
-					<Text className='text-center text-white text-[18px] font-semibold'>
-						Finalizar
-					</Text>
-				</TouchableOpacity>
-			</View>
-		</LinearGradient>
+		</ScrollView>
 	)
 }
 
