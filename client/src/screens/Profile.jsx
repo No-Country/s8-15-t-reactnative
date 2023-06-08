@@ -5,6 +5,7 @@ import {
 	StatusBar,
 	TouchableOpacity,
 	ImageBackground,
+	Image,
 } from 'react-native'
 import colors from '../utils/colors'
 import {
@@ -54,11 +55,14 @@ const Profile = () => {
 					<GoBackButton />
 				</View>
 				<View className='flex justify-center items-center'>
-					<MaterialCommunityIcons
-						name='account-circle'
-						color={'gray'}
-						size={110}
-					/>
+					<View className='border-solid border-2 border-white rounded-full'>
+						<Image
+							className='h-[90px] w-[90px] rounded-full'
+							source={{
+								uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
+							}}
+						/>
+					</View>
 					<Text className='text-lg text-white font-bold '>Esteban Leisz</Text>
 					<Text className='text-lg text-white font-normal'>
 						esteban.leisz@gmail.com

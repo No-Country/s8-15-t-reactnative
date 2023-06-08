@@ -20,7 +20,7 @@ const userMessageEmail = async (req, res) => {
       await sgMail.send(msg);
       res.status(200).json({ mensaje: 'Correo enviado con éxito' });
     } catch (error) {
-      res.status(500).json({ error: 'Error al enviar el correo' });
+      res.status(500).json({ error: 'Error al enviar el correo electronico' });
     }
 };
 

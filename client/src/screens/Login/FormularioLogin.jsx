@@ -76,6 +76,7 @@ const handleLogin = async () => {
 						placeholder={'Contraseña'}
 						onChangeText={(text) => setInput({...input, password: text}) }
 						value={input.password}
+						secureTextEntry={true}
 					/>
 					<TouchableOpacity className='mt-3'>
 						<Text style={styles.btnOlvido}>¿Olvidaste tu contraseña?</Text>
