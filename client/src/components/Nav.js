@@ -1,11 +1,30 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { ActivityIndicator } from 'react-native'
 import TabBar from './TabBar'
+<<<<<<< HEAD
+import {
+	CambiarDinero,
+	CryptoMetric,
+	CryptoTransferencia,
+	Home,
+	Onboarding,
+	Profile,
+	ScannQr,
+} from '../screens'
+=======
 import { CambiarDinero, CryptoMetric, CryptoTransferencia, Home, Onboarding, PagoFacturaComprobante, Profile } from '../screens'
+>>>>>>> bf92ff6c7f58e5193d69487ac173b9fda0a1d5d2
 import FingerprintVerification from './FingerprintVerification/FingerprintVerification'
 import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'
 import Security from '../screens/Security/Security'
+<<<<<<< HEAD
+import CobroListo from '../screens/CobroPorProducto/CobroListo'
+import CobroLinksCreados from '../screens/CobroPorProducto/CobroLinksCreados'
+import CobroDescripcion from '../screens/CobroPorProducto/CobroDescripcion'
+import CobroPersonalizaLink from '../screens/CobroPorProducto/CobroPersonalizaLink'
+import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
+=======
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 import { Login } from '../screens/Login'
 import Registro from '../screens/Registro/Registro'
@@ -16,6 +35,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native'
 import {login, logout} from '../reduxApp/feature/authSlice'
 import {View} from 'react-native-animatable'
+>>>>>>> bf92ff6c7f58e5193d69487ac173b9fda0a1d5d2
 
 const Stack = createStackNavigator()
 
@@ -24,6 +44,38 @@ const Stack = createStackNavigator()
 
 
 const Nav = () => {
+<<<<<<< HEAD
+	return (
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
+			<Stack.Screen name='Onboarding' component={Onboarding} />
+			<Stack.Screen name='Bar' component={TabBar} />
+			<Stack.Screen name='Qr' component={ScannQr} />
+			<Stack.Screen name='Profile' component={Profile} />
+			<Stack.Screen name='Home' component={Home} />
+			<Stack.Screen name='CryptoMetric' component={CryptoMetric} />
+			<Stack.Screen name='Security' component={Security} />
+			<Stack.Screen
+				name='FingerprintVerification'
+				component={FingerprintVerification}
+			/>
+			<Stack.Screen name='FaceIdVerification' component={FaceIdVerification} />
+			<Stack.Screen name='PinVerification' component={PinVerification} />
+			<Stack.Screen
+				name='CryptoTransferencia'
+				component={CryptoTransferencia}
+			/>
+			<Stack.Screen name='CryptoCambio' component={CambiarDinero} />
+			<Stack.Screen name='cobros' component={CobroPorProducto} />
+			<Stack.Screen name='cobrosCustomLink' component={CobroPersonalizaLink} />
+			<Stack.Screen name='cobrosListo' component={CobroListo} />
+			<Stack.Screen name='cobrosLinkList' component={CobroLinksCreados} />
+			<Stack.Screen name='cobrosDescripcion' component={CobroDescripcion} />
+		</Stack.Navigator>
+	)
+}
+
+export default Nav
+=======
 
 	const dispatch = useDispatch();
 	
@@ -102,3 +154,4 @@ const Nav = () => {
 export default Nav;
 
 
+>>>>>>> bf92ff6c7f58e5193d69487ac173b9fda0a1d5d2

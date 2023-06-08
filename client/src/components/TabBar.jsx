@@ -6,6 +6,17 @@ import {
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
+<<<<<<< HEAD
+import { CambiarDinero, CryptoList, Historial, Home, ScannQr } from '../screens'
+import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
+import Notificaciones from './Notificaciones/Notificaciones'
+import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
+import CobroDescripcion from '../screens/CobroPorProducto/CobroDescripcion'
+import CobroPersonalizaLink from '../screens/CobroPorProducto/CobroPersonalizaLink'
+import CobroListo from '../screens/CobroPorProducto/CobroListo'
+import CobroLinksCreados from '../screens/CobroPorProducto/CobroLinksCreados'
+import CobrosIndex from '../screens/CobroPorProducto/CobrosIndex'
+=======
 
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
@@ -15,6 +26,7 @@ import TransferMoney from '../screens/Transfer/TransferMoney'
 import Voucher from '../screens/Transfer/Voucher'
 import { useSelector } from 'react-redux'
 
+>>>>>>> bf92ff6c7f58e5193d69487ac173b9fda0a1d5d2
 
 const Tab = createBottomTabNavigator()
 
@@ -51,7 +63,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={Home}
+				component={CobroPorProducto}
 				options={{
 					tabBarIcon: ({ focused }) =>
 						focused ? (
