@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import {
 	View,
@@ -32,7 +33,8 @@ const CobroListo = ({ route, navigation }) => {
 				// dismissed
 			}
 		} catch (error) {
-			Alert.alert(error.message)
+			// Alert.alert(error.message)
+			console.log(error)
 		}
 	}
 	const goBack = () => {
