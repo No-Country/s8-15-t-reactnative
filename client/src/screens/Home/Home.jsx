@@ -29,11 +29,13 @@ import {
 } from '../../../assets/svgMaterialIcons/icons'
 import { useNavigation } from '@react-navigation/native'
 import { HomePagarButtom, SmallProfilePicture } from '../../components'
+import { useDispatch,useSelector } from 'react-redux'
 
 SplashScreen.preventAutoHideAsync()
 
 const Home = () => {
 	const navigation = useNavigation()
+	const user = useSelector(state => state.user?.user);
 
 	const [ocultarNumero, setOcultarNumero] = useState(false)
 	const dineroDisponible = 1547.74
@@ -96,7 +98,7 @@ const Home = () => {
 						className='text-white text-2xl text-center'
 						style={{ fontFamily: 'poppins-semiBold' }}
 					>
-						¡Hola, Cintia!
+						{`¡Hola, ${user?.name}!`}
 					</Text>
 					<View className='flex items-center mt-4'>
 						<View className='flex flex-row justify-center items-center gap-3'>
