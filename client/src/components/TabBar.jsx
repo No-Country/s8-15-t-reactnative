@@ -9,7 +9,7 @@ import {
 
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
-import { CryptoList, Home, ScannQr } from '../screens'
+import { CryptoList, Home, Profile, ScannQr } from '../screens'
 import SendMoney from '../screens/Transfer/SendMoney'
 import TransferMoney from '../screens/Transfer/TransferMoney'
 import Voucher from '../screens/Transfer/Voucher'
