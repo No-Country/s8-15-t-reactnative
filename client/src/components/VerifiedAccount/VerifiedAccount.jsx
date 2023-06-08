@@ -16,7 +16,7 @@ export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
         );
         // Realizar acciones adicionales después de la solicitud exitosa
         console.log(response.data); // Puedes mostrar la respuesta en la consola o realizar otras acciones
-        navigation.navigate('UserProfile');
+        navigation.navigate('Home');
     } catch (error) {
         // Manejar errores de la solicitud
         console.error(error);
