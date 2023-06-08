@@ -3,19 +3,17 @@ import {
 	Text,
 	TouchableOpacity,
 	Image,
-	TextInput,
 	ActivityIndicator,
 } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useFonts } from 'expo-font'
-import { useCallback, useState } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 import fondo from '../../Images/wave.webp'
+import { useState, useCallback } from 'react'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
-import * as SecureStore from 'expo-secure-store'
-import AsyncStorage from '@react-native-async-storage/async-storage'
+import * as SecureStore from 'expo-secure-store';
 
 SplashScreen.preventAutoHideAsync()
 

@@ -1,28 +1,23 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useState } from 'react'
+import { useState } from 'react'
 import {
 	View,
 	Image,
 	Text,
 	ScrollView,
 	TextInput,
-	StyleSheet,
 	ImageBackground,
 	TouchableOpacity,
 } from 'react-native'
 import Constants from 'expo-constants'
-import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 
-import Button from '../../components/Button/Button'
+import { GoBackButton } from '../../components'
 const CobroDescripcion = ({ navigation, route }) => {
 	const [text, onChangeText] = useState('')
 	const data = route.params
 	const goShare = () => {
 		data.descripcion = text
 		navigation.navigate('cobrosListo', data)
-	}
-	const goBack = () => {
-		navigation.goBack()
 	}
 
 	return (
@@ -36,14 +31,7 @@ const CobroDescripcion = ({ navigation, route }) => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity onPress={goBack}>
-						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
-							<Image
-								className='h-4 w-4 rounded-full'
-								source={require('../../../assets/back_arrow.png')}
-							/>
-						</View>
-					</TouchableOpacity>
+					<GoBackButton />
 					<Text
 						className='text-3xl text-white'
 						style={{ fontFamily: 'poppins-semiBold' }}
@@ -75,7 +63,7 @@ const CobroDescripcion = ({ navigation, route }) => {
 					Describe tu producto
 				</Text>
 			</View>
-			<View className='w-10/12 mr-auto ml-auto flex'>
+			<View className='mr-auto ml-auto flex'>
 				<View className='bg-white bg-opacity-100 w-16 z-50 left-4 -bottom-2'>
 					<Text className=''>Descripcion</Text>
 				</View>
@@ -88,7 +76,13 @@ const CobroDescripcion = ({ navigation, route }) => {
 				<Text className='text-center mb-6'>
 					Se vera cundo envies el link 0/35
 				</Text>
-				<View className='w-40 h-32 mb-20 bg-slate-200 ml-auto mr-auto'></View>
+				<View className='mx-auto mb-5 border border-dotted border-gris_medio rounded-3xl'>
+					<Image
+					resizeMode='cover'
+					source={require('../../../assets/DefaultProfucto.png')}
+					/>
+				</View>
+				<Text className='text-center mb-5 text-violeta'> Agrega una foto (es opcional)</Text>
 				<TouchableOpacity
 					onPress={goShare}
 					className='w-[240px] px-[22px] pt-1 pb-1 text-white rounded-2xl bg-naranja '

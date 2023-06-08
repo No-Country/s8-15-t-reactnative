@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
 	View,
-	Image,
 	Text,
 	ScrollView,
-	TextInput,
 	StyleSheet,
 	ImageBackground,
 	TouchableOpacity,
@@ -13,10 +11,9 @@ import {
 } from 'react-native'
 import CheckBox from 'expo-checkbox'
 import Constants from 'expo-constants'
-import { MaterialIcons, Ionicons } from '@expo/vector-icons'
-import Button from '../../components/Button/Button'
 import colors from '../../utils/colors'
 import DatePicker, { getFormatedDate } from 'react-native-modern-datepicker'
+import { GoBackButton, SmallProfilePicture } from '../../components'
 const CobroPersonalizaLink = ({ navigation, route }) => {
 	const { monto } = route.params
 	const [payfriend, setpayfriend] = useState(false)
@@ -52,7 +49,7 @@ const CobroPersonalizaLink = ({ navigation, route }) => {
 	}
 	const goShare = () => {
 		const data = {
-			monto: monto,
+			monto,
 			method: payfriend ? 'payfriend' : 'efectivo',
 			vigencia: `desde: ${selectedStartDate} hasta: ${selectedEndDate}`,
 		}
@@ -60,9 +57,7 @@ const CobroPersonalizaLink = ({ navigation, route }) => {
 		console.log(data)
 		navigation.navigate('cobrosDescripcion', data)
 	}
-	const goBack = () => {
-		navigation.goBack()
-	}
+
 	return (
 		<ScrollView className='bg-white'>
 			<ImageBackground
@@ -74,14 +69,7 @@ const CobroPersonalizaLink = ({ navigation, route }) => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity onPress={goBack}>
-						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
-							<Image
-								className='h-4 w-4 rounded-full'
-								source={require('../../../assets/back_arrow.png')}
-							/>
-						</View>
-					</TouchableOpacity>
+					<GoBackButton/>
 					<Text
 						className='text-3xl text-white'
 						style={{ fontFamily: 'poppins-semiBold' }}
@@ -89,19 +77,7 @@ const CobroPersonalizaLink = ({ navigation, route }) => {
 						Cobros
 					</Text>
 
-					<View
-						className='flex flex-row justify-center items-center 
-				gap-x-7'
-					>
-						<View className='border-solid border-2 border-white rounded-full'>
-							<Image
-								className='h-[40px] w-[40px] rounded-full'
-								source={{
-									uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
-								}}
-							/>
-						</View>
-					</View>
+					<SmallProfilePicture/>
 				</View>
 				<View className='flex items-center'>
 					<Text className=' text-[20px] text-white font-semibold'>
@@ -214,7 +190,7 @@ const CobroPersonalizaLink = ({ navigation, route }) => {
 
 				<TouchableOpacity
 					onPress={goShare}
-					className='w-[240px] px-[22px] pt-1 pb-1 text-white rounded-2xl bg-naranja '
+					className='w-[240px] px-[22px] mx-auto pt-1 pb-1 text-white rounded-2xl bg-naranja '
 				>
 					<Text className='text-white font-bold text-center text-xl'>
 						Continuar
@@ -224,21 +200,6 @@ const CobroPersonalizaLink = ({ navigation, route }) => {
 		</ScrollView>
 	)
 }
-const styles = StyleSheet.create({
-	container: {
-		width: '100%',
-		padding: 16,
-		paddingTop: 100,
-	},
-	wrapper: {
-		display: 'flex',
-		flexDirection: 'row',
-		alignContent: 'center',
-	},
-	text: {
-		lineHeight: 30,
-		marginLeft: 10,
-	},
-})
+
 
 export default CobroPersonalizaLink

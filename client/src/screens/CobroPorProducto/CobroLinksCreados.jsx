@@ -15,7 +15,7 @@ const CobroLinksCreados = ({ navigation }) => {
 		navigation.goBack()
 	}
 	return (
-		<ScrollView className='bg-gris_background'>
+		<ScrollView className='bg-white'>
 			<ImageBackground
 				source={require('../../../assets/fondoHistorial.webp')}
 				className='h-[170] '

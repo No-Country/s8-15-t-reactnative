@@ -1,12 +1,11 @@
 import { View, Text, ScrollView, SafeAreaView } from 'react-native'
-import Stepper from '../../components/Stepper/Stepper'
 import FormularioLogin from './FormularioLogin'
 
 // eslint-disable-next-line react/prop-types
 const SplashMessageLogin = ({ title, description1 }) => {
 	return (
 		<View
-			className='mt-auto items-center  bg-white h-3/4'
+			className='mt-auto items-center bg-white h-3/4'
 			style={{
 				borderTopLeftRadius: 20,
 				borderTopRightRadius: 20,
