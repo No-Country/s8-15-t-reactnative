@@ -35,6 +35,8 @@ Tarjeta Payfriend y retiro de efectivo: Solicita una tarjeta Payfriend sin costo
 >  #### Stack:
 React Native/ Expo/ Redux/ Firebase
 
+Express/ Sequelize/ Postgres
+
 Figma/ After Effects/ jira
 
 
