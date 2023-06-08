@@ -3,7 +3,7 @@ const { User } = require('../db.js');
 const userEdit = async (req, res) => {
     try {
       const userIdOrEmail = req.params.userIdOrEmail; // Obtener el ID o el correo electrónico del usuario desde los parámetros de la ruta
-      const {email, phone,dni,country,picture } = req.body;
+      const {email, phone,picture } = req.body;
   
       let user;
   
@@ -21,10 +21,8 @@ const userEdit = async (req, res) => {
       // Actualizar los campos deseados
       user.email = email;
       user.phone = phone;
-      user.dni = dni;
-      user.country = country;
       user.picture= picture;
-      
+
       await user.save(); // Guardar los cambios
   
       res.status(200).json(user);

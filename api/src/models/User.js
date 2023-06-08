@@ -41,15 +41,9 @@ module.exports = (sequelize) => {
       },
       picture: {
         type: DataTypes.STRING,
+       
       },
-      dni:{
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
-      country:{
-        type: DataTypes.STRING,
-        allowNull: true,
-      }
+    
     },
     {timestamps: false}
     );
