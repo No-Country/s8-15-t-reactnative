@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
 import {
 	View,
 	Image,
@@ -10,7 +9,7 @@ import {
 	Share,
 } from 'react-native'
 import Constants from 'expo-constants'
-import Button from '../../components/Button/Button'
+import { GoBackButton, SmallProfilePicture } from '../../components'
 const CobroListo = ({ route, navigation }) => {
 	const { monto, method, descripcion, vigencia } = route.params
 	const num = Math.random()
@@ -37,9 +36,7 @@ const CobroListo = ({ route, navigation }) => {
 			console.log(error)
 		}
 	}
-	const goBack = () => {
-		navigation.goBack()
-	}
+
 	const goCobros = () => {
 		navigation.navigate('cobros')
 	}
@@ -48,7 +45,7 @@ const CobroListo = ({ route, navigation }) => {
 	}
 
 	return (
-		<ScrollView className='bg-gris_background'>
+		<ScrollView className='bg-white'>
 			<ImageBackground
 				source={require('../../../assets/fondoHistorial.webp')}
 				className='h-[200] '
@@ -58,32 +55,17 @@ const CobroListo = ({ route, navigation }) => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity onPress={goBack}>
-						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
-							<Image
-								className='h-4 w-4 rounded-full'
-								source={require('../../../assets/back_arrow.png')}
-							/>
-						</View>
-					</TouchableOpacity>
+					<View className='flex-1  '>
+						<GoBackButton />
+					</View>
 					<Text
-						className='text-3xl text-white'
+						className='text-3xl text-white  text-center flex-1 '
 						style={{ fontFamily: 'poppins-semiBold' }}
 					>
 						Cobros
 					</Text>
-					<View
-						className='flex flex-row justify-center items-center 
-				gap-x-7'
-					>
-						<View className='border-solid border-2 border-white rounded-full'>
-							<Image
-								className='h-[40px] w-[40px] rounded-full'
-								source={{
-									uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
-								}}
-							/>
-						</View>
+					<View className=' flex-1 flex flex-row justify-end items-center '>
+						<SmallProfilePicture />
 					</View>
 				</View>
 				<View className='flex items-center'>

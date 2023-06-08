@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useState } from 'react'
 import {
 	View,
 	Image,
@@ -7,22 +8,37 @@ import {
 	TextInput,
 	ImageBackground,
 	TouchableOpacity,
-	Button,
 } from 'react-native'
 import Constants from 'expo-constants'
-
 import colors from '../../utils/colors'
-// import Button from '../../components/Button/Button'
 import { myCryptos } from '../../utils/fakeCryptoData'
 import { CryptoListItem } from '../../components/CryptoListItem'
+import { GoBackButton } from '../../components'
+import Keyboard from '../../components/Transfer/Keyboard'
+import { AntDesign } from '@expo/vector-icons'
+
 const CobroPorProducto = ({ navigation }) => {
+	const [monto, setMonto] = useState('')
+
+	const handleSubmit = n => {
+		setMonto(prev => prev + n)
+	}
+
+	const handleBorrar = () => {
+		setMonto(prev => prev.slice(0, -1))
+	}
+
+	console.log(monto)
+
 	const [otpValue, setOtpValue] = useState('')
 	const goCustomLink = () => {
 		const data = {
-			monto: otpValue,
+			monto,
 		}
 		navigation.navigate('cobrosCustomLink', data)
 	}
+
+	const numbers = Array.from({ length: 9 }, (_, index) => index + 1)
 
 	return (
 		<ScrollView className='bg-white'>
@@ -35,14 +51,7 @@ const CobroPorProducto = ({ navigation }) => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity>
-						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
-							<Image
-								className='h-4 w-4 rounded-full'
-								source={require('../../../assets/back_arrow.png')}
-							/>
-						</View>
-					</TouchableOpacity>
+					<GoBackButton />
 					<Text
 						className='text-3xl text-white'
 						style={{ fontFamily: 'poppins-semiBold' }}
@@ -79,23 +88,60 @@ const CobroPorProducto = ({ navigation }) => {
 						className='w-[230] border-[1px] border-gris_medio mb-2 py-2 text-violeta font-bold border-t-0 border-l-0 border-r-0'
 						style={{ fontSize: 26, fontWeight: 'bold', textAlign: 'center' }}
 						onChangeText={otpValue => setOtpValue(otpValue)}
-						defaultValue={otpValue}
+						value={monto}
 						keyboardType='decimal-pad'
 						placeholder='000'
 						placeholderTextColor={colors.violeta}
+						readOnly={true}
 					/>
-					<View>
-						{myCryptos.map(coin => (
-							<CryptoListItem
-								key={coin.id}
-								coin={coin.coin}
-								coinSymbol={coin.symbol}
-								amountOwned={coin.amount}
-								inUsd={coin.actualValue}
-								profit={coin.modifiedPercentage}
-								icon={coin.imgIcon}
-							/>
+				</View>
+				<View className='w-full py-6'>
+					<View className='w-full flex-row flex-wrap'>
+						{numbers.map((item, index) => (
+							<View
+								key={index}
+								className='w-1/3 justify-center items-center p-2'
+							>
+								{typeof item === 'number' ? (
+									<TouchableOpacity
+										onPress={() => handleSubmit(item)}
+										className='rounded-full w-[70px] h-[70px] bg-slate-50 p-5 justify-center items-center'
+									>
+										<Text className='text-[26px] font-semibold'>{item}</Text>
+									</TouchableOpacity>
+								) : (
+									<TouchableOpacity
+										onPress={() => handleBorrar}
+										style={
+											item.icon === 'closecircleo'
+												? { backgroundColor: '#BABABA' }
+												: { backgroundColor: '#6D39E5' }
+										}
+										className='rounded-full w-[70px] h-[70px] p-5 justify-center items-center'
+									>
+										<AntDesign
+											name={item.icon}
+											size={item.size}
+											color={item.color}
+										/>
+									</TouchableOpacity>
+								)}
+							</View>
 						))}
+						<View className='flex flex-row justify-between my-4 w-full px-8'>
+							<TouchableOpacity
+								onPress={() => handleSubmit(0)}
+								className='rounded-full w-[70px] h-[70px] bg-slate-50 p-5 justify-center items-center'
+							>
+								<Text className='text-[26px] font-semibold'>{0}</Text>
+							</TouchableOpacity>
+							<TouchableOpacity
+								onPress={() => handleBorrar()}
+								className='flex justify-center items-center mr-5'
+							>
+								<AntDesign name='closecircleo' size={35} color={colors.rojo} />
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
 				<TouchableOpacity

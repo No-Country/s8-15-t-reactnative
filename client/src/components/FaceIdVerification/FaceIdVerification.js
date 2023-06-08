@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import {
 	View,
 	Text,
@@ -11,7 +11,6 @@ import {
 import { LinearGradient } from 'expo-linear-gradient'
 import * as LocalAuthentication from 'expo-local-authentication'
 import { useFonts } from 'expo-font'
-import { useCallback } from 'react'
 import * as SplashScreen from 'expo-splash-screen'
 import { useNavigation } from '@react-navigation/native'
 import colors from '../../utils/colors'
@@ -60,7 +59,7 @@ const FaceIdVerification = () => {
 		}
 	}
 
-	const onLayoutButtom = useCallback(async () => {
+	const onLayoutFaceID = useCallback(async () => {
 		if (fontsLoaded) {
 			await SplashScreen.hideAsync()
 		}
@@ -71,7 +70,7 @@ const FaceIdVerification = () => {
 	}
 
 	return (
-		<View onLayout={onLayoutButtom}>
+		<View onLayout={onLayoutFaceID}>
 			<LinearGradient
 				colors={['#7029E2', '#55B7FF']}
 				start={{ x: 0, y: 0 }}
