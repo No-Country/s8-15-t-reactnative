@@ -1,5 +1,6 @@
 # Bienvenidos 
-### al repositorio de # PAYFRIEND 
+### al repositorio de 
+# PAYFRIEND 
 ## Tu billetera virtual
                     
 -------------
