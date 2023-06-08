@@ -16,7 +16,7 @@ const userEdit = async (req, res) => {
       }
   
       if (!user) {
-        return res.status(404).json({ error: 'Usuario no encontrado' });
+        return res.status(404).json({ error: 'Usuario no fue encontrado' });
       }
       // Actualizar los campos deseados
       user.email = email;
