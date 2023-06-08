@@ -17,7 +17,7 @@ const router = Router()
 
 router.post('/login', verifyLoginData, userLogin)
 router.post('/register', verifiRegisterData, userRegister)
-router.put('/user-edit/:id', userEdit);
+router.put('/user-edit/:userIdOrEmail', userEdit);
 router.post('/sendSMS', userSms)
 router.use('/user', userRoutes );
 router.use('/category', categoryRoutes );
