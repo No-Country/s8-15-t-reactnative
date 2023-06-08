@@ -9,6 +9,7 @@ import {
 	TouchableOpacity,
 } from 'react-native'
 import Constants from 'expo-constants'
+import { GoBackButton } from '../../components'
 
 const CobroLinksCreados = ({ navigation }) => {
 	const goBack = () => {
@@ -25,14 +26,7 @@ const CobroLinksCreados = ({ navigation }) => {
 				}}
 			>
 				<View className='flex flex-row justify-between items-center mb-4'>
-					<TouchableOpacity onPress={goBack}>
-						<View className='h-8 w-8 rounded-full border-[1px] border-white flex justify-center items-center'>
-							<Image
-								className='h-4 w-4 rounded-full'
-								source={require('../../../assets/back_arrow.png')}
-							/>
-						</View>
-					</TouchableOpacity>
+					<GoBackButton/>
 					<Text
 						className='text-3xl text-white'
 						style={{ fontFamily: 'poppins-semiBold' }}
@@ -54,7 +48,7 @@ const CobroLinksCreados = ({ navigation }) => {
 					</View>
 				</View>
 			</ImageBackground>
-			<View className='bg-gris_background flex items-center pt-8 -top-6 rounded-t-3xl'>
+			<View className='bg-white flex items-center pt-8 -top-6 rounded-t-3xl'>
 				<Text className='font-bold text-violeta text-[20px]'>
 					Compartir tu link de pago
 				</Text>
