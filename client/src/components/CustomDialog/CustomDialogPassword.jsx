@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View,StyleSheet } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import axios from 'axios';
 
-export const CustomDialogPassword = ({onClose}) => {
+export const CustomDialogPassword = ({onClose,dataEmailSubmit}) => {
   const [counter, setCounter] = useState(130); // Valor inicial en segundos: 2 minutos y 10 segundos
   const [inputValue, setInputValue] = useState('');
   const [activeButtonModify,setActiveButtonModify] = useState(false);
+  const [codigoEnviado, setCodigoEnviado] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,6 +23,30 @@ export const CustomDialogPassword = ({onClose}) => {
   
     return () => clearInterval(interval);
   }, []);
+
+  const enviarCorreo = async () => {
+    try {
+      const codigoAleatorio = Math.floor(Math.random() * 9000000000) + 1000000000; // Genera un número aleatorio de 10 dígitos
+  
+      const response = await axios.post('https://s8-15-t-reactnative-production.up.railway.app/enviar-correo', {
+        destinatario: `${dataEmailSubmit}`,
+        remitente: 'payfrend24@gmail.com',
+        asunto: 'Recuperación de cuenta',
+        nombre: `${dataEmailSubmit}`,
+        codigo: codigoAleatorio.toString() // Convierte el código a una cadena de texto
+      });
+      setCodigoEnviado(codigoAleatorio.toString());
+      console.log('Respuesta del servidor:', response.data);
+    } catch (error) {
+      console.error('Error al enviar el correo:', error);
+    }
+  }
+  
+  useEffect(() => {
+    enviarCorreo();
+  }, [dataEmailSubmit]);
+
+  
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
@@ -35,13 +61,13 @@ export const CustomDialogPassword = ({onClose}) => {
     let formattedText = text.replace(/[^0-9]/g, '');
     formattedText = formattedText.slice(0, 11); // Limitar la longitud máxima a 11 caracteres
   
-    // Aplicar el formato específico "04-42395-208"
+    // Aplicar el formato específico "85-5520-7774"
     if (formattedText.length >= 2) {
       formattedText = `${formattedText.slice(0, 2)}-${formattedText.slice(2)}`;
     }
     if (formattedText.length >= 7) {
       const lastDigits = formattedText.slice(7);
-      formattedText = `${formattedText.slice(0, 7)}-${lastDigits.slice(0, 3)}`;
+      formattedText = `${formattedText.slice(0, 7)}-${lastDigits}`;
     }
   
     return formattedText;
@@ -76,7 +102,7 @@ export const CustomDialogPassword = ({onClose}) => {
             <TextInput
                 style={styles.input}
                 placeholder="Codigo numerico"
-                value={formatInputValue(inputValue)}
+                value={formatInputValue(codigoEnviado)}
                 onChangeText={handleInputChange}
                 keyboardType="numeric"
             />

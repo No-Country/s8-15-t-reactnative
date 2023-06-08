@@ -5,14 +5,20 @@ import { CustomDialogPassword } from './CustomDialogPassword';
 
 export const CustomDialog = ({onClose}) => {
   const [showAlertTwo, setShowAlertTwo] = useState(false);
+  const [dataEmail,setDataEmail]= useState("");
+  const [dataEmailSubmit,setDataEmailSubmit]= useState("");
 
   const submitEmail = () =>{
     console.log("activee")
+    setDataEmailSubmit(dataEmail)
     setShowAlertTwo(true);
   }
 
   const handleClosePassword = () => {
     setShowAlertTwo(false);
+  };
+  const handleChangeText = (text) => {
+    setDataEmail(text);
   };
 
   return (
@@ -26,6 +32,7 @@ export const CustomDialog = ({onClose}) => {
             <TextInput
                 style={styles.input}
                 placeholder="correo@gmail.com"
+                onChangeText={handleChangeText} 
             />
         </View>
 
@@ -38,7 +45,7 @@ export const CustomDialog = ({onClose}) => {
         </TouchableOpacity>
         </View>
         {showAlertTwo && (
-          <CustomDialogPassword onClose={handleClosePassword}/>
+          <CustomDialogPassword onClose={handleClosePassword} dataEmailSubmit={dataEmailSubmit}/>
         )}
 
     </View>

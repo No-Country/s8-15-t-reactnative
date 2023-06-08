@@ -1,18 +1,25 @@
 import { Text, View,StyleSheet,Image,TouchableOpacity } from 'react-native'
 import CircleWithCheck from '../../Images/CircleWithCheck.jsx';
 import { useNavigation } from '@react-navigation/native';
+import {useSelector } from 'react-redux'
+import axios from 'axios';
 
 export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
-
   const navigation = useNavigation();
-
+  const user = useSelector(state => state.user?.user);
+  console.log("Data usuario",user)
   const handleSubmit = async() => {
     try {
-        const { country, dni, ...formDataToSend } = form2Data;
-    
+        const { country, dni,avatar, ...formDataToSend } = form2Data;
+
+        const transformedFormData = {
+            ...formDataToSend,
+            picture: avatar,
+        };
+          
         const response = await axios.put(
-          `https://s8-15-t-reactnative-production.up.railway.app/user-edit/${}`,
-          formDataToSend
+          `https://s8-15-t-reactnative-production.up.railway.app/user-edit/${user?.id}`,
+          transformedFormData
         );
         // Realizar acciones adicionales después de la solicitud exitosa
         console.log(response.data); // Puedes mostrar la respuesta en la consola o realizar otras acciones
@@ -23,6 +30,8 @@ export const VerifiedAccount = ({form2Data,setShowAlertPassword}) => {
     }
     // setShowAlertPassword(true)
   };
+
+
   return (
     <View style={styles.container}>
         <Text style={styles.labelTitle}>Finalizar</Text>
