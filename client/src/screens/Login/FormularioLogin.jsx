@@ -16,37 +16,36 @@ import {setUserData} from '../../reduxApp/feature/userSlice'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios'
 import {login} from '../../reduxApp/feature/authSlice'
+import { CustomDialog } from '../../components/CustomDialog/CustomDialog'
 
-const FormularioLogin = () => {
+const FormularioLogin = ({setShowAlertPassword}) => {
 
 	const navigation = useNavigation()
 	const dispatch = useDispatch()
 	const [input, setInput] = useState({
-		email: '',
-		password: '',
+			email: '',
+			password: '',
 	})
-	
 
-const handleLogin = async () => {
-  try {
-    const response = await axios.post('https://s8-15-t-reactnative-production.up.railway.app/login', input);
-    const data = response.data;
+	const handleLogin = async () => {
+		try {
+			const response = await axios.post('https://s8-15-t-reactnative-production.up.railway.app/login', input);
+			const data = response.data;
 
-    // Guardar los datos del usuario en AsyncStorage
-    await AsyncStorage.setItem('userData', JSON.stringify(data));
+			// Guardar los datos del usuario en AsyncStorage
+			await AsyncStorage.setItem('userData', JSON.stringify(data));
 
-    dispatch(setUserData(data));
-	dispatch(login())
-    console.log(data);
-  } catch (error) {
-    console.log('Error:', error);
-  }
-};
+			dispatch(setUserData(data));
+			dispatch(login())
+			console.log(data);
+		} catch (error) {
+			console.log('Error:', error);
+		}
+	};
+	const handleRecoverPassword = ()=>{
+		setShowAlertPassword(true);
 
-	  
-			
-		
-
+	}
 	const [showPassword, setShowPassword] = useState(false)
 
 	return (
@@ -77,7 +76,7 @@ const handleLogin = async () => {
 						onChangeText={(text) => setInput({...input, password: text}) }
 						value={input.password}
 					/>
-					<TouchableOpacity className='mt-3'>
+					<TouchableOpacity className='mt-3' onPress={handleRecoverPassword}>
 						<Text style={styles.btnOlvido}>¿Olvidaste tu contraseña?</Text>
 					</TouchableOpacity>
 

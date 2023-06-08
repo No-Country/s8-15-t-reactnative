@@ -5,13 +5,15 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from 'expo-font'
 import SplashMessageLogin from './SplashMessageLogin'
 import colors from '../../utils/colors'
+import { CustomDialog } from '../../components/CustomDialog/CustomDialog'
 
 SplashScreen.preventAutoHideAsync()
 
 const Login = () => {
 	const navigation = useNavigation()
 	const [activeStep, setActiveStep] = useState(0)
-
+	const [showAlertPassword, setShowAlertPassword] = useState(false);
+	
 	const infoSteps = [
 		{
 			title: '¡Hola de vuelta!',
@@ -37,6 +39,10 @@ const Login = () => {
 		return <ActivityIndicator size='large' color={colors.violeta} />
 	}
 
+	const handleClosePassword = () => {
+		setShowAlertPassword(false);
+	};
+
 	return (
 		<View onLayout={onLayoutLogin}>
 			<Image
@@ -47,7 +53,11 @@ const Login = () => {
 			<SplashMessageLogin
 				title={currentStep.title}
 				description1={currentStep.description1}
+				setShowAlertPassword={setShowAlertPassword}
 			/>
+			{showAlertPassword && (
+          		<CustomDialog onClose={handleClosePassword}/>
+        	)}
 		</View>
 	)
 }

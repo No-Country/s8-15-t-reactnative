@@ -1,9 +1,11 @@
 import { View, Text, ScrollView, SafeAreaView } from 'react-native'
 import Stepper from '../../components/Stepper/Stepper'
 import FormularioLogin from './FormularioLogin'
+import { useState } from 'react';
+import { CustomDialog } from '../../components/CustomDialog/CustomDialog';
 
 // eslint-disable-next-line react/prop-types
-const SplashMessageLogin = ({ title, description1 }) => {
+const SplashMessageLogin = ({ title, description1,setShowAlertPassword }) => {
 	return (
 		<View
 			className='mt-auto items-center  bg-white h-3/4'
@@ -41,7 +43,7 @@ const SplashMessageLogin = ({ title, description1 }) => {
 							{description1}
 						</Text>
 
-						<FormularioLogin />
+						<FormularioLogin setShowAlertPassword={setShowAlertPassword}/>
 					</View>
 				</ScrollView>
 			</SafeAreaView>
