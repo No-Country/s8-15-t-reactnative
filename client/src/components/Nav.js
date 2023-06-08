@@ -68,6 +68,7 @@ const Nav = () => {
 			<Stack.Screen name='Bar' component={TabBar} />
 			<Stack.Screen name='Home' component={Home} />
 			<Stack.Screen name='Profile' component={Profile} />
+			{/* <Stack.Screen name="UserProfile" component={UserProfile} /> */}
 			<Stack.Screen name='CryptoMetric' component={CryptoMetric} />
 			<Stack.Screen name='VerificationUser' component={ProgressStepUser} />
 			<Stack.Screen
