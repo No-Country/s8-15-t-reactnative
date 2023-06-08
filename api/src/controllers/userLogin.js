@@ -1,47 +1,34 @@
-const { compare } = require('bcrypt')
-const { User } = require('../db.js')
-const jwt = require('jsonwebtoken')
+const { compare } = require('bcrypt');
+const { User } = require('../db.js');
+const jwt = require('jsonwebtoken');
 
 const userLogin = async (req, res) => {
-	const data = {
-		statusCode: 200,
-		errors: '',
-	}
-	const { email, password } = req.body
-	const user = await User.findOne({ where: { email: email } }).then(
-		user => user
-	)
-	if (!user) {
-		data.statusCode = 401
-		data.errors = 'email incorrecto'
-	}
-	if (data.statusCode !== 200) return res.send(data)
-	const validPassword = await compare(password, user.password)
+	try {
+		const { email, password } = req.body;
+		console.log(email, password)
+		const user = await User.findOne({ where: { email } });
 
-	if (!validPassword) {
-		data.statusCode = 401
-		data.errors = 'contraseña incorrecto'
-		return res.send(data)
+		if (!user) {
+			return res.status(401).json({ error: 'Email incorrecto' });
+		}
+
+		const validPassword = await compare(password, user.password);
+
+		if (!validPassword) {
+			return res.status(401).json({ error: 'Contraseña incorrecta' });
+		}
+
+		const token = jwt.sign({ user }, 'secret-key', { expiresIn: '48h' });
+
+		res.json({
+			token,
+			user
+		});
+	} catch (error) {
+		res.status(500).json({ error: 'Error en el servidor' });
 	}
+};
 
-	const token = jwt.sign(
-		{
-			user,
-		},
-		'secret-key',
-		{ expiresIn: '48h' }
-	)
-
-	res.json({
-		token,
-		user
-	})
-	// if (passwordExist !== hashedPassword) {
-	// 	data.statusCode = 401
-	// 	data.errors = 'pass incorrecto'
-	// }
-	// data.statusCode !== 200 ? res.send(data) : res.send('acceso exitoso')
-}
 module.exports = {
-	userLogin,
-}
+	userLogin
+};

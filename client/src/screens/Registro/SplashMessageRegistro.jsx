@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { View, Text, ScrollView, SafeAreaView } from 'react-native'
-import Stepper from '../Stepper/Stepper'
 import RegistroFormulario from './RegistroFormulario'
 
 const SplashMessageRegistro = ({
@@ -18,7 +18,7 @@ const SplashMessageRegistro = ({
         >
             <SafeAreaView>
                 <ScrollView>
-                        <View className='mt-20 items-center px-11'>
+                        <View className='mt-20 items-center px-2'>
                             <Text className='text-2xl' style={{ 
                                         fontFamily: 'poppins-medium', 
                                         color: "#383081", 

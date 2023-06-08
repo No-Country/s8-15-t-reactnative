@@ -16,7 +16,6 @@ module.exports = (sequelize) => {
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
        
       },
       lastName: {
@@ -38,7 +37,7 @@ module.exports = (sequelize) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
       },
       picture: {
         type: DataTypes.STRING,
