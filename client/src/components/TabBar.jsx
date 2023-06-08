@@ -6,27 +6,15 @@ import {
 	FontAwesome5,
 	Ionicons,
 } from '@expo/vector-icons'
-<<<<<<< HEAD
-import { CambiarDinero, CryptoList, Historial, Home, ScannQr } from '../screens'
-import PreguntasFrecuentes from './PreguntasFrecuentes/PreguntasFrecuentes'
-import Notificaciones from './Notificaciones/Notificaciones'
-import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
-import CobroDescripcion from '../screens/CobroPorProducto/CobroDescripcion'
-import CobroPersonalizaLink from '../screens/CobroPorProducto/CobroPersonalizaLink'
-import CobroListo from '../screens/CobroPorProducto/CobroListo'
-import CobroLinksCreados from '../screens/CobroPorProducto/CobroLinksCreados'
-import CobrosIndex from '../screens/CobroPorProducto/CobrosIndex'
-=======
 
 import ProgressStepUser from '../screens/ProgressStepUser/ProgressStepUser'
 
-import { CryptoList, Home, ScannQr } from '../screens'
+import { CryptoList, Home, Profile, ScannQr } from '../screens'
 import SendMoney from '../screens/Transfer/SendMoney'
 import TransferMoney from '../screens/Transfer/TransferMoney'
 import Voucher from '../screens/Transfer/Voucher'
 import { useSelector } from 'react-redux'
-
->>>>>>> bf92ff6c7f58e5193d69487ac173b9fda0a1d5d2
+import CobroPorProducto from '../screens/CobroPorProducto/CobroPorProducto'
 
 const Tab = createBottomTabNavigator()
 
@@ -37,7 +25,6 @@ const TabBar = () => {
 
 	const handleScreens = () => {
 		const screens = {
-
 			SendMoney,
 			TransferMoney,
 			Voucher,
@@ -63,7 +50,7 @@ const TabBar = () => {
 		>
 			<Tab.Screen
 				name='Home'
-				component={CobroPorProducto}
+				component={Home}
 				options={{
 					tabBarIcon: ({ focused }) =>
 						focused ? (
