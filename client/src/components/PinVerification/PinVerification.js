@@ -13,12 +13,40 @@ import fondo from '../../Images/wave.webp'
 import { useState, useCallback } from 'react'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
+import * as SecureStore from 'expo-secure-store';
 
 SplashScreen.preventAutoHideAsync()
 
 const PinVerification = () => {
 	const navigation = useNavigation()
 	const [otpValue, setOtpValue] = useState(['', '', '', ''])
+
+	const checkPin = async () => {
+		const pin = await SecureStore.getItemAsync('pin')
+		if (pin) {
+			if (pin.length === 4 && pin === otpValue.join('')) {
+				console.log('pin correcto')
+				navigation.navigate('Login')
+			} else {
+				console.log('pin incorrecto')
+			}
+		} else {
+			console.log('pin no existe')
+			const savePin = async () => {
+				const pin = otpValue.join('')
+				if (pin.length === 4) {
+					await SecureStore.setItemAsync('pin', pin)
+					console.log('pin guardado ' + pin)
+				}
+			}
+			savePin()
+		}
+	}
+
+	const clearPin = async () => {
+		await SecureStore.deleteItemAsync('pin')
+		console.log('pin eliminado')
+	}
 
 	const handleOtpChange = newValue => {
 		setOtpValue(newValue)
@@ -91,7 +119,7 @@ const PinVerification = () => {
 					<TouchableOpacity
 						className='flex justify-center items-center py-2.5 px-16 rounded-3xl mt-14 bg-white'
 						onPress={() => {
-							navigation.navigate('Login')
+							checkPin()
 						}}
 					>
 						<Text
@@ -101,6 +129,21 @@ const PinVerification = () => {
 							}}
 						>
 							Confirmar
+						</Text>
+					</TouchableOpacity>
+					<TouchableOpacity
+						className='flex justify-center items-center py-2.5 px-16 rounded-3xl mt-14 bg-white'
+						onPress={() => {
+							clearPin()
+						}}
+					>
+						<Text
+							className='text-center text-violeta text-[18px] font-semibold'
+							style={{
+								fontFamily: 'poppins-regular',
+							}}
+						>
+							Borrar PIN
 						</Text>
 					</TouchableOpacity>
 					<Text

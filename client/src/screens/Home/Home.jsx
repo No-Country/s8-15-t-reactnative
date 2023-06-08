@@ -125,7 +125,7 @@ const Home = () => {
 				<View className=' bg-red-100 px-4 relative w-full  flex flex-row justify-center '>
 					<View className='absolute top-[-40px] w-full flex flex-row justify-evenly p-2 rounded-3xl border border-solid border-gray-200 bg-white '>
 						<TouchableOpacity
-							onPress={() => navigation.navigate('')}
+							onPress={() => navigation.navigate('cobros')}
 							className='flex justify-center items-center  text-center'
 						>
 							<Wallet size='25' />
@@ -137,7 +137,7 @@ const Home = () => {
 							</Text>
 						</TouchableOpacity>
 						<TouchableOpacity
-							onPress={() => navigation.navigate('')}
+							onPress={() => navigation.navigate('Transferir')}
 							className='flex justify-center items-center  text-center'
 						>
 							<TransferIcon size='25' />

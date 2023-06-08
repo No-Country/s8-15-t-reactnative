@@ -16,3 +16,5 @@ export * from './ProgressStepUser/ProgressStep.styles';
 export { default as ProgressStepUser } from './ProgressStepUser/ProgressStepUser';
 export { default as ScannQr } from './ScannQr';
 export * from './Security/Index';
+export * from './Onboarding/Index'
+export * from './Transfer'

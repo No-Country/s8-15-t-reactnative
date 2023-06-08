@@ -12,7 +12,6 @@ import TransferMoney from '../screens/Transfer/TransferMoney'
 import Voucher from '../screens/Transfer/Voucher'
 import { useSelector } from 'react-redux'
 
-
 const Tab = createBottomTabNavigator()
 
 const TabBar = () => {
@@ -22,7 +21,6 @@ const TabBar = () => {
 
 	const handleScreens = () => {
 		const screens = {
-
 			SendMoney,
 			TransferMoney,
 			Voucher,
