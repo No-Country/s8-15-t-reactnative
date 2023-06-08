@@ -15,23 +15,6 @@ export const ProfileUser = ({form1Data,onForm1DataSubmit}) => {
   const scrollViewRef = useRef(null);
   const [imageUrls, setImageUrls] = useState([]);
 
-  const avatars = [
-    require('../../../assets/women/women7.png'),
-    require('../../../assets/main7.png'),
-    require('../../../assets/women/women6.png'),
-    require('../../../assets/main6.png'),
-    require('../../../assets/women/women5.png'),
-    require('../../../assets/main5.png'),
-    require('../../../assets/women/women4.png'),
-    require('../../../assets/main4.png'),
-    require('../../../assets/women/women3.png'),
-    require('../../../assets/main1.png'),
-    require('../../../assets/women/women2.png'),
-    require('../../../assets/main2.png'),
-    require('../../../assets/women/women1.png'),
-    require('../../../assets/main3.png')
-  ];
-
   const handleScroll = (event) => {
     const offsetX = event.nativeEvent.contentOffset.x;
     const index = Math.round(offsetX / width);
