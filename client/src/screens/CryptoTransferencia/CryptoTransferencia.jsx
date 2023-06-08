@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Image, Pressable, ScrollView, Text, View } from 'react-native'
 import {
 	CryptoActionCard,
@@ -104,7 +104,6 @@ const CryptoTransferencia = () => {
 							)
 						}}
 						search
-						// searchInputStyle={styles.dropdown3searchInputStyleStyle}
 						searchPlaceHolder={'Alias/Nombre/CVU'}
 						searchPlaceHolderColor={colors.gris_texto}
 						renderSearchInputRightIcon={() => {

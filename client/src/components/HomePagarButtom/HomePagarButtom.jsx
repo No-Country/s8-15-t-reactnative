@@ -6,7 +6,7 @@ const HomePagarButtom = ({icono, text}) => {
 
 	const navigation = useNavigation()
 	return (
-		<TouchableOpacity className='items-center' onPress={() => navigation.navigate('')}>
+		<TouchableOpacity className='items-center' onPress={() => navigation.navigate('PagarFactura')}>
 			<View className='rounded-lg w-[70px] aspect-square bg-gris_background flex justify-center items-center'>
 				{icono}
 			</View>

@@ -13,8 +13,6 @@ import fondo from '../../Images/wave.webp'
 import { useState, useCallback } from 'react'
 import { OTPInput } from '../OTPInput/OTPInput'
 import colors from '../../utils/colors'
-import * as SecureStore from 'expo-secure-store'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 SplashScreen.preventAutoHideAsync()
 

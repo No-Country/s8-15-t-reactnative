@@ -1,6 +1,16 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import TabBar from './TabBar'
-import { CambiarDinero, CryptoMetric, CryptoTransferencia, Historial, Home, Onboarding, Profile } from '../screens'
+import {
+	CambiarDinero,
+	CryptoMetric,
+	CryptoTransferencia,
+	Historial,
+	Home,
+	Onboarding,
+	PagarFactura,
+	PagoFacturaComprobante,
+	Profile,
+} from '../screens'
 import FingerprintVerification from './FingerprintVerification/FingerprintVerification'
 import FaceIdVerification from './FaceIdVerification/FaceIdVerification'
 import PinVerification from './PinVerification/PinVerification'
@@ -18,15 +28,23 @@ const Nav = () => {
 			<Stack.Screen name='Home' component={Home} />
 			<Stack.Screen name='CryptoMetric' component={CryptoMetric} />
 			<Stack.Screen name='Security' component={Security} />
-			<Stack.Screen  name='VerificationUser' component={ProgressStepUser}/>
+			<Stack.Screen name='VerificationUser' component={ProgressStepUser} />
 			<Stack.Screen
 				name='FingerprintVerification'
 				component={FingerprintVerification}
 			/>
 			<Stack.Screen name='FaceIdVerification' component={FaceIdVerification} />
 			<Stack.Screen name='PinVerification' component={PinVerification} />
-			<Stack.Screen name='CryptoTransferencia' component={CryptoTransferencia} />
+			<Stack.Screen
+				name='CryptoTransferencia'
+				component={CryptoTransferencia}
+			/>
 			<Stack.Screen name='CryptoCambio' component={CambiarDinero} />
+			<Stack.Screen name='PagarFactura' component={PagarFactura} />
+			<Stack.Screen
+				name='PagoFacturaComprobante'
+				component={PagoFacturaComprobante}
+			/>
 			<Stack.Screen name='Historial' component={Historial} />
 		</Stack.Navigator>
 	)

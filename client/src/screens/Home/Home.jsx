@@ -28,7 +28,7 @@ import {
 	WithdrawMoney,
 } from '../../../assets/svgMaterialIcons/icons'
 import { useNavigation } from '@react-navigation/native'
-import { HomePagarButtom } from '../../components'
+import { HomePagarButtom, SmallProfilePicture } from '../../components'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -88,15 +88,8 @@ const Home = () => {
 						>
 							Payfriend
 						</Text>
-						<View className='flex flex-row justify-end items-center flex-1'>
-							<View className='border-solid border-2 border-white rounded-full'>
-								<Image
-									className='h-[40px] w-[40px] rounded-full'
-									source={{
-										uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
-									}}
-								/>
-							</View>
+						<View className='flex-1 flex flex-row justify-end'>
+							<SmallProfilePicture />
 						</View>
 					</View>
 					<Text
@@ -192,7 +185,12 @@ const Home = () => {
 					</TouchableOpacity>
 
 					<View>
-						<Text style={{ fontFamily: 'poppins-medium' }} className='text-xl mb-3'>Pagar</Text>
+						<Text
+							style={{ fontFamily: 'poppins-medium' }}
+							className='text-xl mb-3'
+						>
+							Pagar
+						</Text>
 						<View className='flex flex-row justify-between'>
 							<HomePagarButtom
 								text='Internet'
@@ -241,21 +239,46 @@ const Home = () => {
 							<HomePagarButtom
 								text='Compras'
 								icono={
-									<Mobile
-										name='ios-wifi'
-										size={28}
-										color={colors.naranja}
-									/>
+									<Mobile name='ios-wifi' size={28} color={colors.naranja} />
 								}
 							/>
 							<HomePagarButtom
 								text='Seguros'
 								icono={
-									<Ionicons name="md-cart-outline" size={24} color={colors.lila} />
+									<Ionicons
+										name='md-cart-outline'
+										size={24}
+										color={colors.lila}
+									/>
 								}
 							/>
 						</View>
 					</View>
+				</View>
+				<View className='mt-5'>
+					<Text
+						style={{ fontFamily: 'poppins-medium' }}
+						className='text-xl mb-3'
+					>
+						Promos y Descuentos
+					</Text>
+					<ScrollView horizontal={true}>
+						<View className='h-[200px] w-[300px] mr-2'>
+							<Image
+								className='h-full w-full'
+								resizeMode='contain'
+								source={require('../../../assets/imagenesOfertas/ofertaUno.jpg')}
+							/>
+						</View>
+
+						<View className='h-[200px] w-[300px] mr-7'>
+							<Image
+								className='h-full w-full'
+								resizeMode='contain'
+								source={require('../../../assets/imagenesOfertas/ofertaDos.jpg')}
+							/>
+						</View>
+					</ScrollView>
 				</View>
 			</View>
 		</ScrollView>

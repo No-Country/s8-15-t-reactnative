@@ -9,7 +9,7 @@ import {
 import { MaterialIcons, Ionicons } from '@expo/vector-icons'
 import Constants from 'expo-constants'
 import { useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { SmallProfilePicture } from '../SmallProfilePicture'
 
 const HeaderCryptoCommon = ({ titulo }) => {
 	const [ocultarNumero, setOcultarNumero] = useState(false)
@@ -20,8 +20,6 @@ const HeaderCryptoCommon = ({ titulo }) => {
 		maximumFractionDigits: 2,
 	})
 	const numeroOculto = numeroNormalizado.replace(/[0-9]/g, '·')
-
-	const navigation = useNavigation()
 
 	return (
 		<ImageBackground
@@ -49,14 +47,7 @@ const HeaderCryptoCommon = ({ titulo }) => {
 						className='flex flex-row justify-center items-center 
 				gap-x-7'
 					>
-						<View className='border-solid border-2 border-white rounded-full'>
-							<Image
-								className='h-[40px] w-[40px] rounded-full'
-								source={{
-									uri: 'https://d500.epimg.net/cincodias/imagenes/2016/07/04/lifestyle/1467646262_522853_1467646344_noticia_normal.jpg',
-								}}
-							/>
-						</View>
+						<SmallProfilePicture />
 					</View>
 				</View>
 				<View className='flex items-center'>
