@@ -4,10 +4,10 @@
 ## Tu billetera virtual
 
 [![Alt text](https://img.youtube.com/vi/TR0aJcHSstg/0.jpg)](https://www.youtube.com/watch?v=TR0aJcHSstg)                    
-               
+
 -------------
 <br>
-
+git
 >  #### Descripción:
 Payfriend es una aplicación de criptomonedas y billetera virtual diseñada para resolver problemáticas relacionadas con la gestión financiera y el uso de activos digitales. Podés disfrutar de las siguientes funcionalidades:
 
